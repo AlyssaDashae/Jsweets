@@ -3,35 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pastries & Cakes - J's Sweets</title>
+<title>Menu - J's Sweets</title>
 <style>
-/* CSS Variables for our Cream & Rose color palette */
 :root {
 --primary-rose: #d68098;
 --primary-rose-hover: #b8657c;
 --cream-bg: #fdfbf7;
---text-dark: #333333;
+--text-dark: #222222; /* Slightly deeper black */
 --text-light: #666666;
---white-card: rgba(255, 255, 255, 0.92);
+--white-card: rgba(255, 255, 255, 0.95);
+--select-border: #e0e0e0;
 }
 
-/* Base & Background Pattern */
 body {
 margin: 0;
 font-family: 'Helvetica Neue', Arial, sans-serif;
 color: var(--text-dark);
 background-color: var(--cream-bg);
-/* Custom SVG Pastry Pattern Background */
 background-image: url(bg.png);
 background-repeat: repeat;
 }
 
-h1, h2, h3 {
-font-family: 'Georgia', serif;
-margin-top: 0;
-}
+h1, h2, h3 { font-family: 'Georgia', serif; margin-top: 0; }
 
-/* Navigation Bar */
 header {
 background-color: #ffffff;
 box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -52,38 +46,16 @@ align-items: center;
 .logo {
 font-size: 1.5rem;
 font-weight: bold;
-font-family: 'Georgia', serif;
 color: var(--primary-rose);
 text-decoration: none;
 }
 
-.nav-links {
-list-style: none;
-display: flex;
-gap: 2rem;
-margin: 0;
-padding: 0;
-}
+.nav-links { list-style: none; display: flex; gap: 2rem; margin: 0; padding: 0; }
+.nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 500; }
+.nav-links a:hover { color: var(--primary-rose); }
 
-.nav-links a {
-text-decoration: none;
-color: var(--text-dark);
-font-weight: 500;
-transition: color 0.3s ease;
-}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
 
-.nav-links a:hover {
-color: var(--primary-rose);
-}
-
-/* Container for tight sections */
-.container {
-max-width: 1200px;
-margin: 0 auto;
-padding: 0 2rem;
-}
-
-/* Sections General Styling */
 section {
 background-color: var(--white-card);
 margin: 1.5rem auto;
@@ -92,186 +64,112 @@ border-radius: 12px;
 box-shadow: 0 4px 15px rgba(0,0,0,0.03);
 }
 
-/* Page Header Section */
-.page-header {
-text-align: center;
-padding: 3rem 2rem;
-background-color: var(--primary-rose);
-color: white;
-border-radius: 12px;
-margin-top: 2rem;
-}
+.page-header { text-align: center; padding: 3rem 2rem; }
 
-.page-header h1 {
-font-size: 3rem;
-color: white;
-margin-bottom: 1rem;
-}
-
-.page-header p {
-font-size: 1.1rem;
-max-width: 700px;
-margin: 0 auto;
-line-height: 1.6;
-}
-
-/* Category Title */
+/* UPDATED: Category Title to Black */
 .category-title {
 text-align: center;
-font-size: 2.2rem;
-color: var(--text-dark);
-margin-bottom: 2rem;
-padding-bottom: 0.5rem;
-border-bottom: 2px solid #f0e6e6;
+font-size: 2rem;
+margin: 3rem 0 1.5rem;
+color: #000000;
+border-bottom: 3px solid var(--primary-rose); /* Keeping a thin pink line for style */
 display: inline-block;
+padding-bottom: 5px;
+width: 100%;
+text-transform: uppercase;
+letter-spacing: 1px;
 }
 
-.category-container {
-text-align: center;
-}
-
-/* Menu Grid */
 .menu-grid {
 display: grid;
-grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-gap: 2rem;
-margin-bottom: 2rem;
-text-align: left;
+grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+gap: 2.5rem;
 }
 
 .card {
 background-color: #fff;
-border-radius: 10px;
+border-radius: 15px;
 overflow: hidden;
-box-shadow: 0 4px 8px rgba(0,0,0,0.06);
-border: 1px solid #f0e6e6;
+box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+border: 1px solid #f0f0f0;
 display: flex;
 flex-direction: column;
-transition: transform 0.3s ease, box-shadow 0.3s ease;
+transition: transform 0.3s ease;
 }
 
 .card:hover {
-transform: translateY(-5px);
-box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+transform: translateY(-8px);
 }
 
-.card-img {
-height: 200px;
-background-color: #f7e8ec;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 5rem;
+.card-img { height: 180px; background-color: #fceef2; display: flex; align-items: center; justify-content: center; font-size: 4rem; }
+.card-info { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+.card-info h3 { font-size: 1.2rem; margin-bottom: 0.8rem; font-weight: 600; }
+
+/* SPAZZED UP: Modern Variation Select */
+.variation-wrapper {
+position: relative;
+margin-bottom: 1.2rem;
 }
 
-.card-info {
-padding: 1.5rem;
-display: flex;
-flex-direction: column;
-flex-grow: 1;
-}
-
-.card-info h3 {
-font-size: 1.3rem;
-margin-bottom: 0.5rem;
-color: var(--text-dark);
-}
-
-.card-desc {
-font-size: 0.95rem;
-color: var(--text-light);
-margin-bottom: 1rem;
-line-height: 1.5;
-flex-grow: 1;
-}
-
-/* Product Variations Dropdown */
 .variation-select {
 width: 100%;
-margin-bottom: 1.5rem;
-padding: 0.6rem;
-border: 1px solid #ddd;
-border-radius: 6px;
+padding: 0.8rem 1rem;
+border: 2px solid var(--select-border);
+border-radius: 10px;
 font-family: inherit;
-font-size: 0.95rem;
-background-color: #fafafa;
+font-size: 0.9rem;
 color: var(--text-dark);
-transition: border-color 0.3s ease;
+background-color: #fff;
+appearance: none; /* Removes default arrow */
 cursor: pointer;
+transition: all 0.3s ease;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23d68098' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C2.185 5.355 2.402 5 2.805 5h9.39c.403 0 .62.355.354.658l-4.796 5.482a.89.89 0 0 1-1.306 0z'/%3E%3C/svg%3E");
+background-repeat: no-repeat;
+background-position: calc(100% - 15px) center;
+padding-right: 40px;
+}
+
+.variation-select:hover {
+border-color: var(--primary-rose);
 }
 
 .variation-select:focus {
 outline: none;
 border-color: var(--primary-rose);
-background-color: #fff;
+box-shadow: 0 0 0 4px rgba(214, 128, 152, 0.15);
 }
 
-.card-footer {
-display: flex;
-justify-content: space-between;
-align-items: center;
-margin-top: auto;
-}
-
-.price {
-color: var(--primary-rose);
-font-weight: bold;
-font-size: 1.2rem;
-}
+.card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 10px; border-top: 1px solid #f9f9f9; }
+.price { color: var(--text-dark); font-weight: 800; font-size: 1.2rem; }
 
 .btn {
 background-color: var(--primary-rose);
 color: white;
-padding: 0.6rem 1.2rem;
+padding: 0.7rem 1.2rem;
 border: none;
-border-radius: 25px;
-font-size: 0.95rem;
+border-radius: 50px;
+font-size: 0.85rem;
 cursor: pointer;
-text-decoration: none;
-display: inline-block;
-transition: background-color 0.3s ease;
 font-weight: bold;
+transition: all 0.3s ease;
+box-shadow: 0 4px 10px rgba(214, 128, 152, 0.3);
 }
 
 .btn:hover {
 background-color: var(--primary-rose-hover);
+transform: scale(1.05);
+box-shadow: 0 6px 15px rgba(214, 128, 152, 0.4);
 }
 
-/* Footer */
-footer {
-background-color: #333;
-color: #fff;
-text-align: center;
-padding: 2rem;
-margin-top: 2rem;
-}
+footer { background-color: #1a1a1a; color: #fff; padding: 4rem 2rem; text-align: center; margin-top: 4rem; }
+.footer-grid { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem; max-width: 1000px; margin: 0 auto; }
+.footer-col h4 { color: var(--primary-rose); margin-bottom: 1.2rem; font-size: 1.1rem; text-transform: uppercase; }
+.footer-col p { margin: 8px 0; font-size: 0.9rem; color: #bbb; }
 
-footer p {
-margin: 0.5rem 0;
-font-size: 0.9rem;
-color: #ccc;
-}
-
-/* --- MOBILE RESPONSIVENESS --- */
 @media (max-width: 768px) {
-.nav-container {
-flex-direction: column;
-gap: 1rem;
-}
-.nav-links {
-flex-wrap: wrap;
-justify-content: center;
-gap: 1rem;
-}
-.container {
-padding: 0 1rem;
-}
-section {
-padding: 1.5rem 1rem;
-}
-.page-header h1 {
-font-size: 2.2rem;
-}
+.nav-container { flex-direction: column; gap: 1.5rem; }
+.menu-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+.footer-grid { flex-direction: column; gap: 2.5rem; }
 }
 </style>
 </head>
@@ -282,7 +180,7 @@ font-size: 2.2rem;
 <a href="index.html" class="logo">J's Sweets</a>
 <ul class="nav-links">
 <li><a href="index.html">Home</a></li>
-<li><a href="menu.html" style="color: var(--primary-rose);">Pastries & Cakes</a></li>
+<li><a href="menu.html" style="color: var(--primary-rose);">Menu</a></li>
 <li><a href="custom-orders.html">Custom Orders</a></li>
 <li><a href="index.html#location">Visit Us</a></li>
 </ul>
@@ -290,131 +188,268 @@ font-size: 2.2rem;
 </header>
 
 <main class="container">
-
 <section class="page-header">
-<h1>Our Sweet Menu</h1>
-<p>Baked fresh daily in small batches. From flaky, buttery morning pastries to show-stopping artisan cakes, find your new favorite treat below.</p>
+<h1>J's Sweets Full Menu</h1>
+<p>Handcrafted in the Bahamas. Prices subject to change.</p>
 </section>
 
-<section class="category-container">
-<h2 class="category-title">Fresh Pastries</h2>
+<h2 class="category-title">Mini Loaves & Slices</h2>
 <div class="menu-grid">
-
 <div class="card">
-<div class="card-img">🥐</div>
+<div class="card-img">🍞</div>
 <div class="card-info">
-<h3>Butter Croissant</h3>
-<p class="card-desc">Classic French style pastry with beautiful flaky layers and a rich buttery flavor.</p>
-<div class="card-footer">
-<span class="price">$3.85</span>
-<button class="btn">Add to Cart</button>
+<h3>Mini Loaf Pan</h3>
+<div class="variation-wrapper">
+<select class="variation-select" onchange="updatePrice(this)">
+<option value="$6.00">Chocolate - $6.00</option>
+<option value="$6.00">Red Velvet - $6.00</option>
+<option value="$6.00">Carrot Cake - $6.00</option>
+</select>
+</div>
+<div class="card-footer"><span class="price">$6.00</span><button class="btn">Add to Cart</button></div>
 </div>
 </div>
-</div>
-
-<div class="card">
-<div class="card-img">🍓</div>
-<div class="card-info">
-<h3>Strawberry Tart</h3>
-<p class="card-desc">Crisp sweet pastry shell filled with vanilla pastry cream and topped with fresh strawberries.</p>
-<div class="card-footer">
-<span class="price">$5.50</span>
-<button class="btn">Add to Cart</button>
-</div>
-</div>
-</div>
-
-<div class="card">
-<div class="card-img">🍩</div>
-<div class="card-info">
-<h3>Chocolate Eclair</h3>
-<p class="card-desc">Light choux pastry filled with smooth chocolate cream and topped with dark chocolate glaze.</p>
-<div class="card-footer">
-<span class="price">$4.80</span>
-<button class="btn">Add to Cart</button>
-</div>
-</div>
-</div>
-
-</div>
-</section>
-
-<section class="category-container">
-<h2 class="category-title">Artisan Cakes (Whole)</h2>
-<div class="menu-grid">
-
 <div class="card">
 <div class="card-img">🍰</div>
 <div class="card-info">
-<h3>Classic NY Cheesecake</h3>
-<p class="card-desc">Rich and creamy New York style cheesecake baked on a buttery graham cracker crust.</p>
-
-<select class="variation-select" onchange="updatePrice('cheesecake-price', this.value)">
-<option value="$45.00">6" Round (Serves 6-8)</option>
-<option value="$65.00">9" Round (Serves 12-16)</option>
-<option value="$80.00">10" Round (Serves 16-20)</option>
+<h3>Cheesecake Mini Loaf</h3>
+<div class="card-footer"><span class="price">$8.00</span><button class="btn">Add to Cart</button></div>
+</div>
+</div>
+<div class="card">
+<div class="card-img">🍰</div>
+<div class="card-info">
+<h3>Individual Slices</h3>
+<div class="variation-wrapper">
+<select class="variation-select" onchange="updatePrice(this)">
+<option value="$2.00">Banana Bread Slice - $2.00</option>
+<option value="$2.00">Coconut Tart Slice - $2.00</option>
+<option value="$2.00">Tart Slice - $2.00</option>
 </select>
-
-<div class="card-footer">
-<span class="price" id="cheesecake-price">$45.00</span>
-<button class="btn">Add to Cart</button>
+</div>
+<div class="card-footer"><span class="price">$2.00</span><button class="btn">Add to Cart</button></div>
 </div>
 </div>
 </div>
 
+<h2 class="category-title">Cheesecakes & Tarts</h2>
+<div class="menu-grid">
+<div class="card">
+<div class="card-img">🧀</div>
+<div class="card-info">
+<h3>Whole Cheesecake</h3>
+<div class="variation-wrapper">
+<select class="variation-select" onchange="updatePrice(this)">
+<option value="$40.00">9-inch - $40.00</option>
+<option value="$50.00">10-inch - $50.00</option>
+</select>
+</div>
+<div class="card-footer"><span class="price">$40.00</span><button class="btn">Add to Cart</button></div>
+</div>
+</div>
+<div class="card">
+<div class="card-img">🥧</div>
+<div class="card-info">
+<h3>Whole Tarts</h3>
+<div class="variation-wrapper">
+<select class="variation-select" onchange="updatePrice(this)">
+<option value="$25.00">Quarter Sheet Pan - $25.00</option>
+<option value="$40.00">10-inch - $40.00</option>
+<option value="$50.00">12-inch - $50.00</option>
+<option value="$60.00">Half Sheet - $60.00</option>
+</select>
+</div>
+<div class="card-footer"><span class="price">$25.00</span><button class="btn">Add to Cart</button></div>
+</div>
+</div>
+<div class="card">
+<div class="card-img">🧁</div>
+<div class="card-info">
+<h3>Tartlets (By the Dozen)</h3>
+<div class="card-footer"><span class="price">$30.00</span><button class="btn">Add to Cart</button></div>
+</div>
+</div>
+</div>
+
+<h2 class="category-title">Logs & Specialty Pans</h2>
+<div class="menu-grid">
+<div class="card">
+<div class="card-img">🥯</div>
+<div class="card-info">
+<h3>Guava Duff</h3>
+<div class="variation-wrapper">
+<select class="variation-select" onchange="updatePrice(this)">
+<option value="$45.00">Full Log - $45.00</option>
+<option value="$25.00">Half Log - $25.00</option>
+<option value="$6.50">3 Slices - $6.50</option>
+</select>
+</div>
+<div class="card-footer"><span class="price">$45.00</span><button class="btn">Add to Cart</button></div>
+</div>
+</div>
+<div class="card">
+<div class="card-img">🎃</div>
+<div class="card-info">
+<h3>Pumpkin Roll</h3>
+<div class="variation-wrapper">
+<select class="variation-select" onchange="updatePrice(this)">
+<option value="$35.00">Full Log - $35.00</option>
+<option value="$6.00">Individual Slices - $6.00</option>
+</select>
+</div>
+<div class="card-footer"><span class="price">$35.00</span><button class="btn">Add to Cart</button></div>
+</div>
+</div>
+<div class="card">
+<div class="card-img">🍞</div>
+<div class="card-info">
+<h3>Banana Bread Pans</h3>
+<div class="variation-wrapper">
+<select class="variation-select" onchange="updatePrice(this)">
+<option value="$25.00">1/2 Pan - $25.00</option>
+<option value="$40.00">10-inch Pan - $40.00</option>
+</select>
+</div>
+<div class="card-footer"><span class="price">$25.00</span><button class="btn">Add to Cart</button></div>
+</div>
+</div>
+</div>
+
+<h2 class="category-title">Cakes & Cupcakes</h2>
+<div class="menu-grid">
 <div class="card">
 <div class="card-img">🎂</div>
 <div class="card-info">
-<h3>Classic Vanilla Bean</h3>
-<p class="card-desc">Three layers of light vanilla sponge paired with whipped Madagascar vanilla bean buttercream.</p>
-
-<select class="variation-select" onchange="updatePrice('vanilla-price', this.value)">
-<option value="$40.00">6" Round (Serves 6-8)</option>
-<option value="$60.00">9" Round (Serves 12-16)</option>
-<option value="$75.00">10" Round (Serves 16-20)</option>
+<h3>Birthday Cakes</h3>
+<div class="variation-wrapper">
+<select class="variation-select" onchange="updatePrice(this)">
+<option value="$60.00">8-inch - $60.00</option>
+<option value="$75.00">10-inch - $75.00</option>
+<option value="$120.00">12-inch - $120.00</option>
+<option value="$150.00">Half Sheet - $150.00</option>
+<option value="$250.00">Full Sheet - $250.00</option>
 </select>
-
-<div class="card-footer">
-<span class="price" id="vanilla-price">$40.00</span>
-<button class="btn">Add to Cart</button>
+</div>
+<div class="card-footer"><span class="price">$60.00</span><button class="btn">Add to Cart</button></div>
 </div>
 </div>
-</div>
-
 <div class="card">
-<div class="card-img">🍫</div>
+<div class="card-img">🧁</div>
 <div class="card-info">
-<h3>Double Chocolate Fudge</h3>
-<p class="card-desc">Decadent, rich chocolate cake smothered in our signature dark chocolate fudge ganache.</p>
-
-<select class="variation-select" onchange="updatePrice('chocolate-price', this.value)">
-<option value="$45.00">6" Round (Serves 6-8)</option>
-<option value="$65.00">9" Round (Serves 12-16)</option>
-<option value="$85.00">10" Round (Serves 16-20)</option>
+<h3>Dozens</h3>
+<div class="variation-wrapper">
+<select class="variation-select" onchange="updatePrice(this)">
+<option value="$30.00">Cupcakes by Dozen - $30.00</option>
+<option value="$35.00">Dessert Cups by Dozen - $35.00</option>
 </select>
-
-<div class="card-footer">
-<span class="price" id="chocolate-price">$45.00</span>
-<button class="btn">Add to Cart</button>
+</div>
+<div class="card-footer"><span class="price">$30.00</span><button class="btn">Add to Cart</button></div>
 </div>
 </div>
 </div>
 
+<h2 class="category-title">Buns & Breads</h2>
+<div class="menu-grid">
+<div class="card">
+<div class="card-img">🥨</div>
+<div class="card-info">
+<h3>Buns (By the Dozen)</h3>
+<div class="variation-wrapper">
+<select class="variation-select" onchange="updatePrice(this)">
+<option value="$25.00">Guava Buns - $25.00</option>
+<option value="$19.00">Coconut Buns - $19.00</option>
+<option value="$20.00">Cinnamon Buns - $20.00</option>
+</select>
 </div>
-</section>
+<div class="card-footer"><span class="price">$25.00</span><button class="btn">Add to Cart</button></div>
+</div>
+</div>
+<div class="card">
+<div class="card-img">🍞</div>
+<div class="card-info">
+<h3>Hot Cross Buns</h3>
+<div class="variation-wrapper">
+<select class="variation-select" onchange="updatePrice(this)">
+<option value="$18.00">Plain - $18.00</option>
+<option value="$19.00">Raisin - $19.00</option>
+</select>
+</div>
+<div class="card-footer"><span class="price">$18.00</span><button class="btn">Add to Cart</button></div>
+</div>
+</div>
+<div class="card">
+<div class="card-img">🍩</div>
+<div class="card-info">
+<h3>Fritters</h3>
+<div class="card-footer"><span class="price">$3.00</span><button class="btn">Add to Cart</button></div>
+</div>
+</div>
+</div>
 
+<h2 class="category-title">Savory Snacks</h2>
+<div class="menu-grid">
+<div class="card">
+<div class="card-img">🍗</div>
+<div class="card-info">
+<h3>Wing Snacks</h3>
+<div class="variation-wrapper">
+<select class="variation-select" onchange="updatePrice(this)">
+<option value="$4.50">Small (S) - $4.50</option>
+<option value="$5.50">Medium (M) - $5.50</option>
+<option value="$6.50">Large (L) - $6.50</option>
+</select>
+</div>
+<div class="card-footer"><span class="price">$4.50</span><button class="btn">Add to Cart</button></div>
+</div>
+</div>
+<div class="card">
+<div class="card-img">🍔</div>
+<div class="card-info">
+<h3>Burgers & Fries</h3>
+<div class="variation-wrapper">
+<select class="variation-select" onchange="updatePrice(this)">
+<option value="$5.50">Beef Burger - $5.50</option>
+<option value="$7.50">Beef Burger + Fries - $7.50</option>
+</select>
+</div>
+<div class="card-footer"><span class="price">$5.50</span><button class="btn">Add to Cart</button></div>
+</div>
+</div>
+<div class="card">
+<div class="card-img">🐟</div>
+<div class="card-info">
+<h3>Fish Snack</h3>
+<div class="card-footer"><span class="price">$12.00</span><button class="btn">Add to Cart</button></div>
+</div>
+</div>
+</div>
 </main>
 
 <footer>
-<h2>J's Sweets</h2>
-<p>&copy; 2026 J's Sweets. All rights reserved.</p>
-<p>Follow us on Instagram and Facebook for daily sweet updates!</p>
+<div class="footer-grid">
+<div class="footer-col">
+<h4>Contact Us</h4>
+<p>📞 636-7661</p>
+<p>📧 joannbeckford@gmail.com</p>
+</div>
+<div class="footer-col">
+<h4>Follow Us</h4>
+<p>Facebook: J's Sweets</p>
+<p>Instagram: @jsweets_242</p>
+</div>
+<div class="footer-col">
+<h4>J's Sweets</h4>
+<p>&copy; 2026 All Rights Reserved.</p>
+</div>
+</div>
 </footer>
 
 <script>
-function updatePrice(elementId, newPrice) {
-document.getElementById(elementId).innerText = newPrice;
+function updatePrice(selectElement) {
+const priceDisplay = selectElement.closest('.card-info').querySelector('.price');
+priceDisplay.innerText = selectElement.value;
 }
 </script>
 </body>
 </html>
+
