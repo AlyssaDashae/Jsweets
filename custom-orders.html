@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custom Orders & Catering - J's Sweets</title>
+<style>
+/* CSS Variables for our Cream & Rose color palette */
+:root {
+--primary-rose: #d68098;
+--primary-rose-hover: #b8657c;
+--cream-bg: #fdfbf7;
+--text-dark: #333333;
+--text-light: #666666;
+--white-card: rgba(255, 255, 255, 0.92);
+}
+
+/* Base & Background Pattern */
+body {
+margin: 0;
+font-family: 'Helvetica Neue', Arial, sans-serif;
+color: var(--text-dark);
+background-color: var(--cream-bg);
+/* Custom SVG Pastry Pattern Background */
+background-image: url(bg.png);
+background-repeat: repeat;
+}
+
+h1, h2, h3 {
+font-family: 'Georgia', serif;
+margin-top: 0;
+}
+
+/* Navigation Bar */
+header {
+background-color: #ffffff;
+box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+position: sticky;
+top: 0;
+z-index: 100;
+}
+
+.nav-container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 1rem 2rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.logo {
+font-size: 1.5rem;
+font-weight: bold;
+font-family: 'Georgia', serif;
+color: var(--primary-rose);
+text-decoration: none;
+}
+
+.nav-links {
+list-style: none;
+display: flex;
+gap: 2rem;
+margin: 0;
+padding: 0;
+}
+
+.nav-links a {
+text-decoration: none;
+color: var(--text-dark);
+font-weight: 500;
+transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+color: var(--primary-rose);
+}
+
+/* Container for tight sections */
+.container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 2rem;
+}
+
+/* Sections General Styling */
+section {
+background-color: var(--white-card);
+margin: 1.5rem auto;
+padding: 2.5rem 2rem;
+border-radius: 12px;
+box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+/* Page Header Section */
+.page-header {
+text-align: center;
+padding: 3rem 2rem;
+}
+
+.page-header h1 {
+font-size: 3rem;
+color: var(--text-dark);
+margin-bottom: 1rem;
+}
+
+.page-header p {
+font-size: 1.1rem;
+color: var(--text-light);
+max-width: 700px;
+margin: 0 auto;
+line-height: 1.6;
+}
+
+/* Services Grid */
+.services-grid {
+display: flex;
+gap: 2rem;
+margin-bottom: 1rem;
+}
+
+.service-card {
+flex: 1;
+text-align: center;
+padding: 1.5rem;
+background-color: #fff;
+border: 1px solid #f0e6e6;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0,0,0,0.04);
+}
+
+.service-card h3 {
+color: var(--primary-rose);
+font-size: 1.4rem;
+margin-bottom: 1rem;
+}
+
+.service-card p {
+font-size: 0.95rem;
+color: var(--text-light);
+line-height: 1.5;
+}
+
+/* Form Styling */
+.form-section h2 {
+text-align: center;
+font-size: 2rem;
+margin-bottom: 2rem;
+}
+
+.custom-form {
+max-width: 800px;
+margin: 0 auto;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 1.5rem;
+}
+
+.form-group {
+display: flex;
+flex-direction: column;
+}
+
+.form-group.full-width {
+grid-column: span 2;
+}
+
+label {
+font-weight: bold;
+margin-bottom: 0.5rem;
+font-size: 0.95rem;
+color: var(--text-dark);
+}
+
+input, select, textarea {
+padding: 0.8rem;
+border: 1px solid #ddd;
+border-radius: 6px;
+font-family: inherit;
+font-size: 1rem;
+background-color: #fafafa;
+transition: border-color 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+outline: none;
+border-color: var(--primary-rose);
+background-color: #fff;
+}
+
+textarea {
+resize: vertical;
+min-height: 120px;
+}
+
+.btn {
+background-color: var(--primary-rose);
+color: white;
+padding: 0.8rem 1.5rem;
+border: none;
+border-radius: 25px;
+font-size: 1rem;
+cursor: pointer;
+text-decoration: none;
+display: inline-block;
+transition: background-color 0.3s ease;
+text-align: center;
+font-weight: bold;
+}
+
+.btn:hover {
+background-color: var(--primary-rose-hover);
+}
+
+.submit-btn-wrapper {
+grid-column: span 2;
+text-align: center;
+margin-top: 1rem;
+}
+
+/* Footer */
+footer {
+background-color: #333;
+color: #fff;
+text-align: center;
+padding: 2rem;
+margin-top: 2rem;
+}
+
+footer p {
+margin: 0.5rem 0;
+font-size: 0.9rem;
+color: #ccc;
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+/* Fix Navigation on Mobile */
+.nav-container {
+flex-direction: column;
+gap: 1rem;
+}
+.nav-links {
+flex-wrap: wrap;
+justify-content: center;
+gap: 1rem;
+}
+
+/* Adjust General Spacing */
+.container {
+padding: 0 1rem;
+}
+section {
+padding: 1.5rem 1rem;
+}
+
+/* Stack Services and Form */
+.custom-form {
+grid-template-columns: 1fr;
+}
+.form-group.full-width {
+grid-column: span 1;
+}
+.submit-btn-wrapper {
+grid-column: span 1;
+}
+.services-grid {
+flex-direction: column;
+}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="nav-container">
+<a href="index.html" class="logo">J's Sweets</a>
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="index.html#menu">Pastries & Cakes</a></li>
+<li><a href="custom-orders.html" style="color: var(--primary-rose);">Custom Orders</a></li>
+<li><a href="index.html#location">Visit Us</a></li>
+</ul>
+</div>
+</header>
+
+<main class="container">
+
+<section class="page-header">
+<h1>Custom Orders & Catering</h1>
+<p>Make your next event a little sweeter. Whether it's an elegant wedding cake, a fun birthday spread, or breakfast pastries for the office, we've got you covered.</p>
+</section>
+
+<section class="services-info">
+<div class="services-grid">
+<div class="service-card">
+<h3>Weddings & Anniversaries</h3>
+<p>Beautiful, multi-tiered cakes and elegant dessert tables tailored to match the colors and theme of your special day.</p>
+</div>
+<div class="service-card">
+<h3>Birthdays & Celebrations</h3>
+<p>Fun, customized cakes, cupcakes, and macaron towers that act as the perfect centerpiece for any party.</p>
+</div>
+<div class="service-card">
+<h3>Corporate Catering</h3>
+<p>Impress your clients or treat your staff with our morning pastry platters, assorted cookie boxes, and fresh coffee setups.</p>
+</div>
+</div>
+</section>
+
+<section class="form-section">
+<h2>Request a Quote</h2>
+<form action="#" method="POST" class="custom-form">
+
+<div class="form-group">
+<label for="firstName">First Name</label>
+<input type="text" id="firstName" name="firstName" required placeholder="Jane">
+</div>
+
+<div class="form-group">
+<label for="lastName">Last Name</label>
+<input type="text" id="lastName" name="lastName" required placeholder="Doe">
+</div>
+
+<div class="form-group">
+<label for="email">Email Address</label>
+<input type="email" id="email" name="email" required placeholder="jane@example.com">
+</div>
+
+<div class="form-group">
+<label for="phone">Phone Number</label>
+<input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+</div>
+
+<div class="form-group">
+<label for="eventDate">Date of Event</label>
+<input type="date" id="eventDate" name="eventDate" required>
+</div>
+
+<div class="form-group">
+<label for="eventType">Type of Event</label>
+<select id="eventType" name="eventType">
+<option value="">-- Select an Option --</option>
+<option value="wedding">Wedding</option>
+<option value="birthday">Birthday</option>
+<option value="corporate">Corporate Event</option>
+<option value="other">Other</option>
+</select>
+</div>
+
+<div class="form-group">
+<label for="guestCount">Estimated Guest Count</label>
+<input type="number" id="guestCount" name="guestCount" min="1" placeholder="e.g. 50">
+</div>
+
+<div class="form-group full-width">
+<label for="details">Tell us about what you're looking for!</label>
+<textarea id="details" name="details" required placeholder="Please include flavors, themes, dietary restrictions, and any specific items you'd like (e.g., a 2-tier vanilla cake and 2 dozen macarons)."></textarea>
+</div>
+
+<div class="submit-btn-wrapper">
+<button type="submit" class="btn" style="padding: 1rem 2.5rem; font-size: 1.1rem;">Submit Inquiry</button>
+</div>
+
+</form>
+</section>
+
+</main>
+
+<footer>
+<h2>J's Sweets</h2>
+<p>&copy; 2026 J's Sweets. All rights reserved.</p>
+<p>Follow us on Instagram and Facebook for daily sweet updates!</p>
+</footer>
+
+</body>
+</html>
