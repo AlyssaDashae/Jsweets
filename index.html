@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Sugar Blossom Bakery</title>
+<style>
+/* CSS Variables for our Cream & Rose color palette */
+:root {
+--primary-rose: #d68098;
+--primary-rose-hover: #b8657c;
+--cream-bg: #fdfbf7;
+--text-dark: #333333;
+--text-light: #666666;
+--white-card: rgba(255, 255, 255, 0.92);
+}
+
+/* Base & Background Pattern */
+body {
+margin: 0;
+font-family: 'Helvetica Neue', Arial, sans-serif;
+color: var(--text-dark);
+background-color: var(--cream-bg);
+/* Custom SVG Pastry Pattern Background */
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' opacity='0.1'%3E%3Ctext x='10' y='40' font-size='20'%3E🧁%3C/text%3E%3Ctext x='60' y='90' font-size='20'%3E🥐%3C/text%3E%3Ctext x='60' y='20' font-size='20'%3E🍰%3C/text%3E%3Ctext x='10' y='90' font-size='20'%3E🍩%3C/text%3E%3C/svg%3E");
+background-repeat: repeat;
+}
+
+h1, h2, h3 {
+font-family: 'Georgia', serif;
+margin-top: 0;
+}
+
+/* Navigation Bar */
+header {
+background-color: #ffffff;
+box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+position: sticky;
+top: 0;
+z-index: 100;
+}
+
+.nav-container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 1rem 2rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.logo {
+font-size: 1.5rem;
+font-weight: bold;
+font-family: 'Georgia', serif;
+color: var(--primary-rose);
+text-decoration: none;
+}
+
+.nav-links {
+list-style: none;
+display: flex;
+gap: 2rem;
+margin: 0;
+padding: 0;
+}
+
+.nav-links a {
+text-decoration: none;
+color: var(--text-dark);
+font-weight: 500;
+transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+color: var(--primary-rose);
+}
+
+/* Container for tight sections */
+.container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 2rem;
+}
+
+/* Sections General Styling - Reduced Spacing */
+section {
+background-color: var(--white-card);
+margin: 1.5rem auto; /* Tight spacing between sections */
+padding: 2.5rem 2rem;
+border-radius: 12px;
+box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+/* Hero Section */
+.hero {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 2rem;
+}
+
+.hero-text {
+flex: 1;
+}
+
+.hero-text h1 {
+font-size: 3rem;
+color: var(--text-dark);
+margin-bottom: 1rem;
+}
+
+.hero-text p {
+font-size: 1.1rem;
+color: var(--text-light);
+margin-bottom: 1.5rem;
+line-height: 1.6;
+}
+
+.btn {
+background-color: var(--primary-rose);
+color: white;
+padding: 0.8rem 1.5rem;
+border: none;
+border-radius: 25px;
+font-size: 1rem;
+cursor: pointer;
+text-decoration: none;
+display: inline-block;
+transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+background-color: var(--primary-rose-hover);
+}
+
+.hero-image {
+flex: 1;
+height: 350px;
+background-image: url('https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=80');
+background-size: cover;
+background-position: center;
+border-radius: 12px;
+}
+
+/* Carousel Section */
+.carousel-section h2 {
+text-align: center;
+font-size: 2rem;
+margin-bottom: 1.5rem;
+}
+
+.carousel-wrapper {
+position: relative;
+display: flex;
+align-items: center;
+}
+
+.carousel-btn {
+background-color: var(--primary-rose);
+color: white;
+border: none;
+width: 40px;
+height: 40px;
+border-radius: 50%;
+font-size: 1.2rem;
+cursor: pointer;
+position: absolute;
+z-index: 10;
+box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+#prevBtn { left: -15px; }
+#nextBtn { right: -15px; }
+
+.carousel-track {
+display: flex;
+overflow-x: auto;
+scroll-snap-type: x mandatory;
+gap: 1.5rem;
+padding: 1rem 0;
+scroll-behavior: smooth;
+/* Hide scrollbar */
+-ms-overflow-style: none;
+scrollbar-width: none;
+width: 100%;
+}
+
+.carousel-track::-webkit-scrollbar {
+display: none;
+}
+
+.card {
+flex: 0 0 260px;
+scroll-snap-align: start;
+background-color: #fff;
+border-radius: 10px;
+overflow: hidden;
+box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+border: 1px solid #f0e6e6;
+}
+
+.card-img {
+height: 180px;
+background-color: #f7e8ec;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 4rem; /* Using emoji as placeholder images */
+}
+
+.card-info {
+padding: 1.2rem;
+text-align: center;
+}
+
+.card-info h3 {
+font-size: 1.1rem;
+margin-bottom: 0.5rem;
+}
+
+.card-info .price {
+color: var(--primary-rose);
+font-weight: bold;
+margin-bottom: 1rem;
+}
+
+/* About & Location Sections */
+.split-section {
+display: flex;
+gap: 2rem;
+}
+
+.split-box {
+flex: 1;
+text-align: center;
+padding: 1rem;
+}
+
+/* Footer */
+footer {
+background-color: #333;
+color: #fff;
+text-align: center;
+padding: 2rem;
+margin-top: 2rem;
+}
+
+footer p {
+margin: 0.5rem 0;
+font-size: 0.9rem;
+color: #ccc;
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="nav-container">
+<a href="#" class="logo">The Sugar Blossom</a>
+<ul class="nav-links">
+<li><a href="#home">Home</a></li>
+<li><a href="#menu">Pastries & Cakes</a></li>
+<li><a href="#about">Our Story</a></li>
+<li><a href="#location">Visit Us</a></li>
+</ul>
+</div>
+</header>
+
+<main class="container">
+
+<section id="home" class="hero">
+<div class="hero-text">
+<h1>Indulge in Handcrafted Sweetness</h1>
+<p>Discover fresh, daily-baked pastries, artisan cakes, and decadent treats made with love. Perfect for your morning coffee or your next big celebration.</p>
+<a href="#menu" class="btn">Shop Our Bakes</a>
+</div>
+<div class="hero-image"></div>
+</section>
+
+<section id="menu" class="carousel-section">
+<h2>Featured Delights</h2>
+<div class="carousel-wrapper">
+<button id="prevBtn" class="carousel-btn">&#10094;</button>
+
+<div class="carousel-track" id="track">
+
+<div class="card">
+<div class="card-img">🍓</div>
+<div class="card-info">
+<h3>Strawberry Tart</h3>
+<div class="price">$5.50</div>
+<button class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Add to Cart</button>
+</div>
+</div>
+
+<div class="card">
+<div class="card-img">🥐</div>
+<div class="card-info">
+<h3>Chocolate Croissant</h3>
+<div class="price">$4.25</div>
+<button class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Add to Cart</button>
+</div>
+</div>
+
+<div class="card">
+<div class="card-img">🧁</div>
+<div class="card-info">
+<h3>Vanilla Bean Cupcake</h3>
+<div class="price">$3.75</div>
+<button class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Add to Cart</button>
+</div>
+</div>
+
+<div class="card">
+<div class="card-img">🍋</div>
+<div class="card-info">
+<h3>Lemon Meringue Pie</h3>
+<div class="price">$6.00</div>
+<button class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Add to Cart</button>
+</div>
+</div>
+
+<div class="card">
+<div class="card-img">🫐</div>
+<div class="card-info">
+<h3>Blueberry Scone</h3>
+<div class="price">$3.50</div>
+<button class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Add to Cart</button>
+</div>
+</div>
+
+<div class="card">
+<div class="card-img">🌸</div>
+<div class="card-info">
+<h3>Raspberry Macaron</h3>
+<div class="price">$2.50</div>
+<button class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Add to Cart</button>
+</div>
+</div>
+
+<div class="card">
+<div class="card-img">🍰</div>
+<div class="card-info">
+<h3>Classic Cheesecake</h3>
+<div class="price">$6.50</div>
+<button class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Add to Cart</button>
+</div>
+</div>
+
+<div class="card">
+<div class="card-img">🥨</div>
+<div class="card-info">
+<h3>Cinnamon Roll</h3>
+<div class="price">$4.50</div>
+<button class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Add to Cart</button>
+</div>
+</div>
+
+<div class="card">
+<div class="card-img">🥖</div>
+<div class="card-info">
+<h3>Almond Biscotti</h3>
+<div class="price">$2.75</div>
+<button class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Add to Cart</button>
+</div>
+</div>
+
+<div class="card">
+<div class="card-img">🍩</div>
+<div class="card-info">
+<h3>Chocolate Eclair</h3>
+<div class="price">$4.80</div>
+<button class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Add to Cart</button>
+</div>
+</div>
+
+</div>
+
+<button id="nextBtn" class="carousel-btn">&#10095;</button>
+</div>
+</section>
+
+<section class="split-section">
+<div id="about" class="split-box">
+<h2>Our Story</h2>
+<p>Started in a small home kitchen, The Sugar Blossom was born out of a love for buttery doughs and sweet fillings. Today, we bring our family recipes to you, baking fresh every single morning using locally sourced ingredients and a lot of passion.</p>
+</div>
+
+<div id="location" class="split-box">
+<h2>Visit Us</h2>
+<p><strong>Address:</strong><br>123 Bakery Lane, Sweetville</p>
+<p><strong>Hours:</strong><br>Mon - Fri: 7am - 6pm<br>Sat - Sun: 8am - 4pm</p>
+</div>
+</section>
+
+</main>
+
+<footer>
+<h2>The Sugar Blossom Bakery</h2>
+<p>&copy; 2026 The Sugar Blossom Bakery. All rights reserved.</p>
+<p>Follow us on Instagram and Facebook for daily sweet updates!</p>
+</footer>
+
+<script>
+const track = document.getElementById('track');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+// Calculate scroll amount based on card width + gap
+const scrollAmount = 280;
+
+nextBtn.addEventListener('click', () => {
+track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+});
+
+prevBtn.addEventListener('click', () => {
+track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+});
+</script>
+</body>
+</html>
