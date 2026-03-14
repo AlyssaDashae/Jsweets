@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pastries & Cakes - J's Sweets</title>
+<style>
+/* CSS Variables for our Cream & Rose color palette */
+:root {
+--primary-rose: #d68098;
+--primary-rose-hover: #b8657c;
+--cream-bg: #fdfbf7;
+--text-dark: #333333;
+--text-light: #666666;
+--white-card: rgba(255, 255, 255, 0.92);
+}
+
+/* Base & Background Pattern */
+body {
+margin: 0;
+font-family: 'Helvetica Neue', Arial, sans-serif;
+color: var(--text-dark);
+background-color: var(--cream-bg);
+/* Custom SVG Pastry Pattern Background */
+background-image: url(bg.png);
+background-repeat: repeat;
+}
+
+h1, h2, h3 {
+font-family: 'Georgia', serif;
+margin-top: 0;
+}
+
+/* Navigation Bar */
+header {
+background-color: #ffffff;
+box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+position: sticky;
+top: 0;
+z-index: 100;
+}
+
+.nav-container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 1rem 2rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.logo {
+font-size: 1.5rem;
+font-weight: bold;
+font-family: 'Georgia', serif;
+color: var(--primary-rose);
+text-decoration: none;
+}
+
+.nav-links {
+list-style: none;
+display: flex;
+gap: 2rem;
+margin: 0;
+padding: 0;
+}
+
+.nav-links a {
+text-decoration: none;
+color: var(--text-dark);
+font-weight: 500;
+transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+color: var(--primary-rose);
+}
+
+/* Container for tight sections */
+.container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 2rem;
+}
+
+/* Sections General Styling */
+section {
+background-color: var(--white-card);
+margin: 1.5rem auto;
+padding: 2.5rem 2rem;
+border-radius: 12px;
+box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+/* Page Header Section */
+.page-header {
+text-align: center;
+padding: 3rem 2rem;
+background-color: var(--primary-rose);
+color: white;
+border-radius: 12px;
+margin-top: 2rem;
+}
+
+.page-header h1 {
+font-size: 3rem;
+color: white;
+margin-bottom: 1rem;
+}
+
+.page-header p {
+font-size: 1.1rem;
+max-width: 700px;
+margin: 0 auto;
+line-height: 1.6;
+}
+
+/* Category Title */
+.category-title {
+text-align: center;
+font-size: 2.2rem;
+color: var(--text-dark);
+margin-bottom: 2rem;
+padding-bottom: 0.5rem;
+border-bottom: 2px solid #f0e6e6;
+display: inline-block;
+}
+
+.category-container {
+text-align: center;
+}
+
+/* Menu Grid */
+.menu-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+gap: 2rem;
+margin-bottom: 2rem;
+text-align: left;
+}
+
+.card {
+background-color: #fff;
+border-radius: 10px;
+overflow: hidden;
+box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+border: 1px solid #f0e6e6;
+display: flex;
+flex-direction: column;
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+transform: translateY(-5px);
+box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.card-img {
+height: 200px;
+background-color: #f7e8ec;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 5rem;
+}
+
+.card-info {
+padding: 1.5rem;
+display: flex;
+flex-direction: column;
+flex-grow: 1;
+}
+
+.card-info h3 {
+font-size: 1.3rem;
+margin-bottom: 0.5rem;
+color: var(--text-dark);
+}
+
+.card-desc {
+font-size: 0.95rem;
+color: var(--text-light);
+margin-bottom: 1rem;
+line-height: 1.5;
+flex-grow: 1;
+}
+
+/* Product Variations Dropdown */
+.variation-select {
+width: 100%;
+margin-bottom: 1.5rem;
+padding: 0.6rem;
+border: 1px solid #ddd;
+border-radius: 6px;
+font-family: inherit;
+font-size: 0.95rem;
+background-color: #fafafa;
+color: var(--text-dark);
+transition: border-color 0.3s ease;
+cursor: pointer;
+}
+
+.variation-select:focus {
+outline: none;
+border-color: var(--primary-rose);
+background-color: #fff;
+}
+
+.card-footer {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-top: auto;
+}
+
+.price {
+color: var(--primary-rose);
+font-weight: bold;
+font-size: 1.2rem;
+}
+
+.btn {
+background-color: var(--primary-rose);
+color: white;
+padding: 0.6rem 1.2rem;
+border: none;
+border-radius: 25px;
+font-size: 0.95rem;
+cursor: pointer;
+text-decoration: none;
+display: inline-block;
+transition: background-color 0.3s ease;
+font-weight: bold;
+}
+
+.btn:hover {
+background-color: var(--primary-rose-hover);
+}
+
+/* Footer */
+footer {
+background-color: #333;
+color: #fff;
+text-align: center;
+padding: 2rem;
+margin-top: 2rem;
+}
+
+footer p {
+margin: 0.5rem 0;
+font-size: 0.9rem;
+color: #ccc;
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+.nav-container {
+flex-direction: column;
+gap: 1rem;
+}
+.nav-links {
+flex-wrap: wrap;
+justify-content: center;
+gap: 1rem;
+}
+.container {
+padding: 0 1rem;
+}
+section {
+padding: 1.5rem 1rem;
+}
+.page-header h1 {
+font-size: 2.2rem;
+}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="nav-container">
+<a href="index.html" class="logo">J's Sweets</a>
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="menu.html" style="color: var(--primary-rose);">Pastries & Cakes</a></li>
+<li><a href="custom-orders.html">Custom Orders</a></li>
+<li><a href="index.html#location">Visit Us</a></li>
+</ul>
+</div>
+</header>
+
+<main class="container">
+
+<section class="page-header">
+<h1>Our Sweet Menu</h1>
+<p>Baked fresh daily in small batches. From flaky, buttery morning pastries to show-stopping artisan cakes, find your new favorite treat below.</p>
+</section>
+
+<section class="category-container">
+<h2 class="category-title">Fresh Pastries</h2>
+<div class="menu-grid">
+
+<div class="card">
+<div class="card-img">🥐</div>
+<div class="card-info">
+<h3>Butter Croissant</h3>
+<p class="card-desc">Classic French style pastry with beautiful flaky layers and a rich buttery flavor.</p>
+<div class="card-footer">
+<span class="price">$3.85</span>
+<button class="btn">Add to Cart</button>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-img">🍓</div>
+<div class="card-info">
+<h3>Strawberry Tart</h3>
+<p class="card-desc">Crisp sweet pastry shell filled with vanilla pastry cream and topped with fresh strawberries.</p>
+<div class="card-footer">
+<span class="price">$5.50</span>
+<button class="btn">Add to Cart</button>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-img">🍩</div>
+<div class="card-info">
+<h3>Chocolate Eclair</h3>
+<p class="card-desc">Light choux pastry filled with smooth chocolate cream and topped with dark chocolate glaze.</p>
+<div class="card-footer">
+<span class="price">$4.80</span>
+<button class="btn">Add to Cart</button>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="category-container">
+<h2 class="category-title">Artisan Cakes (Whole)</h2>
+<div class="menu-grid">
+
+<div class="card">
+<div class="card-img">🍰</div>
+<div class="card-info">
+<h3>Classic NY Cheesecake</h3>
+<p class="card-desc">Rich and creamy New York style cheesecake baked on a buttery graham cracker crust.</p>
+
+<select class="variation-select" onchange="updatePrice('cheesecake-price', this.value)">
+<option value="$45.00">6" Round (Serves 6-8)</option>
+<option value="$65.00">9" Round (Serves 12-16)</option>
+<option value="$80.00">10" Round (Serves 16-20)</option>
+</select>
+
+<div class="card-footer">
+<span class="price" id="cheesecake-price">$45.00</span>
+<button class="btn">Add to Cart</button>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-img">🎂</div>
+<div class="card-info">
+<h3>Classic Vanilla Bean</h3>
+<p class="card-desc">Three layers of light vanilla sponge paired with whipped Madagascar vanilla bean buttercream.</p>
+
+<select class="variation-select" onchange="updatePrice('vanilla-price', this.value)">
+<option value="$40.00">6" Round (Serves 6-8)</option>
+<option value="$60.00">9" Round (Serves 12-16)</option>
+<option value="$75.00">10" Round (Serves 16-20)</option>
+</select>
+
+<div class="card-footer">
+<span class="price" id="vanilla-price">$40.00</span>
+<button class="btn">Add to Cart</button>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-img">🍫</div>
+<div class="card-info">
+<h3>Double Chocolate Fudge</h3>
+<p class="card-desc">Decadent, rich chocolate cake smothered in our signature dark chocolate fudge ganache.</p>
+
+<select class="variation-select" onchange="updatePrice('chocolate-price', this.value)">
+<option value="$45.00">6" Round (Serves 6-8)</option>
+<option value="$65.00">9" Round (Serves 12-16)</option>
+<option value="$85.00">10" Round (Serves 16-20)</option>
+</select>
+
+<div class="card-footer">
+<span class="price" id="chocolate-price">$45.00</span>
+<button class="btn">Add to Cart</button>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+</main>
+
+<footer>
+<h2>J's Sweets</h2>
+<p>&copy; 2026 J's Sweets. All rights reserved.</p>
+<p>Follow us on Instagram and Facebook for daily sweet updates!</p>
+</footer>
+
+<script>
+function updatePrice(elementId, newPrice) {
+document.getElementById(elementId).innerText = newPrice;
+}
+</script>
+</body>
+</html>
