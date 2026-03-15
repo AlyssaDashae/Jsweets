@@ -4,607 +4,810 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>J's Sweets</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
-/* CSS Variables for our Cream & Rose color palette */
 :root {
---primary-rose: #d68098;
---primary-rose-hover: #b8657c;
---cream-bg: #fdfbf7;
---text-dark: #333333;
---text-light: #666666;
---white-card: rgba(255, 255, 255, 0.92);
+  /* Warm Bakery Palette */
+  --cream:        #fdf6ec;          /* warm page background */
+  --cream-dark:   #f5e9d0;          /* card / section background */
+  --brown-dark:   #3b2a1a;          /* headings, strong text */
+  --brown-mid:    #6b4226;          /* subheadings, nav links */
+  --brown-light:  #a0683a;          /* body copy accent */
+  --gold:         #c8893a;          /* primary CTA / accent */
+  --gold-hover:   #a06d28;          /* CTA hover */
+  --sage:         #7a8c6e;          /* secondary accent */
+  --sage-light:   #cdd9c4;          /* tag / chip bg */
+  --warm-white:   #fffdf9;          /* card fill */
+  --border:       #e8d9c2;          /* subtle borders */
+  --text:         #3b2a1a;
+  --text-muted:   #7a6248;
 }
 
-/* Base & Background Pattern */
+* { box-sizing: border-box; }
+
 body {
-margin: 0;
-font-family: 'Helvetica Neue', Arial, sans-serif;
-color: var(--text-dark);
-background-color: var(--cream-bg);
-background-image: url(bg.png);
-background-repeat: repeat;
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  color: var(--text);
+  background-color: var(--cream);
+  background-image: url(bg.png);
+  background-repeat: repeat;
 }
 
-h1, h2, h3 {
-font-family: 'Georgia', serif;
-margin-top: 0;
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', Georgia, serif;
+  margin-top: 0;
 }
 
-/* Navigation Bar */
+/* ── Navigation ── */
 header {
-background-color: #ffffff;
-box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-position: sticky;
-top: 0;
-z-index: 100;
+  background-color: #fffdf9;
+  border-bottom: 2px solid var(--border);
+  box-shadow: 0 2px 10px rgba(59,42,26,0.07);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .nav-container {
-max-width: 1200px;
-margin: 0 auto;
-padding: 0.5rem 2rem;
-display: flex;
-justify-content: space-between;
-align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
-display: flex;
-align-items: center;
-gap: 0.5rem;
-text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
 }
 
 .logo img {
-height: 60px;
-width: auto;
-object-fit: contain;
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(1.15);
 }
 
 .logo-text {
-font-size: 1.5rem;
-font-weight: bold;
-font-family: 'Georgia', serif;
-color: var(--primary-rose);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--gold);
 }
 
 .nav-links {
-list-style: none;
-display: flex;
-gap: 2rem;
-margin: 0;
-padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 2.2rem;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-links a {
-text-decoration: none;
-color: var(--text-dark);
-font-weight: 500;
-transition: color 0.3s ease;
+  text-decoration: none;
+  color: var(--brown-mid);
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: color 0.25s;
 }
 
-.nav-links a:hover {
-color: var(--primary-rose);
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--gold);
 }
 
-/* Container for tight sections */
+/* ── Layout ── */
 .container {
-max-width: 1200px;
-margin: 0 auto;
-padding: 0 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
-/* Sections General Styling - Reduced Spacing */
 section {
-background-color: var(--white-card);
-margin: 1.5rem auto;
-padding: 2.5rem 2rem;
-border-radius: 12px;
-box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  background-color: var(--warm-white);
+  margin: 1.5rem auto;
+  padding: 2.8rem 2.4rem;
+  border-radius: 14px;
+  box-shadow: 0 3px 18px rgba(59,42,26,0.06);
+  border: 1px solid var(--border);
 }
 
-/* Hero Section */
-.hero {
-display: flex;
-align-items: center;
-justify-content: space-between;
-gap: 2rem;
-}
-
-.hero-text {
-flex: 1;
-}
-
-.hero-text h1 {
-font-size: 3rem;
-color: var(--text-dark);
-margin-bottom: 1rem;
-}
-
-.hero-text p {
-font-size: 1.1rem;
-color: var(--text-light);
-margin-bottom: 1.5rem;
-line-height: 1.6;
-}
-
+/* ── Buttons ── */
 .btn {
-background-color: var(--primary-rose);
-color: white;
-padding: 0.8rem 1.5rem;
-border: none;
-border-radius: 25px;
-font-size: 1rem;
-cursor: pointer;
-text-decoration: none;
-display: inline-block;
-transition: background-color 0.3s ease;
+  background-color: var(--gold);
+  color: #fff;
+  padding: 0.75rem 1.6rem;
+  border: none;
+  border-radius: 30px;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.25s, transform 0.15s;
 }
 
 .btn:hover {
-background-color: var(--primary-rose-hover);
+  background-color: var(--gold-hover);
+  transform: translateY(-1px);
 }
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--gold);
+  color: var(--gold);
+}
+
+.btn-outline:hover {
+  background: var(--gold);
+  color: #fff;
+}
+
+/* ── Hero ── */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+  background: linear-gradient(135deg, var(--cream-dark) 0%, var(--warm-white) 100%);
+  border-left: 5px solid var(--gold);
+}
+
+.hero-text { flex: 1; }
+
+.hero-eyebrow {
+  display: inline-block;
+  background: var(--sage-light);
+  color: var(--sage);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.9rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  color: var(--brown-dark);
+  margin-bottom: 1rem;
+  line-height: 1.15;
+}
+
+.hero-text h1 em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.hero-text p {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  margin-bottom: 1.8rem;
+  line-height: 1.7;
+  max-width: 480px;
+}
+
+.hero-badges {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.8rem;
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--brown-mid);
+  background: var(--cream-dark);
+  border: 1px solid var(--border);
+  padding: 0.35rem 0.8rem;
+  border-radius: 20px;
+}
+
+.badge-icon { font-size: 0.9rem; }
 
 .hero-image {
-flex: 1;
-height: 350px;
-width: 100%;
-background-image: url(Hero.jpeg);
-background-size: cover;
-background-position: center;
-border-radius: 12px;
+  flex: 1;
+  height: 360px;
+  background-image: url(Hero.jpeg);
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(59,42,26,0.2);
 }
 
-/* Carousel Section */
+/* ── Carousel / Featured ── */
 .carousel-section h2 {
-text-align: center;
-font-size: 2rem;
-margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 2rem;
+  color: var(--brown-dark);
+  margin-bottom: 0.4rem;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.8rem;
 }
 
 .carousel-wrapper {
-position: relative;
-display: flex;
-align-items: center;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .carousel-btn {
-background-color: var(--primary-rose);
-color: white;
-border: none;
-width: 40px;
-height: 40px;
-border-radius: 50%;
-font-size: 1.2rem;
-cursor: pointer;
-position: absolute;
-z-index: 10;
-box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  background-color: var(--brown-dark);
+  color: var(--cream);
+  border: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  cursor: pointer;
+  position: absolute;
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: background 0.2s;
 }
 
-#prevBtn { left: -15px; }
-#nextBtn { right: -15px; }
+.carousel-btn:hover { background: var(--gold); }
+
+#prevBtn { left: -18px; }
+#nextBtn { right: -18px; }
 
 .carousel-track {
-display: flex;
-overflow-x: auto;
-scroll-snap-type: x mandatory;
-gap: 1.5rem;
-padding: 1rem 0;
-scroll-behavior: smooth;
--ms-overflow-style: none;
-scrollbar-width: none;
-width: 100%;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 1.4rem;
+  padding: 0.8rem 0.2rem;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  width: 100%;
 }
 
-.carousel-track::-webkit-scrollbar {
-display: none;
-}
+.carousel-track::-webkit-scrollbar { display: none; }
 
 .card {
-flex: 0 0 260px;
-scroll-snap-align: start;
-background-color: #fff;
-border-radius: 10px;
-overflow: hidden;
-box-shadow: 0 4px 8px rgba(0,0,0,0.06);
-border: 1px solid #f0e6e6;
+  flex: 0 0 250px;
+  scroll-snap-align: start;
+  background-color: var(--warm-white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 12px rgba(59,42,26,0.08);
+  border: 1px solid var(--border);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(59,42,26,0.14);
 }
 
 .card-img {
-height: 180px;
-background-color: #f7e8ec;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 4rem;
+  height: 175px;
+  background-color: var(--cream-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.8rem;
+  position: relative;
+}
+
+.card-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: var(--gold);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: 10px;
 }
 
 .card-info {
-padding: 1.2rem;
-text-align: center;
+  padding: 1.1rem 1.2rem 1.3rem;
+  text-align: center;
 }
 
 .card-info h3 {
-font-size: 1.1rem;
-margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: var(--brown-dark);
+  margin-bottom: 0.35rem;
 }
 
 .card-info .price {
-color: var(--primary-rose);
-font-weight: bold;
-margin-bottom: 1rem;
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 0.9rem;
 }
 
-/* Testimonials Section */
+.card-info .btn {
+  padding: 0.45rem 1.1rem;
+  font-size: 0.8rem;
+}
+
+/* ── Testimonials ── */
 .testimonials {
-text-align: center;
+  background: var(--cream-dark);
+  border: 1px solid var(--border);
 }
 
 .testimonials h2 {
-font-size: 2rem;
-margin-bottom: 2rem;
+  text-align: center;
+  font-size: 2rem;
+  color: var(--brown-dark);
+  margin-bottom: 0.4rem;
 }
 
 .reviews-grid {
-display: flex;
-gap: 2rem;
-justify-content: center;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 1.8rem;
 }
 
 .review-card {
-background-color: #fff;
-padding: 1.5rem;
-border-radius: 10px;
-box-shadow: 0 4px 8px rgba(0,0,0,0.04);
-border: 1px solid #f0e6e6;
-flex: 1;
+  background: var(--warm-white);
+  padding: 1.6rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(59,42,26,0.06);
+  border: 1px solid var(--border);
+  flex: 1;
 }
 
-.stars {
-color: #ffd700;
-font-size: 1.2rem;
-margin-bottom: 0.5rem;
+.review-header {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1rem;
 }
 
-.review-text {
-font-style: italic;
-color: var(--text-light);
-margin-bottom: 1rem;
-line-height: 1.5;
+.review-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .reviewer-name {
-font-weight: bold;
-color: var(--primary-rose);
+  font-weight: 700;
+  color: var(--brown-dark);
+  font-size: 0.9rem;
 }
 
-/* About & Location Sections */
+.stars {
+  color: var(--gold);
+  font-size: 0.85rem;
+}
+
+.review-text {
+  font-style: italic;
+  color: var(--text-muted);
+  line-height: 1.65;
+  font-size: 0.93rem;
+}
+
+/* ── Split (About + Location) ── */
 .split-section {
-display: flex;
-gap: 2rem;
+  display: flex;
+  gap: 2rem;
 }
 
 .split-box {
-flex: 1;
-text-align: center;
-padding: 1rem;
+  flex: 1;
+  padding: 0.5rem 1rem;
 }
 
-/* Newsletter Section */
+.split-box h2 {
+  font-size: 1.6rem;
+  color: var(--brown-dark);
+  margin-bottom: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid var(--gold);
+  display: inline-block;
+}
+
+.split-box p {
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+.split-box strong { color: var(--brown-dark); }
+
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.hours-table td {
+  padding: 0.35rem 0;
+  color: var(--text-muted);
+}
+
+.hours-table td:first-child {
+  font-weight: 700;
+  color: var(--brown-mid);
+  width: 55%;
+}
+
+/* ── Newsletter ── */
 .newsletter {
-text-align: center;
-background-color: #f7e8ec;
-border: none;
+  text-align: center;
+  background: var(--cream-dark);
+  border: 1px solid var(--border);
 }
 
 .newsletter h2 {
-font-size: 2rem;
-color: var(--primary-rose-hover);
-margin-bottom: 0.5rem;
+  font-size: 2rem;
+  color: var(--brown-dark);
+  margin-bottom: 0.5rem;
 }
 
 .newsletter p {
-color: var(--text-dark);
-margin-bottom: 1.5rem;
+  color: var(--text-muted);
+  margin-bottom: 1.8rem;
+  font-size: 0.95rem;
 }
 
 .newsletter-form {
-display: flex;
-justify-content: center;
-gap: 0.5rem;
-max-width: 500px;
-margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  max-width: 480px;
+  margin: 0 auto;
 }
 
 .newsletter-form input {
-flex: 1;
-padding: 0.8rem 1rem;
-border: 1px solid #ddd;
-border-radius: 25px;
-font-size: 1rem;
-outline: none;
+  flex: 1;
+  padding: 0.75rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  font-size: 0.95rem;
+  outline: none;
+  background: var(--warm-white);
+  color: var(--text);
+  font-family: 'Lato', sans-serif;
 }
 
-.newsletter-form input:focus {
-border-color: var(--primary-rose);
-}
+.newsletter-form input::placeholder { color: var(--text-muted); }
 
-/* Footer */
+.newsletter-form input:focus { border-color: var(--gold); }
+
+/* ── Footer ── */
 footer {
-background-color: #333;
-color: #fff;
-text-align: center;
-padding: 2rem;
-margin-top: 2rem;
+  background-color: var(--cream-dark);
+  color: var(--text-muted);
+  text-align: center;
+  padding: 2rem;
+  margin-top: 2rem;
+  border-top: 2px solid var(--border);
 }
 
 .footer-logo {
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 0.75rem;
-margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 
 .footer-logo img {
-height: 70px;
-width: auto;
-object-fit: contain;
-/* Slight brightness boost so logo pops on dark background */
-filter: brightness(1.1);
+  height: 65px;
+  width: auto;
+  object-fit: contain;
 }
 
 .footer-logo-text {
-font-size: 1.6rem;
-font-family: 'Georgia', serif;
-font-weight: bold;
-color: var(--primary-rose);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--gold);
 }
 
 footer p {
-margin: 0.5rem 0;
-font-size: 0.9rem;
-color: #ccc;
+  margin: 0.4rem 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
 }
 
-/* --- MOBILE RESPONSIVENESS --- */
+/* ── Mobile ── */
 @media (max-width: 768px) {
-.nav-container {
-flex-direction: column;
-gap: 1rem;
-padding: 1rem;
-}
-.nav-links {
-flex-wrap: wrap;
-justify-content: center;
-gap: 1rem;
-}
-.logo img {
-height: 50px;
-}
-.hero {
-flex-direction: column;
-text-align: center;
-}
-.hero-image {
-height: 250px;
-}
-.split-section, .reviews-grid {
-flex-direction: column;
-gap: 1rem;
-}
-.newsletter-form {
-flex-direction: column;
-}
-.container {
-padding: 0 1rem;
-}
-section {
-padding: 1.5rem 1rem;
-}
+  .nav-container {
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 1rem;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-text p { max-width: 100%; }
+
+  .hero-badges { justify-content: center; }
+
+  .hero-image { height: 240px; width: 100%; }
+
+  .split-section, .reviews-grid {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .newsletter-form { flex-direction: column; }
+
+  .container { padding: 0 1rem; }
+
+  section { padding: 1.6rem 1.2rem; }
 }
 </style>
 </head>
 <body>
 
 <header>
-<div class="nav-container">
-<a href="index.html" class="logo">
-<img src="logo.PNG" alt="J's Sweets Logo">
-</a>
-<ul class="nav-links">
-<li><a href="index.html" style="color: var(--primary-rose);">Home</a></li>
-<li><a href="menu.html">Menu</a></li>
-<li><a href="custom-orders.html">Custom Orders</a></li>
-<li><a href="#location">Visit Us</a></li>
-</ul>
-</div>
+  <div class="nav-container">
+    <a href="index.html" class="logo">
+      <img src="logo.PNG" alt="J's Sweets Logo">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="custom-orders.html">Custom Orders</a></li>
+      <li><a href="#location">Visit Us</a></li>
+    </ul>
+  </div>
 </header>
 
 <main class="container">
 
-<section id="home" class="hero">
-<div class="hero-text">
-<h1>Indulge in Handcrafted Sweetness</h1>
-<p>Discover fresh, daily-baked pastries, artisan cakes, and decadent treats made with love. Perfect for your morning coffee or your next big celebration.</p>
-<a href="menu.html" class="btn">Shop Our Bakes</a>
-</div>
-<div class="hero-image"></div>
-</section>
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="hero-text">
+      <span class="hero-eyebrow">✦ Baked fresh every morning</span>
+      <h1>Handcrafted with <em>Love</em> &amp; Butter</h1>
+      <p>Discover artisan pastries, celebration cakes, and daily treats made from scratch using locally sourced ingredients. Your neighbourhood bakery since 2018.</p>
+      <div class="hero-badges">
+        <span class="badge"><span class="badge-icon">🌾</span> Local ingredients</span>
+        <span class="badge"><span class="badge-icon">🕗</span> Daily fresh bakes</span>
+        <span class="badge"><span class="badge-icon">🎂</span> Custom orders</span>
+      </div>
+      <a href="menu.html" class="btn">Explore Our Menu</a>
+    </div>
+    <div class="hero-image"></div>
+  </section>
 
-<section id="menu" class="carousel-section">
-<h2>Featured Delights</h2>
-<div class="carousel-wrapper">
-<button id="prevBtn" class="carousel-btn">&#10094;</button>
+  <!-- Featured carousel -->
+  <section id="menu" class="carousel-section">
+    <h2>Featured Delights</h2>
+    <p class="section-subtitle">A taste of what's waiting for you</p>
+    <div class="carousel-wrapper">
+      <button id="prevBtn" class="carousel-btn">&#10094;</button>
+      <div class="carousel-track" id="track">
 
-<div class="carousel-track" id="track">
+        <div class="card">
+          <div class="card-img">🍓<span class="card-tag">Popular</span></div>
+          <div class="card-info">
+            <h3>Strawberry Tart</h3>
+            <div class="price">$5.50</div>
+            <button class="btn">Add to Cart</button>
+          </div>
+        </div>
 
-<div class="card">
-<div class="card-img">🍓</div>
-<div class="card-info">
-<h3>Strawberry Tart</h3>
-<div class="price">$5.50</div>
-<button class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Add to Cart</button>
-</div>
-</div>
+        <div class="card">
+          <div class="card-img">🥐<span class="card-tag">Staff Pick</span></div>
+          <div class="card-info">
+            <h3>Chocolate Croissant</h3>
+            <div class="price">$4.25</div>
+            <button class="btn">Add to Cart</button>
+          </div>
+        </div>
 
-<div class="card">
-<div class="card-img">🥐</div>
-<div class="card-info">
-<h3>Chocolate Croissant</h3>
-<div class="price">$4.25</div>
-<button class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Add to Cart</button>
-</div>
-</div>
+        <div class="card">
+          <div class="card-img">🧁</div>
+          <div class="card-info">
+            <h3>Vanilla Bean Cupcake</h3>
+            <div class="price">$3.75</div>
+            <button class="btn">Add to Cart</button>
+          </div>
+        </div>
 
-<div class="card">
-<div class="card-img">🧁</div>
-<div class="card-info">
-<h3>Vanilla Bean Cupcake</h3>
-<div class="price">$3.75</div>
-<button class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Add to Cart</button>
-</div>
-</div>
+        <div class="card">
+          <div class="card-img">🍋<span class="card-tag">Seasonal</span></div>
+          <div class="card-info">
+            <h3>Lemon Meringue Pie</h3>
+            <div class="price">$6.00</div>
+            <button class="btn">Add to Cart</button>
+          </div>
+        </div>
 
-<div class="card">
-<div class="card-img">🍋</div>
-<div class="card-info">
-<h3>Lemon Meringue Pie</h3>
-<div class="price">$6.00</div>
-<button class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Add to Cart</button>
-</div>
-</div>
+        <div class="card">
+          <div class="card-img">🫐</div>
+          <div class="card-info">
+            <h3>Blueberry Scone</h3>
+            <div class="price">$3.50</div>
+            <button class="btn">Add to Cart</button>
+          </div>
+        </div>
 
-<div class="card">
-<div class="card-img">🫐</div>
-<div class="card-info">
-<h3>Blueberry Scone</h3>
-<div class="price">$3.50</div>
-<button class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Add to Cart</button>
-</div>
-</div>
+        <div class="card">
+          <div class="card-img">🌸</div>
+          <div class="card-info">
+            <h3>Raspberry Macaron</h3>
+            <div class="price">$2.50</div>
+            <button class="btn">Add to Cart</button>
+          </div>
+        </div>
 
-<div class="card">
-<div class="card-img">🌸</div>
-<div class="card-info">
-<h3>Raspberry Macaron</h3>
-<div class="price">$2.50</div>
-<button class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Add to Cart</button>
-</div>
-</div>
+        <div class="card">
+          <div class="card-img">🍰<span class="card-tag">Popular</span></div>
+          <div class="card-info">
+            <h3>Classic Cheesecake</h3>
+            <div class="price">$6.50</div>
+            <button class="btn">Add to Cart</button>
+          </div>
+        </div>
 
-<div class="card">
-<div class="card-img">🍰</div>
-<div class="card-info">
-<h3>Classic Cheesecake</h3>
-<div class="price">$6.50</div>
-<button class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Add to Cart</button>
-</div>
-</div>
+        <div class="card">
+          <div class="card-img">🥨</div>
+          <div class="card-info">
+            <h3>Cinnamon Roll</h3>
+            <div class="price">$4.50</div>
+            <button class="btn">Add to Cart</button>
+          </div>
+        </div>
 
-<div class="card">
-<div class="card-img">🥨</div>
-<div class="card-info">
-<h3>Cinnamon Roll</h3>
-<div class="price">$4.50</div>
-<button class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Add to Cart</button>
-</div>
-</div>
+        <div class="card">
+          <div class="card-img">🥖</div>
+          <div class="card-info">
+            <h3>Almond Biscotti</h3>
+            <div class="price">$2.75</div>
+            <button class="btn">Add to Cart</button>
+          </div>
+        </div>
 
-<div class="card">
-<div class="card-img">🥖</div>
-<div class="card-info">
-<h3>Almond Biscotti</h3>
-<div class="price">$2.75</div>
-<button class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Add to Cart</button>
-</div>
-</div>
+        <div class="card">
+          <div class="card-img">🍩</div>
+          <div class="card-info">
+            <h3>Chocolate Eclair</h3>
+            <div class="price">$4.80</div>
+            <button class="btn">Add to Cart</button>
+          </div>
+        </div>
 
-<div class="card">
-<div class="card-img">🍩</div>
-<div class="card-info">
-<h3>Chocolate Eclair</h3>
-<div class="price">$4.80</div>
-<button class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Add to Cart</button>
-</div>
-</div>
+      </div>
+      <button id="nextBtn" class="carousel-btn">&#10095;</button>
+    </div>
+  </section>
 
-</div>
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <h2>What Our Customers Say</h2>
+    <p class="section-subtitle">Made with love — tasted with joy</p>
+    <div class="reviews-grid">
 
-<button id="nextBtn" class="carousel-btn">&#10095;</button>
-</div>
-</section>
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">S</div>
+          <div>
+            <div class="reviewer-name">Sarah T.</div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+        <p class="review-text">"The absolute best chocolate croissants I've ever had outside of Paris. I come here every Sunday morning!"</p>
+      </div>
 
-<section class="testimonials">
-<h2>What Our Customers Say</h2>
-<div class="reviews-grid">
-<div class="review-card">
-<div class="stars">★★★★★</div>
-<p class="review-text">"The absolute best chocolate croissants I've ever had outside of Paris. I come here every Sunday morning!"</p>
-<p class="reviewer-name">- Sarah T.</p>
-</div>
-<div class="review-card">
-<div class="stars">★★★★★</div>
-<p class="review-text">"J's Sweets made our wedding cake and it was flawless. Not only was it gorgeous, but it tasted incredible."</p>
-<p class="reviewer-name">- Michael & Emma</p>
-</div>
-<div class="review-card">
-<div class="stars">★★★★★</div>
-<p class="review-text">"Their lemon meringue pie is to die for! The perfect balance of tart and sweet. Highly recommend."</p>
-<p class="reviewer-name">- David L.</p>
-</div>
-</div>
-</section>
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">M</div>
+          <div>
+            <div class="reviewer-name">Michael &amp; Emma</div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+        <p class="review-text">"J's Sweets made our wedding cake and it was flawless. Not only was it gorgeous, but it tasted incredible."</p>
+      </div>
 
-<section class="split-section">
-<div id="about" class="split-box">
-<h2>Our Story</h2>
-<p>Started in a small home kitchen, J's Sweets was born out of a love for buttery doughs and sweet fillings. Today, we bring our family recipes to you, baking fresh every single morning using locally sourced ingredients and a lot of passion.</p>
-</div>
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">D</div>
+          <div>
+            <div class="reviewer-name">David L.</div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+        <p class="review-text">"Their lemon meringue pie is to die for! The perfect balance of tart and sweet. Highly recommend."</p>
+      </div>
 
-<div id="location" class="split-box">
-<h2>Visit Us</h2>
-<p><strong>Address:</strong><br>123 Bakery Lane, Sweetville</p>
-<p><strong>Hours:</strong><br>Mon - Fri: 7am - 6pm<br>Sat - Sun: 8am - 4pm</p>
-</div>
-</section>
+    </div>
+  </section>
 
-<section class="newsletter">
-<h2>Join the Sweet List</h2>
-<p>Subscribe to get 10% off your first order and be the first to know about new seasonal treats!</p>
-<form action="#" class="newsletter-form">
-<input type="email" placeholder="Enter your email address" required>
-<button type="submit" class="btn">Subscribe</button>
-</form>
-</section>
+  <!-- About + Location -->
+  <section class="split-section">
+    <div id="about" class="split-box">
+      <h2>Our Story</h2>
+      <p>Started in a small home kitchen, J's Sweets was born out of a love for buttery doughs and sweet fillings. Today, we bring our family recipes to you — baking fresh every single morning using locally sourced ingredients and a whole lot of passion.</p>
+      <p style="margin-top:1rem;">Every loaf, tart, and cake is made by hand, the old-fashioned way. No shortcuts, no preservatives — just real ingredients and time-honoured technique.</p>
+    </div>
+
+    <div id="location" class="split-box">
+      <h2>Visit Us</h2>
+      <p><strong>📍 123 Bakery Lane, Sweetville</strong></p>
+      <p>Come in, pull up a chair, and let the smell of fresh bread do the rest.</p>
+      <table class="hours-table">
+        <tr><td>Monday – Friday</td><td>7:00 am – 6:00 pm</td></tr>
+        <tr><td>Saturday</td><td>8:00 am – 4:00 pm</td></tr>
+        <tr><td>Sunday</td><td>8:00 am – 2:00 pm</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <h2>Join the Sweet List</h2>
+    <p>Subscribe for 10% off your first order and be the first to hear about seasonal specials.</p>
+    <form action="#" class="newsletter-form">
+      <input type="email" placeholder="Your email address" required>
+      <button type="submit" class="btn">Subscribe</button>
+    </form>
+  </section>
 
 </main>
 
 <footer>
-<div class="footer-logo">
-<img src="logo.PNG" alt="J's Sweets Logo">
-</div>
-<p>&copy; 2026 J's Sweets. All rights reserved.</p>
-<p>Follow us on Instagram and Facebook for daily sweet updates!</p>
+  <div class="footer-logo">
+    <img src="logo.PNG" alt="J's Sweets Logo">
+  </div>
+  <p>&copy; 2026 J's Sweets. All rights reserved.</p>
+  <p>Follow us on Instagram and Facebook for daily sweet updates!</p>
 </footer>
 
 <script>
-const track = document.getElementById('track');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-
-const scrollAmount = 280;
-
-nextBtn.addEventListener('click', () => {
-track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-});
-
-prevBtn.addEventListener('click', () => {
-track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-});
+  const track = document.getElementById('track');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const scrollAmount = 270;
+  nextBtn.addEventListener('click', () => track.scrollBy({ left: scrollAmount, behavior: 'smooth' }));
+  prevBtn.addEventListener('click', () => track.scrollBy({ left: -scrollAmount, behavior: 'smooth' }));
 </script>
 </body>
 </html>
-
 
