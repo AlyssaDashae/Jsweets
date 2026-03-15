@@ -21,7 +21,6 @@ margin: 0;
 font-family: 'Helvetica Neue', Arial, sans-serif;
 color: var(--text-dark);
 background-color: var(--cream-bg);
-/* Custom SVG Pastry Pattern Background */
 background-image: url(bg.png);
 background-repeat: repeat;
 }
@@ -43,18 +42,30 @@ z-index: 100;
 .nav-container {
 max-width: 1200px;
 margin: 0 auto;
-padding: 1rem 2rem;
+padding: 0.5rem 2rem;
 display: flex;
 justify-content: space-between;
 align-items: center;
 }
 
 .logo {
+display: flex;
+align-items: center;
+gap: 0.5rem;
+text-decoration: none;
+}
+
+.logo img {
+height: 60px;
+width: auto;
+object-fit: contain;
+}
+
+.logo-text {
 font-size: 1.5rem;
 font-weight: bold;
 font-family: 'Georgia', serif;
 color: var(--primary-rose);
-text-decoration: none;
 }
 
 .nav-links {
@@ -283,7 +294,7 @@ padding: 1rem;
 /* Newsletter Section */
 .newsletter {
 text-align: center;
-background-color: #f7e8ec; /* Soft pink background */
+background-color: #f7e8ec;
 border: none;
 }
 
@@ -328,6 +339,29 @@ padding: 2rem;
 margin-top: 2rem;
 }
 
+.footer-logo {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 0.75rem;
+margin-bottom: 0.75rem;
+}
+
+.footer-logo img {
+height: 70px;
+width: auto;
+object-fit: contain;
+/* Slight brightness boost so logo pops on dark background */
+filter: brightness(1.1);
+}
+
+.footer-logo-text {
+font-size: 1.6rem;
+font-family: 'Georgia', serif;
+font-weight: bold;
+color: var(--primary-rose);
+}
+
 footer p {
 margin: 0.5rem 0;
 font-size: 0.9rem;
@@ -339,11 +373,15 @@ color: #ccc;
 .nav-container {
 flex-direction: column;
 gap: 1rem;
+padding: 1rem;
 }
 .nav-links {
 flex-wrap: wrap;
 justify-content: center;
 gap: 1rem;
+}
+.logo img {
+height: 50px;
 }
 .hero {
 flex-direction: column;
@@ -372,7 +410,9 @@ padding: 1.5rem 1rem;
 
 <header>
 <div class="nav-container">
-<a href="index.html" class="logo">J's Sweets</a>
+<a href="index.html" class="logo">
+<img src="logo.PNG" alt="J's Sweets Logo">
+</a>
 <ul class="nav-links">
 <li><a href="index.html" style="color: var(--primary-rose);">Home</a></li>
 <li><a href="menu.html">Menu</a></li>
@@ -542,7 +582,9 @@ padding: 1.5rem 1rem;
 </main>
 
 <footer>
-<h2>J's Sweets</h2>
+<div class="footer-logo">
+<img src="logo.PNG" alt="J's Sweets Logo">
+</div>
 <p>&copy; 2026 J's Sweets. All rights reserved.</p>
 <p>Follow us on Instagram and Facebook for daily sweet updates!</p>
 </footer>
@@ -564,4 +606,5 @@ track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
 </script>
 </body>
 </html>
+
 
