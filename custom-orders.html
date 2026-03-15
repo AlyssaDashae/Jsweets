@@ -4,373 +4,492 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Custom Orders & Catering - J's Sweets</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
-/* CSS Variables for our Cream & Rose color palette */
 :root {
---primary-rose: #d68098;
---primary-rose-hover: #b8657c;
---cream-bg: #fdfbf7;
---text-dark: #333333;
---text-light: #666666;
---white-card: rgba(255, 255, 255, 0.92);
+  --cream:        #fdf6ec;
+  --cream-dark:   #f5e9d0;
+  --brown-dark:   #3b2a1a;
+  --brown-mid:    #6b4226;
+  --gold:         #c8893a;
+  --gold-hover:   #a06d28;
+  --sage:         #7a8c6e;
+  --sage-light:   #cdd9c4;
+  --warm-white:   #fffdf9;
+  --border:       #e8d9c2;
+  --text:         #3b2a1a;
+  --text-muted:   #7a6248;
 }
 
-/* Base & Background Pattern */
+* { box-sizing: border-box; }
+
 body {
-margin: 0;
-font-family: 'Helvetica Neue', Arial, sans-serif;
-color: var(--text-dark);
-background-color: var(--cream-bg);
-/* Custom SVG Pastry Pattern Background */
-background-image: url(bg.png);
-background-repeat: repeat;
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  color: var(--text);
+  background-color: var(--cream);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23fdf6ec'/%3E%3Cg transform='translate(55,60)' opacity='0.18'%3E%3Cpath d='M-18,0 Q-20,20 -14,28 L14,28 Q20,20 18,0 Z' fill='%23c8893a'/%3E%3Cline x1='-8' y1='2' x2='-10' y2='26' stroke='%23a06d28' stroke-width='1.5'/%3E%3Cline x1='0' y1='1' x2='0' y2='28' stroke='%23a06d28' stroke-width='1.5'/%3E%3Cline x1='8' y1='2' x2='10' y2='26' stroke='%23a06d28' stroke-width='1.5'/%3E%3Cellipse cx='0' cy='-2' rx='16' ry='10' fill='%23c8893a'/%3E%3Cellipse cx='-8' cy='-8' rx='9' ry='7' fill='%23c8893a'/%3E%3Cellipse cx='8' cy='-9' rx='9' ry='7' fill='%23c8893a'/%3E%3Cellipse cx='0' cy='-15' rx='7' ry='6' fill='%23c8893a'/%3E%3Ccircle cx='0' cy='-20' r='4' fill='%23a06d28'/%3E%3C/g%3E%3Cg transform='translate(310,55)' opacity='0.18'%3E%3Crect x='-28' y='10' width='56' height='16' rx='3' fill='%23c8893a'/%3E%3Crect x='-22' y='-8' width='44' height='16' rx='3' fill='%23a06d28'/%3E%3Crect x='-16' y='-24' width='32' height='14' rx='3' fill='%23c8893a'/%3E%3Crect x='-10' y='-36' width='4' height='12' rx='1' fill='%237a8c6e'/%3E%3Crect x='6' y='-38' width='4' height='14' rx='1' fill='%23c8893a'/%3E%3C/g%3E%3Cg transform='translate(195,185)' opacity='0.18'%3E%3Cellipse cx='0' cy='14' rx='34' ry='8' fill='%23a06d28'/%3E%3Cellipse cx='0' cy='0' rx='30' ry='18' fill='%23c8893a'/%3E%3Cpath d='M-30,0 Q-20,-24 0,-26 Q20,-24 30,0 Z' fill='%23a06d28'/%3E%3Cline x1='-14' y1='-24' x2='-6' y2='0' stroke='%23fdf6ec' stroke-width='2' opacity='0.5'/%3E%3Cline x1='0' y1='-26' x2='0' y2='0' stroke='%23fdf6ec' stroke-width='2' opacity='0.5'/%3E%3Cline x1='14' y1='-24' x2='6' y2='0' stroke='%23fdf6ec' stroke-width='2' opacity='0.5'/%3E%3C/g%3E%3Cg transform='translate(65,300) rotate(-10)' opacity='0.18'%3E%3Cpath d='M-30,8 Q-20,-18 0,-16 Q20,-18 30,8 Q20,22 10,16 Q0,20 -10,16 Q-20,22 -30,8Z' fill='%23c8893a'/%3E%3Cpath d='M-18,6 Q-10,-12 0,-12 Q10,-12 18,6' fill='none' stroke='%23a06d28' stroke-width='2' stroke-linecap='round'/%3E%3C/g%3E%3Cg transform='translate(320,305)' opacity='0.18'%3E%3Ccircle cx='0' cy='0' r='28' fill='%23c8893a'/%3E%3Ccircle cx='0' cy='0' r='11' fill='%23fdf6ec'/%3E%3Cpath d='M-20,-18 Q-8,-30 8,-28 Q22,-24 24,-10 Q14,-16 6,-28 Q-4,-32 -16,-22 Z' fill='%23a06d28'/%3E%3C/g%3E%3Cg transform='translate(48,198)' opacity='0.18'%3E%3Cellipse cx='0' cy='-12' rx='18' ry='11' fill='%23c8893a'/%3E%3Crect x='-18' y='-4' width='36' height='7' fill='%23a06d28' opacity='0.6'/%3E%3Cellipse cx='0' cy='7' rx='18' ry='11' fill='%23c8893a'/%3E%3C/g%3E%3Cg transform='translate(348,190)' opacity='0.18'%3E%3Cpath d='M-14,4 Q-16,22 -10,28 L10,28 Q16,22 14,4 Z' fill='%23a06d28'/%3E%3Cellipse cx='0' cy='-4' rx='18' ry='12' fill='%23c8893a'/%3E%3Cellipse cx='-6' cy='-10' rx='10' ry='7' fill='%23c8893a'/%3E%3Cellipse cx='6' cy='-11' rx='10' ry='7' fill='%23c8893a'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 400px 400px;
 }
 
-h1, h2, h3 {
-font-family: 'Georgia', serif;
-margin-top: 0;
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', Georgia, serif;
+  margin-top: 0;
 }
 
-/* Navigation Bar */
+/* ── Navigation ── */
 header {
-background-color: #ffffff;
-box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-position: sticky;
-top: 0;
-z-index: 100;
+  background-color: #fffdf9;
+  border-bottom: 2px solid var(--border);
+  box-shadow: 0 2px 10px rgba(59,42,26,0.07);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .nav-container {
-max-width: 1200px;
-margin: 0 auto;
-padding: 1rem 2rem;
-display: flex;
-justify-content: space-between;
-align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
-font-size: 1.5rem;
-font-weight: bold;
-font-family: 'Georgia', serif;
-color: var(--primary-rose);
-text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+}
+
+.logo img {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+}
+
+.logo-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--gold);
 }
 
 .nav-links {
-list-style: none;
-display: flex;
-gap: 2rem;
-margin: 0;
-padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 2.2rem;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-links a {
-text-decoration: none;
-color: var(--text-dark);
-font-weight: 500;
-transition: color 0.3s ease;
+  text-decoration: none;
+  color: var(--brown-mid);
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: color 0.25s;
 }
 
-.nav-links a:hover {
-color: var(--primary-rose);
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--gold);
 }
 
-/* Container for tight sections */
+/* ── Layout ── */
 .container {
-max-width: 1200px;
-margin: 0 auto;
-padding: 0 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
-/* Sections General Styling */
 section {
-background-color: var(--white-card);
-margin: 1.5rem auto;
-padding: 2.5rem 2rem;
-border-radius: 12px;
-box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  background-color: var(--warm-white);
+  margin: 1.5rem auto;
+  padding: 2.8rem 2.4rem;
+  border-radius: 14px;
+  box-shadow: 0 3px 18px rgba(59,42,26,0.06);
+  border: 1px solid var(--border);
 }
 
-/* Page Header Section */
+/* ── Page Header ── */
 .page-header {
-text-align: center;
-padding: 3rem 2rem;
+  text-align: center;
+  background: linear-gradient(135deg, var(--cream-dark) 0%, var(--warm-white) 100%);
+  border-left: 5px solid var(--gold);
+}
+
+.page-header .hero-eyebrow {
+  display: inline-block;
+  background: var(--sage-light);
+  color: var(--sage);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.9rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
 }
 
 .page-header h1 {
-font-size: 3rem;
-color: var(--text-dark);
-margin-bottom: 1rem;
+  font-size: 2.8rem;
+  color: var(--brown-dark);
+  margin-bottom: 1rem;
+  line-height: 1.15;
+}
+
+.page-header h1 em {
+  color: var(--gold);
+  font-style: italic;
 }
 
 .page-header p {
-font-size: 1.1rem;
-color: var(--text-light);
-max-width: 700px;
-margin: 0 auto;
-line-height: 1.6;
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 680px;
+  margin: 0 auto;
+  line-height: 1.7;
 }
 
-/* Services Grid */
+/* ── Service Cards ── */
 .services-grid {
-display: flex;
-gap: 2rem;
-margin-bottom: 1rem;
+  display: flex;
+  gap: 1.5rem;
 }
 
 .service-card {
-flex: 1;
-text-align: center;
-padding: 1.5rem;
-background-color: #fff;
-border: 1px solid #f0e6e6;
-border-radius: 10px;
-box-shadow: 0 4px 8px rgba(0,0,0,0.04);
+  flex: 1;
+  text-align: center;
+  padding: 1.8rem 1.4rem;
+  background-color: var(--warm-white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.service-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(59,42,26,0.1);
+}
+
+.service-icon {
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+  display: block;
 }
 
 .service-card h3 {
-color: var(--primary-rose);
-font-size: 1.4rem;
-margin-bottom: 1rem;
+  color: var(--gold);
+  font-size: 1.2rem;
+  margin-bottom: 0.7rem;
 }
 
 .service-card p {
-font-size: 0.95rem;
-color: var(--text-light);
-line-height: 1.5;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.6;
 }
 
-/* Form Styling */
+/* ── Form ── */
+.form-section {
+  background: var(--warm-white);
+}
+
 .form-section h2 {
-text-align: center;
-font-size: 2rem;
-margin-bottom: 2rem;
+  text-align: center;
+  font-size: 2rem;
+  color: var(--brown-dark);
+  margin-bottom: 0.4rem;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
 }
 
 .custom-form {
-max-width: 800px;
-margin: 0 auto;
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 1.5rem;
+  max-width: 780px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
 }
 
 .form-group {
-display: flex;
-flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-group.full-width {
-grid-column: span 2;
+  grid-column: span 2;
 }
 
 label {
-font-weight: bold;
-margin-bottom: 0.5rem;
-font-size: 0.95rem;
-color: var(--text-dark);
+  font-weight: 700;
+  margin-bottom: 0.45rem;
+  font-size: 0.88rem;
+  color: var(--brown-mid);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 input, select, textarea {
-padding: 0.8rem;
-border: 1px solid #ddd;
-border-radius: 6px;
-font-family: inherit;
-font-size: 1rem;
-background-color: #fafafa;
-transition: border-color 0.3s ease;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.95rem;
+  background-color: var(--cream);
+  color: var(--text);
+  transition: border-color 0.25s, background-color 0.25s;
 }
 
 input:focus, select:focus, textarea:focus {
-outline: none;
-border-color: var(--primary-rose);
-background-color: #fff;
+  outline: none;
+  border-color: var(--gold);
+  background-color: #fff;
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 0.7;
 }
 
 textarea {
-resize: vertical;
-min-height: 120px;
+  resize: vertical;
+  min-height: 130px;
+}
+
+select {
+  cursor: pointer;
+}
+
+.submit-btn-wrapper {
+  grid-column: span 2;
+  text-align: center;
+  margin-top: 0.5rem;
 }
 
 .btn {
-background-color: var(--primary-rose);
-color: white;
-padding: 0.8rem 1.5rem;
-border: none;
-border-radius: 25px;
-font-size: 1rem;
-cursor: pointer;
-text-decoration: none;
-display: inline-block;
-transition: background-color 0.3s ease;
-text-align: center;
-font-weight: bold;
+  background-color: var(--gold);
+  color: #fff;
+  padding: 0.75rem 1.6rem;
+  border: none;
+  border-radius: 30px;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.25s, transform 0.15s;
 }
 
 .btn:hover {
-background-color: var(--primary-rose-hover);
+  background-color: var(--gold-hover);
+  transform: translateY(-1px);
 }
 
-.submit-btn-wrapper {
-grid-column: span 2;
-text-align: center;
-margin-top: 1rem;
-}
-
-/* Footer */
+/* ── Footer ── */
 footer {
-background-color: #333;
-color: #fff;
-text-align: center;
-padding: 2rem;
-margin-top: 2rem;
+  background-color: var(--cream-dark);
+  color: var(--text-muted);
+  text-align: center;
+  padding: 2rem;
+  margin-top: 2rem;
+  border-top: 2px solid var(--border);
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.footer-logo img {
+  height: 65px;
+  width: auto;
+  object-fit: contain;
 }
 
 footer p {
-margin: 0.5rem 0;
-font-size: 0.9rem;
-color: #ccc;
+  margin: 0.4rem 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
 }
 
-/* --- MOBILE RESPONSIVENESS --- */
+/* ── Mobile ── */
 @media (max-width: 768px) {
-/* Fix Navigation on Mobile */
-.nav-container {
-flex-direction: column;
-gap: 1rem;
-}
-.nav-links {
-flex-wrap: wrap;
-justify-content: center;
-gap: 1rem;
-}
+  .nav-container {
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 1rem;
+  }
 
-/* Adjust General Spacing */
-.container {
-padding: 0 1rem;
-}
-section {
-padding: 1.5rem 1rem;
-}
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+  }
 
-/* Stack Services and Form */
-.custom-form {
-grid-template-columns: 1fr;
-}
-.form-group.full-width {
-grid-column: span 1;
-}
-.submit-btn-wrapper {
-grid-column: span 1;
-}
-.services-grid {
-flex-direction: column;
-}
+  .services-grid {
+    flex-direction: column;
+  }
+
+  .custom-form {
+    grid-template-columns: 1fr;
+  }
+
+  .form-group.full-width,
+  .submit-btn-wrapper {
+    grid-column: span 1;
+  }
+
+  .container { padding: 0 1rem; }
+
+  section { padding: 1.6rem 1.2rem; }
+
+  .page-header h1 { font-size: 2rem; }
 }
 </style>
 </head>
 <body>
 
 <header>
-<div class="nav-container">
-<a href="index.html" class="logo">J's Sweets</a>
-<ul class="nav-links">
-<li><a href="index.html">Home</a></li>
-<li><a href="menu.html">Pastries & Cakes</a></li>
-<li><a href="custom-orders.html" style="color: var(--primary-rose);">Custom Orders</a></li>
-<li><a href="index.html#location">Visit Us</a></li>
-</ul>
-</div>
+  <div class="nav-container">
+    <a href="index.html" class="logo">
+      <img src="logo.PNG" alt="J's Sweets Logo">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="custom-orders.html" class="active">Custom Orders</a></li>
+      <li><a href="index.html#location">Visit Us</a></li>
+    </ul>
+  </div>
 </header>
 
 <main class="container">
 
-<section class="page-header">
-<h1>Custom Orders & Catering</h1>
-<p>Make your next event a little sweeter. Whether it's an elegant wedding cake, a fun birthday spread, or breakfast pastries for the office, we've got you covered.</p>
-</section>
+  <!-- Page Header -->
+  <section class="page-header">
+    <span class="hero-eyebrow">✦ Made just for you</span>
+    <h1>Custom Orders &amp; <em>Catering</em></h1>
+    <p>Make your next event a little sweeter. Whether it's an elegant wedding cake, a fun birthday spread, or breakfast pastries for the office — we've got you covered.</p>
+  </section>
 
-<section class="services-info">
-<div class="services-grid">
-<div class="service-card">
-<h3>Weddings & Anniversaries</h3>
-<p>Beautiful, multi-tiered cakes and elegant dessert tables tailored to match the colors and theme of your special day.</p>
-</div>
-<div class="service-card">
-<h3>Birthdays & Celebrations</h3>
-<p>Fun, customized cakes, cupcakes, and macaron towers that act as the perfect centerpiece for any party.</p>
-</div>
-<div class="service-card">
-<h3>Corporate Catering</h3>
-<p>Impress your clients or treat your staff with our morning pastry platters, assorted cookie boxes, and fresh coffee setups.</p>
-</div>
-</div>
-</section>
+  <!-- Services -->
+  <section class="services-info">
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">💍</span>
+        <h3>Weddings & Anniversaries</h3>
+        <p>Beautiful multi-tiered cakes and elegant dessert tables tailored to match the colors and theme of your special day.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🎂</span>
+        <h3>Birthdays & Celebrations</h3>
+        <p>Fun, customized cakes, cupcakes, and macaron towers that act as the perfect centerpiece for any party.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">💼</span>
+        <h3>Corporate Catering</h3>
+        <p>Impress your clients or treat your staff with morning pastry platters, assorted cookie boxes, and fresh setups.</p>
+      </div>
+    </div>
+  </section>
 
-<section class="form-section">
-<h2>Request a Quote</h2>
-<form action="#" method="POST" class="custom-form">
+  <!-- Quote Form -->
+  <section class="form-section">
+    <h2>Request a Quote</h2>
+    <p class="section-subtitle">Fill out the form below and we'll get back to you within 24 hours</p>
 
-<div class="form-group">
-<label for="firstName">First Name</label>
-<input type="text" id="firstName" name="firstName" required placeholder="Jane">
-</div>
+    <form action="#" method="POST" class="custom-form">
 
-<div class="form-group">
-<label for="lastName">Last Name</label>
-<input type="text" id="lastName" name="lastName" required placeholder="Doe">
-</div>
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" name="firstName" required placeholder="Jane">
+      </div>
 
-<div class="form-group">
-<label for="email">Email Address</label>
-<input type="email" id="email" name="email" required placeholder="jane@example.com">
-</div>
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" name="lastName" required placeholder="Doe">
+      </div>
 
-<div class="form-group">
-<label for="phone">Phone Number</label>
-<input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
-</div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required placeholder="jane@example.com">
+      </div>
 
-<div class="form-group">
-<label for="eventDate">Date of Event</label>
-<input type="date" id="eventDate" name="eventDate" required>
-</div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+      </div>
 
-<div class="form-group">
-<label for="eventType">Type of Event</label>
-<select id="eventType" name="eventType">
-<option value="">-- Select an Option --</option>
-<option value="wedding">Wedding</option>
-<option value="birthday">Birthday</option>
-<option value="corporate">Corporate Event</option>
-<option value="other">Other</option>
-</select>
-</div>
+      <div class="form-group">
+        <label for="eventDate">Date of Event</label>
+        <input type="date" id="eventDate" name="eventDate" required>
+      </div>
 
-<div class="form-group">
-<label for="guestCount">Estimated Guest Count</label>
-<input type="number" id="guestCount" name="guestCount" min="1" placeholder="e.g. 50">
-</div>
+      <div class="form-group">
+        <label for="eventType">Type of Event</label>
+        <select id="eventType" name="eventType">
+          <option value="">-- Select an Option --</option>
+          <option value="wedding">Wedding</option>
+          <option value="birthday">Birthday</option>
+          <option value="corporate">Corporate Event</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
 
-<div class="form-group full-width">
-<label for="details">Tell us about what you're looking for!</label>
-<textarea id="details" name="details" required placeholder="Please include flavors, themes, dietary restrictions, and any specific items you'd like (e.g., a 2-tier vanilla cake and 2 dozen macarons)."></textarea>
-</div>
+      <div class="form-group">
+        <label for="guestCount">Estimated Guest Count</label>
+        <input type="number" id="guestCount" name="guestCount" min="1" placeholder="e.g. 50">
+      </div>
 
-<div class="submit-btn-wrapper">
-<button type="submit" class="btn" style="padding: 1rem 2.5rem; font-size: 1.1rem;">Submit Inquiry</button>
-</div>
+      <div class="form-group">
+        <label for="budget">Approximate Budget</label>
+        <select id="budget" name="budget">
+          <option value="">-- Select a Range --</option>
+          <option value="under100">Under $100</option>
+          <option value="100-300">$100 – $300</option>
+          <option value="300-600">$300 – $600</option>
+          <option value="600plus">$600+</option>
+        </select>
+      </div>
 
-</form>
-</section>
+      <div class="form-group full-width">
+        <label for="details">Tell us what you're looking for</label>
+        <textarea id="details" name="details" required placeholder="Include flavors, themes, dietary restrictions, and specific items (e.g. a 2-tier vanilla cake and 2 dozen macarons)."></textarea>
+      </div>
+
+      <div class="submit-btn-wrapper">
+        <button type="submit" class="btn">Submit Inquiry</button>
+      </div>
+
+    </form>
+  </section>
 
 </main>
 
 <footer>
-<h2>J's Sweets</h2>
-<p>&copy; 2026 J's Sweets. All rights reserved.</p>
-<p>Follow us on Instagram and Facebook for daily sweet updates!</p>
+  <div class="footer-logo">
+    <img src="logo.PNG" alt="J's Sweets Logo">
+  </div>
+  <p>&copy; 2026 J's Sweets. All rights reserved.</p>
+  <p>Follow us on Instagram and Facebook for daily sweet updates!</p>
 </footer>
 
 </body>
