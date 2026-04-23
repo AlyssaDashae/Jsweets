@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 72" fill="none" role="img" aria-labelledby="logoTitle">
+  <title id="logoTitle">J's Sweets</title>
+  <defs>
+    <linearGradient id="gMint" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7DD4B0"/>
+      <stop offset="100%" stop-color="#4EBB90"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="18" width="48" height="36" rx="6" fill="url(#gMint)"/>
+  <rect x="14" y="8" width="28" height="14" rx="3" fill="#A8E6CE"/>
+  <ellipse cx="28" cy="6" rx="10" ry="5" fill="#F5C842"/>
+  <text x="64" y="46" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="700" fill="#111111">J's</text>
+  <text x="118" y="46" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="700" fill="#4EBB90">Sweets</text>
+  <text x="64" y="62" font-family="system-ui, sans-serif" font-size="9" letter-spacing="0.25em" fill="#888" text-transform="uppercase">Nassau</text>
+</svg>

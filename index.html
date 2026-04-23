@@ -1,1398 +1,1366 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>J's Sweets</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<title>J's Sweets — Custom Cakes & Treats</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Nunito:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
 :root {
-  /* Warm Bakery Palette */
-  --cream:        #fdf6ec;          /* warm page background */
-  --cream-dark:   #f5e9d0;          /* card / section background */
-  --brown-dark:   #3b2a1a;          /* headings, strong text */
-  --brown-mid:    #6b4226;          /* subheadings, nav links */
-  --brown-light:  #a0683a;          /* body copy accent */
-  --gold:         #c8893a;          /* primary CTA / accent */
-  --gold-hover:   #a06d28;          /* CTA hover */
-  --sage:         #7a8c6e;          /* secondary accent */
-  --sage-light:   #cdd9c4;          /* tag / chip bg */
-  --warm-white:   #fffdf9;          /* card fill */
-  --border:       #e8d9c2;          /* subtle borders */
-  --text:         #3b2a1a;
-  --text-muted:   #7a6248;
+--mint: #7DD4B0;
+--mint-light: #A8E6CE;
+--mint-pale: #E8F8F2;
+--mint-deep: #4EBB90;
+--black: #111111;
+--off-white: #FAFAF8;
+--white: #FFFFFF;
+--pink: #F472A8;
+--pink-soft: #FFD6E8;
+--gold: #F5C842;
+--charcoal: #2A2A2A;
+--gray: #888;
 }
 
-* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
-  margin: 0;
-  font-family: 'Lato', sans-serif;
-  font-weight: 400;
-  color: var(--text);
-  background-color: var(--cream);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23fdf6ec'/%3E%3Cg transform='translate(55,60)' opacity='0.18'%3E%3Cpath d='M-18,0 Q-20,20 -14,28 L14,28 Q20,20 18,0 Z' fill='%23c8893a'/%3E%3Cline x1='-8' y1='2' x2='-10' y2='26' stroke='%23a06d28' stroke-width='1.5'/%3E%3Cline x1='0' y1='1' x2='0' y2='28' stroke='%23a06d28' stroke-width='1.5'/%3E%3Cline x1='8' y1='2' x2='10' y2='26' stroke='%23a06d28' stroke-width='1.5'/%3E%3Cellipse cx='0' cy='-2' rx='16' ry='10' fill='%23c8893a'/%3E%3Cellipse cx='-8' cy='-8' rx='9' ry='7' fill='%23c8893a'/%3E%3Cellipse cx='8' cy='-9' rx='9' ry='7' fill='%23c8893a'/%3E%3Cellipse cx='0' cy='-15' rx='7' ry='6' fill='%23c8893a'/%3E%3Ccircle cx='0' cy='-20' r='4' fill='%23a06d28'/%3E%3C/g%3E%3Cg transform='translate(310,55)' opacity='0.18'%3E%3Crect x='-28' y='10' width='56' height='16' rx='3' fill='%23c8893a'/%3E%3Crect x='-22' y='-8' width='44' height='16' rx='3' fill='%23a06d28'/%3E%3Crect x='-16' y='-24' width='32' height='14' rx='3' fill='%23c8893a'/%3E%3Crect x='-10' y='-36' width='4' height='12' rx='1' fill='%237a8c6e'/%3E%3Crect x='6' y='-38' width='4' height='14' rx='1' fill='%23c8893a'/%3E%3C/g%3E%3Cg transform='translate(195,185)' opacity='0.18'%3E%3Cellipse cx='0' cy='14' rx='34' ry='8' fill='%23a06d28'/%3E%3Cellipse cx='0' cy='0' rx='30' ry='18' fill='%23c8893a'/%3E%3Cpath d='M-30,0 Q-20,-24 0,-26 Q20,-24 30,0 Z' fill='%23a06d28'/%3E%3Cline x1='-14' y1='-24' x2='-6' y2='0' stroke='%23fdf6ec' stroke-width='2' opacity='0.5'/%3E%3Cline x1='0' y1='-26' x2='0' y2='0' stroke='%23fdf6ec' stroke-width='2' opacity='0.5'/%3E%3Cline x1='14' y1='-24' x2='6' y2='0' stroke='%23fdf6ec' stroke-width='2' opacity='0.5'/%3E%3C/g%3E%3Cg transform='translate(65,300) rotate(-10)' opacity='0.18'%3E%3Cpath d='M-30,8 Q-20,-18 0,-16 Q20,-18 30,8 Q20,22 10,16 Q0,20 -10,16 Q-20,22 -30,8Z' fill='%23c8893a'/%3E%3Cpath d='M-18,6 Q-10,-12 0,-12 Q10,-12 18,6' fill='none' stroke='%23a06d28' stroke-width='2' stroke-linecap='round'/%3E%3C/g%3E%3Cg transform='translate(320,305)' opacity='0.18'%3E%3Ccircle cx='0' cy='0' r='28' fill='%23c8893a'/%3E%3Ccircle cx='0' cy='0' r='11' fill='%23fdf6ec'/%3E%3Cpath d='M-20,-18 Q-8,-30 8,-28 Q22,-24 24,-10 Q14,-16 6,-28 Q-4,-32 -16,-22 Z' fill='%23a06d28'/%3E%3C/g%3E%3Cg transform='translate(48,198)' opacity='0.18'%3E%3Cellipse cx='0' cy='-12' rx='18' ry='11' fill='%23c8893a'/%3E%3Crect x='-18' y='-4' width='36' height='7' fill='%23a06d28' opacity='0.6'/%3E%3Cellipse cx='0' cy='7' rx='18' ry='11' fill='%23c8893a'/%3E%3C/g%3E%3Cg transform='translate(348,190)' opacity='0.18'%3E%3Cpath d='M-14,4 Q-16,22 -10,28 L10,28 Q16,22 14,4 Z' fill='%23a06d28'/%3E%3Cellipse cx='0' cy='-4' rx='18' ry='12' fill='%23c8893a'/%3E%3Cellipse cx='-6' cy='-10' rx='10' ry='7' fill='%23c8893a'/%3E%3Cellipse cx='6' cy='-11' rx='10' ry='7' fill='%23c8893a'/%3E%3C/g%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 400px 400px;
+font-family: 'Nunito', sans-serif;
+background: var(--off-white);
+color: var(--charcoal);
+overflow-x: hidden;
+cursor: none;
 }
 
-h1, h2, h3, h4 {
-  font-family: 'Playfair Display', Georgia, serif;
-  margin-top: 0;
+/* Custom cursor */
+.cursor {
+width: 20px; height: 20px;
+border: 2px solid var(--mint-deep);
+border-radius: 50%;
+position: fixed;
+pointer-events: none;
+z-index: 99999;
+transform: translate(-50%, -50%);
+transition: transform 0.15s, width 0.2s, height 0.2s, background 0.2s;
+mix-blend-mode: multiply;
 }
 
-/* ── Navigation ── */
-header {
-  background-color: #fffdf9;
-  border-bottom: 2px solid var(--border);
-  box-shadow: 0 2px 10px rgba(59,42,26,0.07);
-  position: sticky;
-  top: 0;
-  z-index: 100;
+body:hover .cursor { background: rgba(77,187,144,0.2); }
+
+/* ── CONFETTI BG ── */
+.confetti-bg {
+position: fixed; inset: 0;
+pointer-events: none;
+z-index: 0;
+overflow: hidden;
 }
 
-.nav-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0.5rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.confetti-dot {
+position: absolute;
+border-radius: 50%;
+opacity: 0.045;
+animation: float-confetti linear infinite;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  text-decoration: none;
+@keyframes float-confetti {
+0% { transform: translateY(100vh) rotate(0deg); }
+100% { transform: translateY(-100px) rotate(360deg); }
 }
 
-.logo img {
-  height: 60px;
-  width: auto;
-  object-fit: contain;
-  filter: brightness(1.15);
+/* ── NAV ── */
+nav {
+position: fixed; top: 0; left: 0; right: 0;
+z-index: 1000;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 0.9rem 5vw;
+background: rgba(255,255,255,0.92);
+backdrop-filter: blur(16px);
+border-bottom: 2px solid var(--mint-light);
 }
 
-.logo-text {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--gold);
+.nav-brand {
+display: flex;
+align-items: center;
+flex-shrink: 0;
+text-decoration: none;
+}
+
+.nav-logo-img {
+height: 58px;
+width: auto;
+max-width: min(200px, 38vw);
+object-fit: contain;
+object-position: left center;
+display: block;
+filter: drop-shadow(0 2px 8px rgba(77,187,144,0.2));
 }
 
 .nav-links {
-  list-style: none;
-  display: flex;
-  gap: 2.2rem;
-  margin: 0;
-  padding: 0;
+display: flex;
+gap: 2.2rem;
+list-style: none;
+align-items: center;
 }
 
 .nav-links a {
-  text-decoration: none;
-  color: var(--brown-mid);
-  font-weight: 700;
-  font-size: 0.88rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  transition: color 0.25s;
+text-decoration: none;
+font-size: 0.78rem;
+font-weight: 600;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+color: var(--charcoal);
+transition: color 0.25s;
+position: relative;
 }
 
-.nav-links a:hover,
-.nav-links a.active {
-  color: var(--gold);
+.nav-links a::after {
+content: '';
+position: absolute;
+bottom: -4px; left: 0; right: 0;
+height: 2px;
+background: var(--mint-deep);
+transform: scaleX(0);
+transition: transform 0.3s;
 }
 
-/* ── Layout ── */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
+.nav-links a:hover { color: var(--mint-deep); }
+.nav-links a:hover::after { transform: scaleX(1); }
+
+.nav-order {
+background: var(--black) !important;
+color: var(--white) !important;
+padding: 0.6rem 1.6rem;
+border-radius: 30px;
+transition: background 0.3s !important;
 }
 
-section {
-  background-color: var(--warm-white);
-  margin: 1.5rem auto;
-  padding: 2.8rem 2.4rem;
-  border-radius: 14px;
-  box-shadow: 0 3px 18px rgba(59,42,26,0.06);
-  border: 1px solid var(--border);
-}
+.nav-order:hover { background: var(--mint-deep) !important; color: var(--white) !important; }
+.nav-order::after { display: none !important; }
 
-/* ── Buttons ── */
-.btn {
-  background-color: var(--gold);
-  color: #fff;
-  padding: 0.75rem 1.6rem;
-  border: none;
-  border-radius: 30px;
-  font-family: 'Lato', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-block;
-  transition: background-color 0.25s, transform 0.15s;
-}
-
-.btn:hover {
-  background-color: var(--gold-hover);
-  transform: translateY(-1px);
-}
-
-.btn-outline {
-  background: transparent;
-  border: 2px solid var(--gold);
-  color: var(--gold);
-}
-
-.btn-outline:hover {
-  background: var(--gold);
-  color: #fff;
-}
-
-/* ── Hero ── */
+/* ── HERO ── */
 .hero {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2.5rem;
-  background: linear-gradient(135deg, var(--cream-dark) 0%, var(--warm-white) 100%);
-  border-left: 5px solid var(--gold);
+min-height: 100vh;
+background: var(--black);
+position: relative;
+display: flex;
+align-items: center;
+overflow: hidden;
+padding-top: 80px;
 }
 
-.hero-text { flex: 1; }
-
-.hero-eyebrow {
-  display: inline-block;
-  background: var(--sage-light);
-  color: var(--sage);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 0.3rem 0.9rem;
-  border-radius: 20px;
-  margin-bottom: 1rem;
+/* Polka dot pattern on black */
+.hero::before {
+content: '';
+position: absolute; inset: 0;
+background-image: radial-gradient(circle, rgba(125,212,176,0.12) 1px, transparent 1px);
+background-size: 30px 30px;
 }
 
-.hero-text h1 {
-  font-size: 3rem;
-  color: var(--brown-dark);
-  margin-bottom: 1rem;
-  line-height: 1.15;
+/* Mint circle blob */
+.hero-blob {
+position: absolute;
+right: -5%;
+top: 50%;
+transform: translateY(-50%);
+width: 55vw;
+height: 85vh;
+background: radial-gradient(ellipse at 40% 50%, var(--mint) 0%, var(--mint-deep) 60%, #2A9A70 100%);
+border-radius: 60% 40% 50% 50% / 50% 60% 40% 50%;
+animation: blob-morph 8s ease-in-out infinite;
+z-index: 1;
 }
 
-.hero-text h1 em {
-  color: var(--gold);
-  font-style: italic;
+@keyframes blob-morph {
+0%, 100% { border-radius: 60% 40% 50% 50% / 50% 60% 40% 50%; }
+33% { border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%; }
+66% { border-radius: 40% 60% 60% 40% / 40% 50% 60% 50%; }
 }
 
-.hero-text p {
-  font-size: 1.05rem;
-  color: var(--text-muted);
-  margin-bottom: 1.8rem;
-  line-height: 1.7;
-  max-width: 480px;
+.hero-content {
+position: relative;
+z-index: 10;
+padding: 4rem 8vw;
+display: grid;
+grid-template-columns: 1.1fr 0.9fr;
+gap: 4rem;
+align-items: center;
+width: 100%;
 }
 
-.hero-badges {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1.8rem;
-  flex-wrap: wrap;
+.hero-left { color: var(--white); }
+
+.hero-pill {
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+background: rgba(125,212,176,0.2);
+border: 1px solid rgba(125,212,176,0.4);
+color: var(--mint-light);
+font-size: 0.68rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+padding: 0.4rem 1rem;
+border-radius: 30px;
+margin-bottom: 1.8rem;
+animation: fadeUp 0.7s ease forwards;
 }
 
-.badge {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--brown-mid);
-  background: var(--cream-dark);
-  border: 1px solid var(--border);
-  padding: 0.35rem 0.8rem;
-  border-radius: 20px;
+.hero-pill-dot {
+width: 6px; height: 6px;
+background: var(--mint-light);
+border-radius: 50%;
+animation: pulse 2s ease-in-out infinite;
 }
 
-.badge-icon { font-size: 0.9rem; }
-
-.hero-image {
-  flex: 1;
-  height: 360px;
-  background-image: url(Hero.jpeg);
-  background-size: cover;
-  background-position: center;
-  border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(59,42,26,0.2);
+@keyframes pulse {
+0%, 100% { transform: scale(1); opacity: 1; }
+50% { transform: scale(1.5); opacity: 0.5; }
 }
 
-/* ── Carousel / Featured ── */
-.carousel-section h2 {
-  text-align: center;
-  font-size: 2rem;
-  color: var(--brown-dark);
-  margin-bottom: 0.4rem;
+.hero-heading {
+font-family: 'Playfair Display', serif;
+font-size: clamp(3rem, 5.5vw, 5.5rem);
+font-weight: 700;
+line-height: 1.08;
+margin-bottom: 1.5rem;
+animation: fadeUp 0.7s 0.15s ease both;
 }
 
-.section-subtitle {
-  text-align: center;
-  color: var(--text-muted);
-  font-size: 0.95rem;
-  margin-bottom: 1.8rem;
+.hero-heading .script {
+font-family: 'Great Vibes', cursive;
+font-weight: 400;
+color: var(--mint-light);
+display: block;
+font-size: 1.2em;
+line-height: 1.1;
 }
 
-.carousel-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
+.hero-sub {
+font-size: 0.9rem;
+line-height: 1.9;
+color: rgba(255,255,255,0.65);
+max-width: 420px;
+margin-bottom: 2.5rem;
+letter-spacing: 0.03em;
+animation: fadeUp 0.7s 0.3s ease both;
 }
 
-.carousel-btn {
-  background-color: var(--brown-dark);
-  color: var(--cream);
-  border: none;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  font-size: 1.1rem;
-  cursor: pointer;
-  position: absolute;
-  z-index: 10;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  transition: background 0.2s;
+.hero-ctas {
+display: flex;
+gap: 1rem;
+flex-wrap: wrap;
+animation: fadeUp 0.7s 0.45s ease both;
 }
 
-.carousel-btn:hover { background: var(--gold); }
-
-#prevBtn { left: -18px; }
-#nextBtn { right: -18px; }
-
-.carousel-track {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  gap: 1.4rem;
-  padding: 0.8rem 0.2rem;
-  scroll-behavior: smooth;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  width: 100%;
+.btn-mint {
+background: var(--mint-deep);
+color: var(--white);
+border: none;
+padding: 0.95rem 2.2rem;
+border-radius: 50px;
+font-family: 'Nunito', sans-serif;
+font-size: 0.8rem;
+font-weight: 700;
+letter-spacing: 0.08em;
+cursor: pointer;
+transition: all 0.3s;
+box-shadow: 0 6px 24px rgba(77,187,144,0.4);
 }
 
-.carousel-track::-webkit-scrollbar { display: none; }
-
-.card {
-  flex: 0 0 250px;
-  scroll-snap-align: start;
-  background-color: var(--warm-white);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 3px 12px rgba(59,42,26,0.08);
-  border: 1px solid var(--border);
-  transition: transform 0.2s, box-shadow 0.2s;
+.btn-mint:hover {
+background: var(--mint-light);
+color: var(--black);
+transform: translateY(-3px);
+box-shadow: 0 10px 32px rgba(77,187,144,0.5);
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(59,42,26,0.14);
+.btn-outline-white {
+background: transparent;
+color: var(--white);
+border: 2px solid rgba(255,255,255,0.3);
+padding: 0.9rem 2rem;
+border-radius: 50px;
+font-family: 'Nunito', sans-serif;
+font-size: 0.8rem;
+font-weight: 700;
+letter-spacing: 0.08em;
+cursor: pointer;
+transition: all 0.3s;
 }
 
-.card-img {
-  height: 175px;
-  background-color: var(--cream-dark);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 3.8rem;
-  position: relative;
+.btn-outline-white:hover {
+border-color: var(--mint-light);
+color: var(--mint-light);
+transform: translateY(-3px);
 }
 
-.card-tag {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background: var(--gold);
-  color: #fff;
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 0.2rem 0.6rem;
-  border-radius: 10px;
+/* Logo in hero right */
+.hero-right {
+position: relative;
+z-index: 10;
+display: flex;
+align-items: center;
+justify-content: center;
 }
 
-.card-info {
-  padding: 1.1rem 1.2rem 1.3rem;
-  text-align: center;
+.hero-logo-showcase {
+position: relative;
+animation: float-hero 5s ease-in-out infinite;
 }
 
-.card-info h3 {
-  font-size: 1rem;
-  color: var(--brown-dark);
-  margin-bottom: 0.35rem;
+.hero-logo-frame {
+padding: 14px;
+border-radius: 50%;
+border: 1px solid rgba(168,230,206,0.45);
+background: linear-gradient(160deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.02) 100%);
+box-shadow:
+  0 0 0 1px rgba(0,0,0,0.25),
+  0 28px 70px rgba(0,0,0,0.45);
 }
 
-.card-info .price {
-  color: var(--gold);
-  font-weight: 700;
-  font-size: 1rem;
-  margin-bottom: 0.9rem;
+.hero-logo-img {
+width: auto;
+max-width: min(380px, 44vw);
+max-height: min(50vh, 400px);
+height: auto;
+object-fit: contain;
+display: block;
+margin: 0 auto;
+border-radius: 50%;
+filter: drop-shadow(0 12px 40px rgba(0,0,0,0.45));
 }
 
-.card-info .btn {
-  padding: 0.45rem 1.1rem;
-  font-size: 0.8rem;
+@keyframes float-hero {
+0%, 100% { transform: translateY(0) rotate(-0.5deg); }
+50% { transform: translateY(-14px) rotate(0.5deg); }
 }
 
-/* ── Testimonials ── */
-.testimonials {
-  background: var(--cream-dark);
-  border: 1px solid var(--border);
+/* Stats bar */
+.hero-stats {
+position: absolute;
+bottom: 2.5rem;
+left: 8vw;
+display: flex;
+gap: 3.5rem;
+z-index: 10;
+animation: fadeUp 0.7s 0.6s ease both;
 }
 
-.testimonials h2 {
-  text-align: center;
-  font-size: 2rem;
-  color: var(--brown-dark);
-  margin-bottom: 0.4rem;
+.stat-item { color: var(--white); }
+
+.stat-num {
+font-family: 'Playfair Display', serif;
+font-size: 2rem;
+font-weight: 700;
+color: var(--mint-light);
+line-height: 1;
+}
+
+.stat-label {
+font-size: 0.6rem;
+letter-spacing: 0.18em;
+text-transform: uppercase;
+opacity: 0.55;
+margin-top: 0.3rem;
+}
+
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(20px); }
+to { opacity: 1; transform: none; }
+}
+
+/* ── RIBBON ── */
+.ribbon {
+background: var(--mint-deep);
+color: var(--white);
+padding: 0.85rem 0;
+overflow: hidden;
+white-space: nowrap;
+}
+
+.ribbon-track {
+display: inline-flex;
+gap: 2.5rem;
+animation: ribbon-scroll 20s linear infinite;
+font-size: 0.7rem;
+font-weight: 700;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+}
+
+.ribbon-track .sep {
+color: rgba(255,255,255,0.45);
+font-weight: 400;
+letter-spacing: 0;
+padding: 0 0.15rem;
+}
+
+@keyframes ribbon-scroll {
+from { transform: translateX(0); }
+to { transform: translateX(-50%); }
+}
+
+/* ── MENU SECTION ── */
+.menu-section {
+padding: 7rem 6vw;
+background: var(--white);
+position: relative;
+z-index: 1;
+}
+
+.section-header {
+text-align: center;
+margin-bottom: 4.5rem;
+}
+
+.section-eyebrow {
+font-family: 'Great Vibes', cursive;
+font-size: 2rem;
+color: var(--mint-deep);
+display: block;
+margin-bottom: 0.3rem;
+}
+
+.section-title {
+font-family: 'Playfair Display', serif;
+font-size: clamp(2rem, 4vw, 3.2rem);
+font-weight: 700;
+color: var(--black);
+line-height: 1.15;
+}
+
+.section-title span { color: var(--mint-deep); }
+
+.section-sub {
+font-size: 0.82rem;
+color: var(--gray);
+margin-top: 0.8rem;
+letter-spacing: 0.05em;
+line-height: 1.7;
+}
+
+/* Card grid */
+.cards-grid {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 1.4rem;
+}
+
+.cake-card {
+background: var(--off-white);
+border-radius: 20px;
+overflow: hidden;
+position: relative;
+cursor: pointer;
+transition: transform 0.35s, box-shadow 0.35s;
+border: 2px solid transparent;
+}
+
+.cake-card:hover {
+transform: translateY(-8px);
+box-shadow: 0 20px 50px rgba(77,187,144,0.2);
+border-color: var(--mint-light);
+}
+
+.cake-card-img {
+width: 100%;
+aspect-ratio: 1/1;
+position: relative;
+display: block;
+overflow: hidden;
+background: var(--mint-pale);
+}
+
+.cake-card-photo {
+position: absolute;
+inset: 0;
+width: 100%;
+height: 100%;
+object-fit: cover;
+object-position: center;
+transition: transform 0.55s ease;
+}
+
+.cake-card:hover .cake-card-photo {
+transform: scale(1.06);
+}
+
+.cake-card-badge {
+position: absolute;
+top: 12px; right: 12px;
+background: var(--pink);
+color: var(--white);
+font-size: 0.55rem;
+font-weight: 700;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+padding: 0.3rem 0.7rem;
+border-radius: 20px;
+z-index: 2;
+}
+
+.cake-card-body {
+padding: 0.9rem 1rem 1rem;
+}
+
+.cake-name {
+font-family: 'Playfair Display', serif;
+font-size: 0.95rem;
+font-weight: 700;
+color: var(--black);
+margin-bottom: 0.3rem;
+}
+
+.cake-desc {
+font-size: 0.65rem;
+color: var(--gray);
+line-height: 1.5;
+margin-bottom: 0.8rem;
+}
+
+.cake-footer {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.cake-price {
+font-family: 'Playfair Display', serif;
+font-size: 1rem;
+font-weight: 700;
+color: var(--mint-deep);
+}
+
+.cake-price small {
+font-family: 'Nunito', sans-serif;
+font-size: 0.62rem;
+font-weight: 400;
+color: var(--gray);
+}
+
+.add-btn {
+width: 34px; height: 34px;
+background: var(--black);
+color: var(--white);
+border: none;
+border-radius: 50%;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: background 0.25s, transform 0.2s;
+}
+
+.add-btn svg {
+width: 14px;
+height: 14px;
+stroke: currentColor;
+fill: none;
+stroke-width: 2.2;
+stroke-linecap: round;
+}
+
+.add-btn:hover { background: var(--mint-deep); transform: scale(1.12); }
+
+/* ── SPECIALTY SECTION ── */
+.specialty-section {
+padding: 7rem 6vw;
+background: var(--mint-pale);
+position: relative;
+overflow: hidden;
+}
+
+.specialty-section::before {
+content: '';
+position: absolute;
+top: -80px; right: -80px;
+width: 300px; height: 300px;
+background: var(--mint-light);
+border-radius: 50%;
+opacity: 0.4;
+}
+
+.specialty-layout {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 6rem;
+align-items: center;
+}
+
+.specialty-visual {
+position: relative;
+}
+
+.specialty-photo-wrap {
+margin: 0;
+border-radius: 20px;
+overflow: hidden;
+box-shadow: 0 24px 60px rgba(0,0,0,0.12), 0 0 0 1px rgba(77,187,144,0.15);
+max-width: 480px;
+margin-left: auto;
+margin-right: auto;
+}
+
+.specialty-photo {
+display: block;
+width: 100%;
+height: auto;
+aspect-ratio: 4 / 5;
+object-fit: cover;
+object-position: center;
+}
+
+.specialty-text .section-eyebrow { text-align: left; }
+.specialty-text .section-title { text-align: left; }
+
+.specialty-list {
+margin-top: 2rem;
+display: flex;
+flex-direction: column;
+gap: 1.2rem;
+}
+
+.specialty-item {
+display: flex;
+gap: 1rem;
+align-items: flex-start;
+}
+
+.specialty-icon {
+width: 44px; height: 44px;
+background: var(--white);
+border-radius: 12px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+color: var(--mint-deep);
+}
+
+.specialty-icon svg {
+width: 22px;
+height: 22px;
+stroke: currentColor;
+fill: none;
+stroke-width: 1.65;
+stroke-linecap: round;
+stroke-linejoin: round;
+}
+
+.specialty-item-title {
+font-family: 'Playfair Display', serif;
+font-size: 0.95rem;
+font-weight: 700;
+color: var(--black);
+margin-bottom: 0.2rem;
+}
+
+.specialty-item-desc {
+font-size: 0.72rem;
+color: var(--gray);
+line-height: 1.6;
+}
+
+/* ── HOW IT WORKS ── */
+.process-section {
+padding: 7rem 6vw;
+background: var(--black);
+color: var(--white);
+text-align: center;
+}
+
+.process-section .section-eyebrow { color: var(--mint-light); }
+.process-section .section-title { color: var(--white); }
+.process-section .section-title span { color: var(--mint-light); }
+.process-section .section-sub { color: rgba(255,255,255,0.5); }
+
+.process-steps {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 2rem;
+margin-top: 4rem;
+position: relative;
+}
+
+.process-steps::before {
+content: '';
+position: absolute;
+top: 36px; left: 15%; right: 15%;
+height: 2px;
+background: linear-gradient(to right, var(--mint-deep), var(--mint-light));
+z-index: 0;
+}
+
+.step {
+position: relative;
+z-index: 1;
+}
+
+.step-num {
+width: 72px; height: 72px;
+background: var(--mint-deep);
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-family: 'Playfair Display', serif;
+font-size: 1.5rem;
+font-weight: 700;
+color: var(--white);
+margin: 0 auto 1.5rem;
+box-shadow: 0 0 0 8px rgba(77,187,144,0.15);
+}
+
+.step-title {
+font-family: 'Playfair Display', serif;
+font-size: 1rem;
+font-weight: 700;
+margin-bottom: 0.6rem;
+}
+
+.step-desc {
+font-size: 0.72rem;
+color: rgba(255,255,255,0.5);
+line-height: 1.7;
+}
+
+/* ── TESTIMONIALS ── */
+.reviews-section {
+padding: 7rem 6vw;
+background: var(--white);
 }
 
 .reviews-grid {
-  display: flex;
-  gap: 1.5rem;
-  justify-content: center;
-  margin-top: 1.8rem;
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 2rem;
+margin-top: 4rem;
 }
 
 .review-card {
-  background: var(--warm-white);
-  padding: 1.6rem;
-  border-radius: 12px;
-  box-shadow: 0 3px 12px rgba(59,42,26,0.06);
-  border: 1px solid var(--border);
-  flex: 1;
+background: var(--off-white);
+border-radius: 20px;
+padding: 2rem;
+position: relative;
+border: 2px solid transparent;
+transition: border-color 0.3s;
 }
 
-.review-header {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  margin-bottom: 1rem;
+.review-card:hover { border-color: var(--mint-light); }
+.review-card.featured { background: var(--black); color: var(--white); }
+
+.review-stars {
+display: flex;
+gap: 4px;
+align-items: center;
+color: #C9A227;
+margin-bottom: 1rem;
 }
 
-.review-avatar {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: var(--gold);
-  color: #fff;
-  font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.reviewer-name {
-  font-weight: 700;
-  color: var(--brown-dark);
-  font-size: 0.9rem;
-}
-
-.stars {
-  color: var(--gold);
-  font-size: 0.85rem;
+.review-stars svg {
+width: 15px;
+height: 15px;
+flex-shrink: 0;
+fill: currentColor;
 }
 
 .review-text {
-  font-style: italic;
-  color: var(--text-muted);
-  line-height: 1.65;
-  font-size: 0.93rem;
+font-size: 0.82rem;
+line-height: 1.85;
+color: var(--charcoal);
+font-style: italic;
+margin-bottom: 1.5rem;
 }
 
-/* ── Split (About + Location) ── */
-.split-section {
-  display: flex;
-  gap: 2rem;
+.review-card.featured .review-text { color: rgba(255,255,255,0.75); }
+
+.reviewer {
+display: flex;
+align-items: center;
+gap: 0.8rem;
 }
 
-.split-box {
-  flex: 1;
-  padding: 0.5rem 1rem;
+.reviewer-avatar {
+width: 40px; height: 40px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.2rem;
+font-weight: 700;
+color: var(--white);
 }
 
-.split-box h2 {
-  font-size: 1.6rem;
-  color: var(--brown-dark);
-  margin-bottom: 1rem;
-  padding-bottom: 0.6rem;
-  border-bottom: 2px solid var(--gold);
-  display: inline-block;
+.reviewer-name {
+font-size: 0.8rem;
+font-weight: 700;
+color: var(--black);
 }
 
-.split-box p {
-  color: var(--text-muted);
-  line-height: 1.7;
-  font-size: 0.95rem;
+.review-card.featured .reviewer-name { color: var(--white); }
+
+.reviewer-desc {
+font-size: 0.65rem;
+color: var(--gray);
+margin-top: 0.1rem;
 }
 
-.split-box strong { color: var(--brown-dark); }
+.review-card.featured .reviewer-desc { color: rgba(255,255,255,0.45); }
 
-.hours-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
+/* ── CTA BANNER ── */
+.cta-banner {
+background: linear-gradient(135deg, var(--mint-deep) 0%, #2A9A70 100%);
+padding: 5rem 6vw;
+text-align: center;
+position: relative;
+overflow: hidden;
 }
 
-.hours-table td {
-  padding: 0.35rem 0;
-  color: var(--text-muted);
+.cta-banner::before,
+.cta-banner::after {
+content: '';
+position: absolute;
+pointer-events: none;
+border-radius: 50%;
+border: 1px solid rgba(255,255,255,0.14);
+opacity: 1;
 }
 
-.hours-table td:first-child {
-  font-weight: 700;
-  color: var(--brown-mid);
-  width: 55%;
+.cta-banner::before {
+width: min(320px, 45vw);
+height: min(320px, 45vw);
+left: max(-120px, -8vw);
+top: 50%;
+transform: translateY(-50%);
 }
 
-/* ── Newsletter ── */
-.newsletter {
-  text-align: center;
-  background: var(--cream-dark);
-  border: 1px solid var(--border);
+.cta-banner::after {
+width: min(240px, 38vw);
+height: min(240px, 38vw);
+right: max(-100px, -10vw);
+top: 50%;
+transform: translateY(-50%);
 }
 
-.newsletter h2 {
-  font-size: 2rem;
-  color: var(--brown-dark);
-  margin-bottom: 0.5rem;
+.cta-banner h2 {
+font-family: 'Playfair Display', serif;
+font-size: clamp(2rem, 4vw, 3.5rem);
+font-weight: 700;
+color: var(--white);
+margin-bottom: 0.8rem;
 }
 
-.newsletter p {
-  color: var(--text-muted);
-  margin-bottom: 1.8rem;
-  font-size: 0.95rem;
+.cta-banner p {
+font-size: 0.85rem;
+color: rgba(255,255,255,0.8);
+margin-bottom: 2.5rem;
+letter-spacing: 0.05em;
 }
 
-.newsletter-form {
-  display: flex;
-  justify-content: center;
-  gap: 0.6rem;
-  max-width: 480px;
-  margin: 0 auto;
+.btn-white {
+background: var(--white);
+color: var(--mint-deep);
+border: none;
+padding: 1rem 2.8rem;
+border-radius: 50px;
+font-family: 'Nunito', sans-serif;
+font-size: 0.85rem;
+font-weight: 700;
+letter-spacing: 0.08em;
+cursor: pointer;
+transition: all 0.3s;
+box-shadow: 0 8px 30px rgba(0,0,0,0.15);
 }
 
-.newsletter-form input {
-  flex: 1;
-  padding: 0.75rem 1.2rem;
-  border: 1px solid var(--border);
-  border-radius: 30px;
-  font-size: 0.95rem;
-  outline: none;
-  background: var(--warm-white);
-  color: var(--text);
-  font-family: 'Lato', sans-serif;
-}
+.btn-white:hover { transform: translateY(-4px); box-shadow: 0 14px 40px rgba(0,0,0,0.2); }
 
-.newsletter-form input::placeholder { color: var(--text-muted); }
-
-.newsletter-form input:focus { border-color: var(--gold); }
-
-/* ── Footer ── */
+/* ── FOOTER ── */
 footer {
-  background-color: var(--cream-dark);
-  color: var(--text-muted);
-  text-align: center;
-  padding: 2rem;
-  margin-top: 2rem;
-  border-top: 2px solid var(--border);
+background: var(--black);
+color: var(--white);
+padding: 4rem 6vw 2rem;
+}
+
+.footer-grid {
+display: grid;
+grid-template-columns: 1.4fr 1fr 1fr 1fr;
+gap: 3rem;
+padding-bottom: 3rem;
+border-bottom: 1px solid rgba(255,255,255,0.08);
+margin-bottom: 2rem;
 }
 
 .footer-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
+height: 72px;
+width: auto;
+max-width: 220px;
+object-fit: contain;
+object-position: left center;
+display: block;
+margin-bottom: 1rem;
+filter: drop-shadow(0 4px 20px rgba(0,0,0,0.35));
 }
 
-.footer-logo img {
-  height: 65px;
-  width: auto;
-  object-fit: contain;
+.footer-about {
+font-size: 0.74rem;
+color: rgba(255,255,255,0.5);
+line-height: 1.8;
+margin-bottom: 1.2rem;
 }
 
-.footer-logo-text {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--gold);
+.footer-social {
+display: flex;
+align-items: center;
+gap: 0.7rem;
 }
 
-footer p {
-  margin: 0.4rem 0;
-  font-size: 0.85rem;
-  color: var(--text-muted);
+.social-btn {
+width: 36px; height: 36px;
+border-radius: 50%;
+background: rgba(255,255,255,0.08);
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+transition: background 0.25s, color 0.25s;
+color: rgba(255,255,255,0.75);
+text-decoration: none;
 }
 
-/* ── Mobile ── */
-@media (max-width: 768px) {
-  .nav-container {
-    flex-direction: column;
-    gap: 0.8rem;
-    padding: 1rem;
-  }
-
-  .nav-links {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.8rem;
-  }
-
-  .hero {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .hero-text p { max-width: 100%; }
-
-  .hero-badges { justify-content: center; }
-
-  .hero-image { height: 240px; width: 100%; }
-
-  .split-section, .reviews-grid {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .newsletter-form { flex-direction: column; }
-
-  .container { padding: 0 1rem; }
-
-  section { padding: 1.6rem 1.2rem; }
+.social-btn svg {
+width: 17px;
+height: 17px;
+fill: currentColor;
 }
 
-/* ── CART STYLES ── */
-/* ── Cart Icon in Nav ── */
-.cart-btn {
-  position: relative;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.4rem;
-  display: flex;
-  align-items: center;
-  color: var(--brown-mid);
-  transition: color 0.2s;
+.social-btn:hover {
+background: var(--mint-deep);
+color: var(--white);
 }
 
-.cart-btn:hover { color: var(--gold); }
-
-.cart-btn svg { width: 26px; height: 26px; display: block; flex-shrink: 0; }
-
-.cart-count {
-  position: absolute;
-  top: -4px;
-  right: -4px;
-  background: var(--gold);
-  color: #fff;
-  font-family: 'Lato', sans-serif;
-  font-size: 0.65rem;
-  font-weight: 700;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  display: none;
+.footer-col-title {
+font-size: 0.65rem;
+letter-spacing: 0.22em;
+text-transform: uppercase;
+color: var(--mint-light);
+margin-bottom: 1.4rem;
+font-weight: 700;
 }
 
-/* ── Overlay ── */
-.cart-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(59,42,26,0.35);
-  z-index: 500;
-  backdrop-filter: blur(2px);
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+
+.footer-links a {
+font-size: 0.76rem;
+color: rgba(255,255,255,0.5);
+text-decoration: none;
+transition: color 0.2s;
+letter-spacing: 0.04em;
 }
 
-.cart-overlay.open { display: block; }
+.footer-links a:hover { color: var(--mint-light); }
 
-/* ── Sidebar ── */
-.cart-sidebar {
-  position: fixed;
-  top: 0;
-  right: -420px;
-  width: 420px;
-  max-width: 100vw;
-  height: 100%;
-  background: #fffdf9;
-  z-index: 600;
-  display: flex;
-  flex-direction: column;
-  transition: right 0.3s ease;
-  box-shadow: -4px 0 30px rgba(59,42,26,0.15);
+.footer-bottom {
+display: flex;
+justify-content: space-between;
+align-items: center;
+font-size: 0.62rem;
+letter-spacing: 0.12em;
+color: rgba(255,255,255,0.3);
 }
 
-.cart-sidebar.open { right: 0; }
-
-/* ── Sidebar Header ── */
-.cart-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.4rem 1.6rem;
-  border-bottom: 2px solid #e8d9c2;
-  background: #f5e9d0;
-}
-
-.cart-header h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.3rem;
-  color: #3b2a1a;
-  margin: 0;
-}
-
-.cart-close {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #6b4226;
-  padding: 0.3rem;
-  border-radius: 6px;
-  transition: background 0.2s;
-  display: flex;
-  align-items: center;
-}
-
-.cart-close:hover { background: #e8d9c2; }
-.cart-close svg { width: 22px; height: 22px; }
-
-/* ── Step tabs ── */
-.cart-steps {
-  display: flex;
-  border-bottom: 2px solid #e8d9c2;
-}
-
-.cart-step-tab {
-  flex: 1;
-  padding: 0.7rem;
-  text-align: center;
-  font-family: 'Lato', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #7a6248;
-  border-bottom: 3px solid transparent;
-  transition: color 0.2s;
-}
-
-.cart-step-tab.active {
-  color: #c8893a;
-  border-bottom-color: #c8893a;
-}
-
-/* ── Cart Body ── */
-.cart-body {
-  flex: 1;
-  overflow-y: auto;
-  padding: 1.2rem 1.6rem;
-}
-
-/* ── Empty state ── */
-.cart-empty {
-  text-align: center;
-  padding: 3rem 1rem;
-  color: #7a6248;
-}
-
-.cart-empty p { font-family: 'Lato', sans-serif; font-size: 0.95rem; }
-
-/* ── Cart Items ── */
-.cart-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.9rem 0;
-  border-bottom: 1px solid #e8d9c2;
-}
-
-.cart-item-emoji {
-  font-size: 2rem;
-  width: 48px;
-  height: 48px;
-  background: #f5e9d0;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.cart-item-info { flex: 1; }
-
-.cart-item-name {
-  font-family: 'Lato', sans-serif;
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: #3b2a1a;
-  margin-bottom: 0.2rem;
-}
-
-.cart-item-variant {
-  font-family: 'Lato', sans-serif;
-  font-size: 0.78rem;
-  color: #7a6248;
-}
-
-.cart-item-controls {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-shrink: 0;
-}
-
-.qty-btn {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  border: 1.5px solid #e8d9c2;
-  background: #fff;
-  color: #6b4226;
-  font-size: 1rem;
-  font-weight: 700;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.15s, border-color 0.15s;
-  line-height: 1;
-}
-
-.qty-btn:hover { background: #f5e9d0; border-color: #c8893a; }
-
-.qty-num {
-  font-family: 'Lato', sans-serif;
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: #3b2a1a;
-  min-width: 18px;
-  text-align: center;
-}
-
-.cart-item-price {
-  font-family: 'Lato', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #c8893a;
-  min-width: 52px;
-  text-align: right;
-  flex-shrink: 0;
-}
-
-.cart-item-remove {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #c8b8a2;
-  padding: 0.2rem;
-  transition: color 0.15s;
-  display: flex;
-}
-
-.cart-item-remove:hover { color: #a06d28; }
-.cart-item-remove svg { width: 16px; height: 16px; }
-
-/* ── Cart Footer ── */
-.cart-footer {
-  padding: 1.2rem 1.6rem;
-  border-top: 2px solid #e8d9c2;
-  background: #f5e9d0;
-}
-
-.cart-totals { margin-bottom: 1rem; }
-
-.cart-total-row {
-  display: flex;
-  justify-content: space-between;
-  font-family: 'Lato', sans-serif;
-  font-size: 0.88rem;
-  color: #7a6248;
-  margin-bottom: 0.4rem;
-}
-
-.cart-total-row.grand {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #3b2a1a;
-  padding-top: 0.5rem;
-  border-top: 1px solid #e8d9c2;
-  margin-top: 0.5rem;
-}
-
-.cart-checkout-btn {
-  width: 100%;
-  background: #c8893a;
-  color: #fff;
-  border: none;
-  border-radius: 30px;
-  padding: 0.85rem;
-  font-family: 'Lato', sans-serif;
-  font-size: 0.92rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.15s;
-}
-
-.cart-checkout-btn:hover { background: #a06d28; transform: translateY(-1px); }
-
-/* ── Checkout Step ── */
-.checkout-body { display: none; }
-.checkout-body.active { display: block; }
-.cart-items-body { display: block; }
-.cart-items-body.hidden { display: none; }
-
-.checkout-section-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1rem;
-  color: #3b2a1a;
-  margin: 1.2rem 0 0.8rem;
-  padding-bottom: 0.4rem;
-  border-bottom: 1px solid #e8d9c2;
-}
-
-.checkout-field {
-  margin-bottom: 1rem;
-}
-
-.checkout-field label {
-  display: block;
-  font-family: 'Lato', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #6b4226;
-  margin-bottom: 0.35rem;
-}
-
-.checkout-field input,
-.checkout-field select,
-.checkout-field textarea {
-  width: 100%;
-  padding: 0.65rem 0.9rem;
-  border: 1.5px solid #e8d9c2;
-  border-radius: 10px;
-  font-family: 'Lato', sans-serif;
-  font-size: 0.88rem;
-  color: #3b2a1a;
-  background: #fff;
-  transition: border-color 0.2s;
-  box-sizing: border-box;
-}
-
-.checkout-field input:focus,
-.checkout-field select:focus,
-.checkout-field textarea:focus {
-  outline: none;
-  border-color: #c8893a;
-  box-shadow: 0 0 0 3px rgba(200,137,58,0.1);
-}
-
-.checkout-field textarea { min-height: 70px; resize: vertical; }
-
-.checkout-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.8rem;
-}
-
-/* ── Order Preview ── */
-.order-preview {
-  background: #f5e9d0;
-  border-radius: 10px;
-  padding: 1rem;
-  margin-top: 1rem;
-}
-
-.order-preview-title {
-  font-family: 'Lato', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #6b4226;
-  margin-bottom: 0.7rem;
-}
-
-.order-preview-item {
-  display: flex;
-  justify-content: space-between;
-  font-family: 'Lato', sans-serif;
-  font-size: 0.83rem;
-  color: #3b2a1a;
-  padding: 0.3rem 0;
-  border-bottom: 1px solid #e8d9c2;
-}
-
-.order-preview-item:last-child { border-bottom: none; }
-.order-preview-item span:last-child { font-weight: 700; color: #c8893a; }
-
-.order-preview-total {
-  display: flex;
-  justify-content: space-between;
-  font-family: 'Lato', sans-serif;
-  font-size: 0.92rem;
-  font-weight: 700;
-  color: #3b2a1a;
-  padding-top: 0.7rem;
-  margin-top: 0.4rem;
-  border-top: 2px solid #e8d9c2;
-}
-
-/* ── Place Order btn ── */
-.place-order-btn {
-  width: 100%;
-  background: #c8893a;
-  color: #fff;
-  border: none;
-  border-radius: 30px;
-  padding: 0.85rem;
-  font-family: 'Lato', sans-serif;
-  font-size: 0.92rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background 0.2s;
-  margin-top: 1rem;
-}
-
-.place-order-btn:hover { background: #a06d28; }
-.place-order-btn:disabled { background: #c8b8a2; cursor: not-allowed; }
-
-.back-to-cart {
-  background: none;
-  border: none;
-  color: #6b4226;
-  font-family: 'Lato', sans-serif;
-  font-size: 0.82rem;
-  font-weight: 700;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  margin-bottom: 0.5rem;
-  padding: 0;
-  text-decoration: underline;
-}
-
-/* ── Success message ── */
-.order-success {
-  text-align: center;
-  padding: 2rem 1rem;
-  display: none;
-}
-
-.order-success.show { display: block; }
-
-.order-success-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.order-success h3 {
-  font-family: 'Playfair Display', serif;
-  color: #3b2a1a;
-  margin-bottom: 0.5rem;
-}
-
-.order-success p {
-  font-family: 'Lato', sans-serif;
-  font-size: 0.88rem;
-  color: #7a6248;
-  line-height: 1.6;
-}
-
-@media (max-width: 480px) {
-  .cart-sidebar { width: 100vw; }
-  .checkout-row { grid-template-columns: 1fr; }
-}
-
-
-
-.cart-btn svg {
-  width: 24px !important;
-  height: 24px !important;
-}
-
-.cart-empty svg {
-  width: 56px !important;
-  height: 56px !important;
-  margin: 0 auto 1rem;
-  display: block;
-}
-
+.footer-bottom a { color: var(--mint-light); text-decoration: none; }
 </style>
+
 </head>
 <body>
 
-<!-- ── Cart Overlay & Sidebar ── -->
-<!-- Paste this block right after the opening <body> tag on every page -->
+<!-- Cursor -->
 
-<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cursor" id="cursor"></div>
 
-<div class="cart-sidebar" id="cartSidebar">
+<!-- Confetti bg -->
 
-  <!-- Header -->
-  <div class="cart-header">
-    <h2>🛒 Your Order</h2>
-    <button class="cart-close" onclick="closeCart()" style="font-size:1.4rem;font-weight:700;line-height:1;">✕</button>
-  </div>
+<div class="confetti-bg" id="confettiBg"></div>
 
-  <!-- Step tabs -->
-  <div class="cart-steps">
-    <div class="cart-step-tab active" id="tabCart" onclick="showCartStep()">Cart</div>
-    <div class="cart-step-tab" id="tabCheckout">Checkout</div>
-  </div>
+<!-- ── NAV ── -->
 
-  <!-- ── Step 1: Cart Items ── -->
-  <div id="cartItemsSection" class="cart-body cart-items-body">
-    <div class="cart-empty" id="cartEmpty">
-      <div style="font-size:3rem;margin-bottom:0.8rem;">🛍️</div>
-      <p>Your cart is empty.<br>Add some treats from the menu!</p>
-    </div>
-    <div id="cartItemsBody"></div>
-  </div>
+<nav>
+<a href="index.html" class="nav-brand">
+<img src="logo.png" alt="J's Sweets" width="180" height="58" class="nav-logo-img" decoding="async" fetchpriority="high">
+</a>
+<ul class="nav-links">
+<li><a href="#">Menu</a></li>
+<li><a href="#">Custom Cakes</a></li>
+<li><a href="#">Gallery</a></li>
+<li><a href="#">About</a></li>
+<li><a href="#" class="nav-order">Order Now</a></li>
+</ul>
+</nav>
 
-  <!-- ── Step 2: Checkout ── -->
-  <div id="checkoutSection" class="cart-body checkout-body">
-    <button class="back-to-cart" onclick="showCartStep()">← Back to cart</button>
+<!-- ── HERO ── -->
 
-    <div class="checkout-section-title">Your Details</div>
+<section class="hero">
+<div class="hero-blob"></div>
 
-    <div class="checkout-field">
-      <label>Full Name *</label>
-      <input type="text" id="coName" placeholder="Jane Doe">
-    </div>
+<div class="hero-content">
+<div class="hero-left">
+<div class="hero-pill">
+<div class="hero-pill-dot"></div>
+Now Taking Custom Orders
+</div>
+<h1 class="hero-heading">
+Every Bite is<br>
+<span class="script">Simply Sweet</span>
+</h1>
+<p class="hero-sub">
+Handcrafted custom cakes, cupcakes, and confections made with love for your most special moments. No occasion too big or too small.
+</p>
+<div class="hero-ctas">
+<button class="btn-mint" type="button">Order a Custom Cake</button>
+<button class="btn-outline-white">View Menu</button>
+</div>
+</div>
 
-    <div class="checkout-row">
-      <div class="checkout-field">
-        <label>Phone *</label>
-        <input type="tel" id="coPhone" placeholder="(242) 555-0000">
-      </div>
-      <div class="checkout-field">
-        <label>Email *</label>
-        <input type="email" id="coEmail" placeholder="jane@email.com">
-      </div>
-    </div>
-
-    <div class="checkout-field">
-      <label>Pickup or Delivery *</label>
-      <select id="coDelivery" onchange="toggleAddress()">
-        <option value="">-- Select --</option>
-        <option value="Pickup">Pickup</option>
-        <option value="Delivery">Delivery</option>
-      </select>
-    </div>
-
-    <div class="checkout-field" id="addressField" style="display:none;">
-      <label>Delivery Address *</label>
-      <input type="text" id="coAddress" placeholder="123 Your Street, Nassau">
-    </div>
-
-    <div class="checkout-field">
-      <label>Special Notes</label>
-      <textarea id="coNotes" placeholder="Allergies, special requests..."></textarea>
-    </div>
-
-    <div class="checkout-section-title">Order Summary</div>
-    <div class="order-preview">
-      <div class="order-preview-title">Items</div>
-      <div id="orderPreviewItems"></div>
-      <div class="order-preview-total">
-        <span>Total</span>
-        <span id="orderPreviewTotal">$0.00</span>
-      </div>
-    </div>
-
-    <button class="place-order-btn" id="placeOrderBtn" onclick="placeOrder()">Place Order</button>
-  </div>
-
-  <!-- ── Step 3: Success ── -->
-  <div id="orderSuccessSection" class="cart-body order-success">
-    <div class="order-success-icon">🎉</div>
-    <h3>Order Placed!</h3>
-    <p>Thank you! Your order has been sent to J's Sweets.<br>Check your email for a confirmation.</p>
-    <button class="cart-checkout-btn" style="margin-top:1.5rem;" onclick="closeCart()">Close</button>
-  </div>
-
-  <!-- ── Cart Footer (step 1 only) ── -->
-  <div class="cart-footer" id="cartFooter" style="display:none;">
-    <div class="cart-totals">
-      <div class="cart-total-row">
-        <span>Subtotal</span>
-        <span id="cartSubtotal">$0.00</span>
-      </div>
-      <div class="cart-total-row grand">
-        <span>Total</span>
-        <span id="cartGrand">$0.00</span>
-      </div>
-    </div>
-    <button class="cart-checkout-btn" onclick="showCheckoutStep()">Proceed to Checkout →</button>
-  </div>
+<div class="hero-right">
+<div class="hero-logo-showcase">
+<div class="hero-logo-frame">
+<img src="logo.png" alt="J's Sweets logo" width="420" height="320" class="hero-logo-img" decoding="async">
+</div>
+</div>
+</div>
 
 </div>
 
+<div class="hero-stats">
+<div class="stat-item">
+<div class="stat-num">500+</div>
+<div class="stat-label">Cakes Made</div>
+</div>
+<div class="stat-item">
+<div class="stat-num">100%</div>
+<div class="stat-label">Custom Orders</div>
+</div>
+<div class="stat-item">
+<div class="stat-num">5.0</div>
+<div class="stat-label">Avg. Rating</div>
+</div>
+</div>
+</section>
 
-<header>
-  <div class="nav-container">
-    <a href="index.html" class="logo">
-      <img src="logo.PNG" alt="J's Sweets Logo">
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="menu.html">Menu</a></li>
-      <li><a href="custom-orders.html">Custom Orders</a></li>
-      <li><a href="#location">Visit Us</a></li>
-    </ul>
-      <button class="cart-btn" onclick="openCart()" aria-label="Open cart">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
-          <line x1="3" y1="6" x2="21" y2="6"/>
-          <path d="M16 10a4 4 0 01-8 0"/>
-        </svg>
-        <span class="cart-count" id="cartCount">0</span>
-      </button>
-  </div>
-</header>
+<!-- ── RIBBON ── -->
 
-<main class="container">
+<div class="ribbon">
+<div class="ribbon-track">
+<span>Custom Cakes</span><span class="sep" aria-hidden="true">·</span>
+<span>Cupcakes</span><span class="sep" aria-hidden="true">·</span>
+<span>Cookies</span><span class="sep" aria-hidden="true">·</span>
+<span>Birthday Cakes</span><span class="sep" aria-hidden="true">·</span>
+<span>Wedding Cakes</span><span class="sep" aria-hidden="true">·</span>
+<span>Dessert Tables</span><span class="sep" aria-hidden="true">·</span>
+<span>Made to Order</span><span class="sep" aria-hidden="true">·</span>
+<span>Custom Cakes</span><span class="sep" aria-hidden="true">·</span>
+<span>Cupcakes</span><span class="sep" aria-hidden="true">·</span>
+<span>Cookies</span><span class="sep" aria-hidden="true">·</span>
+<span>Birthday Cakes</span><span class="sep" aria-hidden="true">·</span>
+<span>Wedding Cakes</span><span class="sep" aria-hidden="true">·</span>
+<span>Dessert Tables</span><span class="sep" aria-hidden="true">·</span>
+<span>Made to Order</span><span class="sep" aria-hidden="true">·</span>
+</div>
+</div>
 
-  <!-- Hero -->
-  <section id="home" class="hero">
-    <div class="hero-text">
-      <span class="hero-eyebrow">✦ Baked fresh every morning</span>
-      <h1>Handcrafted with <em>Love</em> &amp; Butter</h1>
-      <p>Discover artisan pastries, celebration cakes, and daily treats made from scratch using locally sourced ingredients. Your neighbourhood bakery since 2018.</p>
-      <div class="hero-badges">
-        <span class="badge"><span class="badge-icon">🌾</span> Local ingredients</span>
-        <span class="badge"><span class="badge-icon">🕗</span> Daily fresh bakes</span>
-        <span class="badge"><span class="badge-icon">🎂</span> Custom orders</span>
-      </div>
-      <a href="menu.html" class="btn">Explore Our Menu</a>
-    </div>
-    <div class="hero-image"></div>
-  </section>
+<!-- ── MENU ── -->
 
-  <!-- Featured carousel -->
-  <section id="menu" class="carousel-section">
-    <h2>Featured Delights</h2>
-    <p class="section-subtitle">A taste of what's waiting for you</p>
-    <div class="carousel-wrapper">
-      <button id="prevBtn" class="carousel-btn">&#10094;</button>
-      <div class="carousel-track" id="track">
+<section class="menu-section">
+<div class="section-header">
+<span class="section-eyebrow">Our Creations</span>
+<h2 class="section-title">Treats for Every <span>Occasion</span></h2>
+<p class="section-sub">Every item is made fresh to order using quality ingredients<br>because you deserve nothing less.</p>
+</div>
 
-        <div class="card">
-          <div class="card-img">🍓<span class="card-tag">Popular</span></div>
-          <div class="card-info">
-            <h3>Strawberry Tart</h3>
-            <div class="price">$5.50</div>
-            <button class="btn">Add to Cart</button>
-          </div>
-        </div>
+<div class="cards-grid">
+<!-- Card 1 -->
+<div class="cake-card">
+<div class="cake-card-img">
+<span class="cake-card-badge">Best Seller</span>
+<img class="cake-card-photo" src="https://images.unsplash.com/photo-1535254973040-607b474cb512?w=640&amp;h=640&amp;fit=crop&amp;q=80" alt="Tiered celebration cake with buttercream" loading="lazy" width="640" height="640">
+</div>
+</div>
+<div class="cake-card-body">
+<div class="cake-name">Signature Tiered Cake</div>
+<div class="cake-desc">3 layers of flavor, fully customizable colors & design</div>
+<div class="cake-footer">
+<div class="cake-price">From $120 <small>/ cake</small></div>
+<button class="add-btn" type="button" aria-label="Add to inquiry"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+</div>
+</div>
+</div>
 
-        <div class="card">
-          <div class="card-img">🥐<span class="card-tag">Staff Pick</span></div>
-          <div class="card-info">
-            <h3>Chocolate Croissant</h3>
-            <div class="price">$4.25</div>
-            <button class="btn">Add to Cart</button>
-          </div>
-        </div>
+<!-- Card 2 -->
+<div class="cake-card">
+<div class="cake-card-img">
+<img class="cake-card-photo" src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?w=640&amp;h=640&amp;fit=crop&amp;q=80" alt="Frosted cupcakes on a tray" loading="lazy" width="640" height="640">
+</div>
+<div class="cake-card-body">
+<div class="cake-name">Custom Cupcakes</div>
+<div class="cake-desc">Minimum 12 — choose your flavors and frosting</div>
+<div class="cake-footer">
+<div class="cake-price">$4.50 <small>/ each</small></div>
+<button class="add-btn" type="button" aria-label="Add to inquiry"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+</div>
+</div>
+</div>
 
-        <div class="card">
-          <div class="card-img">🧁</div>
-          <div class="card-info">
-            <h3>Vanilla Bean Cupcake</h3>
-            <div class="price">$3.75</div>
-            <button class="btn">Add to Cart</button>
-          </div>
-        </div>
+<!-- Card 3 -->
+<div class="cake-card">
+<div class="cake-card-img">
+<span class="cake-card-badge" style="background:var(--mint-deep);">New</span>
+<img class="cake-card-photo" src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=640&amp;h=640&amp;fit=crop&amp;q=80" alt="Royal iced sugar cookies" loading="lazy" width="640" height="640">
+</div>
+<div class="cake-card-body">
+<div class="cake-name">Decorated Cookies</div>
+<div class="cake-desc">Royal iced, fully custom shapes for any event</div>
+<div class="cake-footer">
+<div class="cake-price">$3.00 <small>/ each</small></div>
+<button class="add-btn" type="button" aria-label="Add to inquiry"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+</div>
+</div>
+</div>
 
-        <div class="card">
-          <div class="card-img">🍋<span class="card-tag">Seasonal</span></div>
-          <div class="card-info">
-            <h3>Lemon Meringue Pie</h3>
-            <div class="price">$6.00</div>
-            <button class="btn">Add to Cart</button>
-          </div>
-        </div>
+<!-- Card 4 -->
+<div class="cake-card">
+<div class="cake-card-img">
+<img class="cake-card-photo" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=640&amp;h=640&amp;fit=crop&amp;q=80" alt="Chocolate layer sheet cake" loading="lazy" width="640" height="640">
+</div>
+<div class="cake-card-body">
+<div class="cake-name">Sheet Cakes</div>
+<div class="cake-desc">Perfect for large gatherings — feeds 20 to 50 guests</div>
+<div class="cake-footer">
+<div class="cake-price">From $80 <small>/ cake</small></div>
+<button class="add-btn" type="button" aria-label="Add to inquiry"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+</div>
+</div>
+</div>
 
-        <div class="card">
-          <div class="card-img">🫐</div>
-          <div class="card-info">
-            <h3>Blueberry Scone</h3>
-            <div class="price">$3.50</div>
-            <button class="btn">Add to Cart</button>
-          </div>
-        </div>
+</div>
+</section>
 
-        <div class="card">
-          <div class="card-img">🌸</div>
-          <div class="card-info">
-            <h3>Raspberry Macaron</h3>
-            <div class="price">$2.50</div>
-            <button class="btn">Add to Cart</button>
-          </div>
-        </div>
+<!-- ── SPECIALTY ── -->
 
-        <div class="card">
-          <div class="card-img">🍰<span class="card-tag">Popular</span></div>
-          <div class="card-info">
-            <h3>Classic Cheesecake</h3>
-            <div class="price">$6.50</div>
-            <button class="btn">Add to Cart</button>
-          </div>
-        </div>
+<section class="specialty-section">
+<div class="specialty-layout">
+<div class="specialty-visual">
+<figure class="specialty-photo-wrap">
+<img class="specialty-photo" src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=800&amp;h=1000&amp;fit=crop&amp;q=82" alt="Elegant tiered wedding cake with fresh florals" loading="lazy" width="560" height="700">
+</figure>
+</div>
 
-        <div class="card">
-          <div class="card-img">🥨</div>
-          <div class="card-info">
-            <h3>Cinnamon Roll</h3>
-            <div class="price">$4.50</div>
-            <button class="btn">Add to Cart</button>
-          </div>
-        </div>
+<div class="specialty-text">
+<span class="section-eyebrow">Why J's Sweets?</span>
+<h2 class="section-title">Made with Love,<br><span>Delivered with Joy</span></h2>
 
-        <div class="card">
-          <div class="card-img">🥖</div>
-          <div class="card-info">
-            <h3>Almond Biscotti</h3>
-            <div class="price">$2.75</div>
-            <button class="btn">Add to Cart</button>
-          </div>
-        </div>
+<div class="specialty-list">
+<div class="specialty-item">
+<div class="specialty-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 19 19 12l2-9-9 2-9 9 2 2Z"/><path d="m18 5-8 8"/><path d="M13.5 10.5 19 5"/></svg></div>
+<div>
+<div class="specialty-item-title">Fully Custom Designs</div>
+<div class="specialty-item-desc">Your vision, your colors, your theme — we bring it to life exactly the way you imagined.</div>
+</div>
+</div>
+<div class="specialty-item">
+<div class="specialty-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C6.8 6.5 5 10 5 14.5S7 22 12 22"/><path d="M13 20a7 7 0 0 0 1.2-13.9C17.2 6.5 19 10 19 14.5S17 22 12 22"/><path d="M12 22v-8"/></svg></div>
+<div>
+<div class="specialty-item-title">Quality Ingredients</div>
+<div class="specialty-item-desc">Only the finest butters, flours, and flavors — made from scratch, never from a box.</div>
+</div>
+</div>
+<div class="specialty-item">
+<div class="specialty-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.5 9.4 7.5 4.2"/><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="M3.3 7 12 12l8.7-5"/><path d="M12 22V12"/></svg></div>
+<div>
+<div class="specialty-item-title">Island Delivery Available</div>
+<div class="specialty-item-desc">We deliver across Nassau — fresh and on time for your celebration.</div>
+</div>
+</div>
+<div class="specialty-item">
+<div class="specialty-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+<div>
+<div class="specialty-item-title">Personal Consultation</div>
+<div class="specialty-item-desc">Every order starts with a conversation so we can make it perfectly yours.</div>
+</div>
+</div>
+</div>
+</div>
 
-        <div class="card">
-          <div class="card-img">🍩</div>
-          <div class="card-info">
-            <h3>Chocolate Eclair</h3>
-            <div class="price">$4.80</div>
-            <button class="btn">Add to Cart</button>
-          </div>
-        </div>
+</div>
+</section>
 
-      </div>
-      <button id="nextBtn" class="carousel-btn">&#10095;</button>
-    </div>
-  </section>
+<!-- ── HOW IT WORKS ── -->
 
-  <!-- Testimonials -->
-  <section class="testimonials">
-    <h2>What Our Customers Say</h2>
-    <p class="section-subtitle">Made with love — tasted with joy</p>
-    <div class="reviews-grid">
+<section class="process-section">
+<div class="section-header">
+<span class="section-eyebrow">How It Works</span>
+<h2 class="section-title">Your Dream Cake in <span>4 Easy Steps</span></h2>
+<p class="section-sub">Simple, sweet, and stress-free from start to finish</p>
+</div>
 
-      <div class="review-card">
-        <div class="review-header">
-          <div class="review-avatar">S</div>
-          <div>
-            <div class="reviewer-name">Sarah T.</div>
-            <div class="stars">★★★★★</div>
-          </div>
-        </div>
-        <p class="review-text">"The absolute best chocolate croissants I've ever had outside of Paris. I come here every Sunday morning!"</p>
-      </div>
+<div class="process-steps">
+<div class="step">
+<div class="step-num">1</div>
+<div class="step-title">Place Your Order</div>
+<div class="step-desc">Fill out our order form or reach out via WhatsApp with your vision and event date.</div>
+</div>
+<div class="step">
+<div class="step-num">2</div>
+<div class="step-title">We Consult</div>
+<div class="step-desc">We discuss flavors, design, size and every delicious detail together.</div>
+</div>
+<div class="step">
+<div class="step-num">3</div>
+<div class="step-title">We Bake</div>
+<div class="step-desc">Your creation is crafted fresh with care the day before your event.</div>
+</div>
+<div class="step">
+<div class="step-num">4</div>
+<div class="step-title">You Celebrate!</div>
+<div class="step-desc">Pick up or get it delivered — and enjoy every single bite.</div>
+</div>
+</div>
+</section>
 
-      <div class="review-card">
-        <div class="review-header">
-          <div class="review-avatar">M</div>
-          <div>
-            <div class="reviewer-name">Michael &amp; Emma</div>
-            <div class="stars">★★★★★</div>
-          </div>
-        </div>
-        <p class="review-text">"J's Sweets made our wedding cake and it was flawless. Not only was it gorgeous, but it tasted incredible."</p>
-      </div>
+<!-- ── REVIEWS ── -->
 
-      <div class="review-card">
-        <div class="review-header">
-          <div class="review-avatar">D</div>
-          <div>
-            <div class="reviewer-name">David L.</div>
-            <div class="stars">★★★★★</div>
-          </div>
-        </div>
-        <p class="review-text">"Their lemon meringue pie is to die for! The perfect balance of tart and sweet. Highly recommend."</p>
-      </div>
+<section class="reviews-section">
+<div class="section-header">
+<span class="section-eyebrow">Happy Customers</span>
+<h2 class="section-title">Sweet Words from <span>Sweet People</span></h2>
+</div>
 
-    </div>
-  </section>
+<div class="reviews-grid">
+<div class="review-card">
+<div class="review-stars" role="img" aria-label="5 out of 5 stars"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+<p class="review-text">"J's Sweets made my daughter's birthday cake and it was absolutely stunning. Everyone couldn't stop talking about how beautiful it was — and even better, how good it tasted!"</p>
+<div class="reviewer">
+<div class="reviewer-avatar" style="background:var(--mint-deep);">T</div>
+<div>
+<div class="reviewer-name">Tamika R.</div>
+<div class="reviewer-desc">Nassau, Bahamas</div>
+</div>
+</div>
+</div>
 
-  <!-- About + Location -->
-  <section class="split-section">
-    <div id="about" class="split-box">
-      <h2>Our Story</h2>
-      <p>Started in a small home kitchen, J's Sweets was born out of a love for buttery doughs and sweet fillings. Today, we bring our family recipes to you — baking fresh every single morning using locally sourced ingredients and a whole lot of passion.</p>
-      <p style="margin-top:1rem;">Every loaf, tart, and cake is made by hand, the old-fashioned way. No shortcuts, no preservatives — just real ingredients and time-honoured technique.</p>
-    </div>
+<div class="review-card featured">
+<div class="review-stars" role="img" aria-label="5 out of 5 stars"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+<p class="review-text">"I ordered cupcakes for my office and they disappeared within 10 minutes. I've never seen people move that fast. J's is the real deal — premium quality every time."</p>
+<div class="reviewer">
+<div class="reviewer-avatar" style="background:var(--mint-deep);">D</div>
+<div>
+<div class="reviewer-name">Darius M.</div>
+<div class="reviewer-desc">Verified Customer</div>
+</div>
+</div>
+</div>
 
-    <div id="location" class="split-box">
-      <h2>Visit Us</h2>
-      <p><strong>📍 123 Bakery Lane, Sweetville</strong></p>
-      <p>Come in, pull up a chair, and let the smell of fresh bread do the rest.</p>
-      <table class="hours-table">
-        <tr><td>Monday – Friday</td><td>7:00 am – 6:00 pm</td></tr>
-        <tr><td>Saturday</td><td>8:00 am – 4:00 pm</td></tr>
-        <tr><td>Sunday</td><td>8:00 am – 2:00 pm</td></tr>
-      </table>
-    </div>
-  </section>
+<div class="review-card">
+<div class="review-stars" role="img" aria-label="5 out of 5 stars"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+<p class="review-text">"Our wedding cake was a masterpiece. She understood exactly what we wanted and delivered beyond our expectations. Would recommend J's Sweets to anyone!"</p>
+<div class="reviewer">
+<div class="reviewer-avatar" style="background:var(--pink);">S</div>
+<div>
+<div class="reviewer-name">Sophia & Kevin L.</div>
+<div class="reviewer-desc">Wedding Clients</div>
+</div>
+</div>
+</div>
 
-  <!-- Newsletter -->
-  <section class="newsletter">
-    <h2>Join the Sweet List</h2>
-    <p>Subscribe for 10% off your first order and be the first to hear about seasonal specials.</p>
-    <form action="#" class="newsletter-form">
-      <input type="email" placeholder="Your email address" required>
-      <button type="submit" class="btn">Subscribe</button>
-    </form>
-  </section>
+</div>
+</section>
 
-</main>
+<!-- ── CTA ── -->
+
+<section class="cta-banner">
+<h2>Ready to Order Your<br>Perfect Sweet?</h2>
+<p>Custom orders are open — reach out today to secure your date</p>
+<button class="btn-white" type="button">Start My Order</button>
+</section>
+
+<!-- ── FOOTER ── -->
 
 <footer>
-  <div class="footer-logo">
-    <img src="logo.PNG" alt="J's Sweets Logo">
-  </div>
-  <p>&copy; 2026 J's Sweets. All rights reserved.</p>
-  <p>Follow us on Instagram and Facebook for daily sweet updates!</p>
+<div class="footer-grid">
+<div>
+<img src="logo.png" alt="J's Sweets" width="220" height="72" class="footer-logo" decoding="async">
+<p class="footer-about">Handcrafted custom cakes and sweet treats made with love in Nassau, Bahamas. Your celebration deserves something special.</p>
+<div class="footer-social">
+<a href="#" class="social-btn" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+<a href="#" class="social-btn" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3 0 3.3 0 4.5.1 2.4.1 3.8 1.5 3.9 3.9.1 1.2.1 1.5.1 4.5s0 3.3-.1 4.5c-.1 2.4-1.5 3.8-3.9 3.9-1.2.1-1.5.1-4.5.1s-3.3 0-4.5-.1c-2.4-.1-3.8-1.5-3.9-3.9-.1-1.2-.1-1.5-.1-4.5s0-3.3.1-4.5c.1-2.4 1.5-3.8 3.9-3.9 1.2-.1 1.5-.1 4.5-.1zm0 1.8c-2.9 0-3.3 0-4.4.1-1.9.1-2.8.9-2.9 2.9-.1 1.1-.1 1.5-.1 4.4s0 3.3.1 4.4c.1 1.9.9 2.8 2.9 2.9 1.1.1 1.5.1 4.4.1s3.3 0 4.4-.1c1.9-.1 2.8-.9 2.9-2.9.1-1.1.1-1.5.1-4.4s0-3.3-.1-4.4c-.1-1.9-.9-2.8-2.9-2.9-1.1-.1-1.5-.1-4.4-.1zm0 3.3a5.7 5.7 0 1 1 0 11.4 5.7 5.7 0 0 1 0-11.4zm0 1.9a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6zm6-3.7a1.3 1.3 0 1 1-2.6 0 1.3 1.3 0 0 1 2.6 0z"/></svg></a>
+<a href="#" class="social-btn" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg></a>
+</div>
+</div>
+<div>
+<div class="footer-col-title">Menu</div>
+<ul class="footer-links">
+<li><a href="#">Custom Cakes</a></li>
+<li><a href="#">Cupcakes</a></li>
+<li><a href="#">Cookies</a></li>
+<li><a href="#">Sheet Cakes</a></li>
+<li><a href="#">Dessert Tables</a></li>
+</ul>
+</div>
+<div>
+<div class="footer-col-title">Company</div>
+<ul class="footer-links">
+<li><a href="#">About J's Sweets</a></li>
+<li><a href="#">Gallery</a></li>
+<li><a href="#">Reviews</a></li>
+<li><a href="#">FAQ</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<div class="footer-col-title">Contact</div>
+<ul class="footer-links">
+<li><a href="#">Nassau, Bahamas</a></li>
+<li><a href="#">(242) 000-0000</a></li>
+<li><a href="mailto:hello@jssweets.com">hello@jssweets.com</a></li>
+<li><a href="#">WhatsApp</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<span>© 2025 J's Sweets. All rights reserved.</span>
+<span>Made with care in Nassau, Bahamas</span>
+</div>
 </footer>
 
 <script>
-  const track = document.getElementById('track');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  const scrollAmount = 270;
-  nextBtn.addEventListener('click', () => track.scrollBy({ left: scrollAmount, behavior: 'smooth' }));
-  prevBtn.addEventListener('click', () => track.scrollBy({ left: -scrollAmount, behavior: 'smooth' }));
+// Custom cursor
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+cursor.style.left = e.clientX + 'px';
+cursor.style.top = e.clientY + 'px';
+});
+
+// Confetti bg
+const bg = document.getElementById('confettiBg');
+const colors = ['#7DD4B0','#F472A8','#F5C842','#A8E6CE','#FFD6E8'];
+for(let i = 0; i < 12; i++) {
+const dot = document.createElement('div');
+dot.classList.add('confetti-dot');
+const size = Math.random() * 20 + 8;
+dot.style.cssText = `
+width:${size}px; height:${size}px;
+background:${colors[Math.floor(Math.random()*colors.length)]};
+left:${Math.random()*100}%;
+animation-duration:${Math.random()*15+10}s;
+animation-delay:-${Math.random()*15}s;
+`;
+bg.appendChild(dot);
+}
 </script>
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script src="cart.js"></script>
+
 </body>
 </html>
