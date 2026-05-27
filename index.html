@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>J's Sweets — Custom Cakes & Treats</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Nunito:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Cursor -->
+
+<div class="cursor" id="cursor">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+    <circle cx="20" cy="20" r="18" fill="#c8860a"/>
+    <circle cx="20" cy="20" r="16" fill="#d4943a"/>
+    <ellipse cx="15" cy="14" rx="6" ry="4" fill="#e0a84f" opacity="0.45"/>
+    <circle cx="5"  cy="18" r="2.2" fill="#bf7d08"/>
+    <circle cx="7"  cy="9"  r="2"   fill="#bf7d08"/>
+    <circle cx="16" cy="4"  r="2.2" fill="#bf7d08"/>
+    <circle cx="27" cy="5"  r="2"   fill="#bf7d08"/>
+    <circle cx="34" cy="12" r="2.2" fill="#bf7d08"/>
+    <circle cx="36" cy="22" r="2"   fill="#bf7d08"/>
+    <circle cx="31" cy="32" r="2.2" fill="#bf7d08"/>
+    <circle cx="20" cy="37" r="2"   fill="#bf7d08"/>
+    <circle cx="9"  cy="32" r="2.2" fill="#bf7d08"/>
+    <ellipse cx="14" cy="15" rx="3.2" ry="2.6" fill="#3b1f0a" transform="rotate(-10 14 15)"/>
+    <ellipse cx="24" cy="13" rx="2.8" ry="2.3" fill="#3b1f0a" transform="rotate(8 24 13)"/>
+    <ellipse cx="11" cy="25" rx="2.8" ry="2.3" fill="#3b1f0a" transform="rotate(-5 11 25)"/>
+    <ellipse cx="25" cy="24" rx="3.2" ry="2.6" fill="#3b1f0a" transform="rotate(12 25 24)"/>
+    <ellipse cx="19" cy="31" rx="2.5" ry="2"   fill="#3b1f0a" transform="rotate(-8 19 31)"/>
+    <ellipse cx="30" cy="19" rx="2.4" ry="2"   fill="#3b1f0a" transform="rotate(6 30 19)"/>
+    <ellipse cx="13" cy="14" rx="1.1" ry="0.7" fill="#7a4520" opacity="0.7" transform="rotate(-10 13 14)"/>
+    <ellipse cx="23" cy="12" rx="1"   ry="0.7" fill="#7a4520" opacity="0.7" transform="rotate(8 23 12)"/>
+    <ellipse cx="24" cy="23" rx="1.1" ry="0.7" fill="#7a4520" opacity="0.7" transform="rotate(12 24 23)"/>
+  </svg>
+</div>
+
+<!-- Confetti bg -->
+
+<div class="confetti-bg" id="confettiBg"></div>
+
+<!-- CART OVERLAY & SIDEBAR -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h2>🛒 Your Order</h2>
+    <button class="cart-close" onclick="closeCart()" style="font-size:1.4rem;font-weight:700;background:none;border:none;cursor:pointer;color:#4EBB90;padding:0.3rem;">✕</button>
+  </div>
+  <div class="cart-steps">
+    <div class="cart-step-tab active" id="tabCart" onclick="showCartStep()">Cart</div>
+    <div class="cart-step-tab" id="tabCheckout">Checkout</div>
+  </div>
+  <div id="cartItemsSection" class="cart-body cart-items-body">
+    <div class="cart-empty" id="cartEmpty">
+      <div style="font-size:3rem;margin-bottom:0.8rem;">🛍️</div>
+      <p>Your cart is empty.<br>Add some treats from the menu!</p>
+    </div>
+    <div id="cartItemsBody"></div>
+  </div>
+  <div id="checkoutSection" class="cart-body checkout-body">
+    <button class="back-to-cart" onclick="showCartStep()">← Back to cart</button>
+    <div class="checkout-section-title">Your Details</div>
+    <div class="checkout-field"><label>Full Name *</label><input type="text" id="coName" placeholder="Jane Doe"></div>
+    <div class="checkout-row">
+      <div class="checkout-field"><label>Phone *</label><input type="tel" id="coPhone" placeholder="(242) 555-0000"></div>
+      <div class="checkout-field"><label>Email *</label><input type="email" id="coEmail" placeholder="jane@email.com"></div>
+    </div>
+    <div class="checkout-field">
+      <label>Pickup or Delivery *</label>
+      <select id="coDelivery" onchange="toggleAddress()">
+        <option value="">-- Select --</option>
+        <option value="Pickup">Pickup</option>
+        <option value="Delivery">Delivery</option>
+      </select>
+    </div>
+    <div class="checkout-field" id="addressField" style="display:none;"><label>Delivery Address *</label><input type="text" id="coAddress" placeholder="123 Your Street, Nassau"></div>
+    <div class="checkout-field"><label>Special Notes</label><textarea id="coNotes" placeholder="Allergies, special requests..."></textarea></div>
+    <div class="checkout-section-title">Order Summary</div>
+    <div class="order-preview">
+      <div class="order-preview-title">Items</div>
+      <div id="orderPreviewItems"></div>
+      <div class="order-preview-total"><span>Total</span><span id="orderPreviewTotal">$0.00</span></div>
+    </div>
+    <button class="place-order-btn" id="placeOrderBtn" onclick="placeOrder()">Place Order</button>
+  </div>
+  <div id="orderSuccessSection" class="cart-body order-success">
+    <div class="order-success-icon">🎉</div>
+    <h3>Order Placed!</h3>
+    <p>Thank you! Your order has been sent to J's Sweets.<br>Check your email for a confirmation.</p>
+    <button class="cart-checkout-btn" style="margin-top:1.5rem;" onclick="closeCart()">Close</button>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none;">
+    <div class="cart-totals">
+      <div class="cart-total-row"><span>Subtotal</span><span id="cartSubtotal">$0.00</span></div>
+      <div class="cart-total-row grand"><span>Total</span><span id="cartGrand">$0.00</span></div>
+    </div>
+    <button class="cart-checkout-btn" onclick="showCheckoutStep()">Proceed to Checkout →</button>
+  </div>
+</div>
+
+<!-- ── NAV ── -->
+
+<nav>
+<a href="index.html" class="nav-brand">
+<img src="logo.png" alt="J's Sweets" width="180" height="58" class="nav-logo-img" decoding="async" fetchpriority="high">
+</a>
+<div class="nav-center">
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="menu.html">Menu</a></li>
+<li><a href="custom-orders.html">Custom Cakes</a></li>
+<li><a href="#">Visit Us</a></li>
+</ul>
+</div>
+<div class="nav-right">
+<button class="cart-btn" onclick="openCart()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-count">0</span></button>
+<a href="menu.html" class="nav-order">Order Now</a>
+</div>
+  <!-- Big soft round scallops like reference screenshot, pink outline kept -->
+  <svg class="nav-wave" viewBox="0 0 1440 36" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- White fill: covers area from top of wave down, matching nav bg -->
+    <path d="M0,0 L1440,0 L1440,10
+      Q1404,36 1368,10
+      Q1332,36 1296,10
+      Q1260,36 1224,10
+      Q1188,36 1152,10
+      Q1116,36 1080,10
+      Q1044,36 1008,10
+      Q972,36  936,10
+      Q900,36  864,10
+      Q828,36  792,10
+      Q756,36  720,10
+      Q684,36  648,10
+      Q612,36  576,10
+      Q540,36  504,10
+      Q468,36  432,10
+      Q396,36  360,10
+      Q324,36  288,10
+      Q252,36  216,10
+      Q180,36  144,10
+      Q108,36   72,10
+      Q36,36    0,10
+      Z"
+      fill="rgba(255,255,255,0.96)" filter="none"/>
+    <!-- Pink stroke outline tracing only the scallop wave line -->
+    <path d="M0,10
+      Q36,36   72,10
+      Q108,36  144,10
+      Q180,36  216,10
+      Q252,36  288,10
+      Q324,36  360,10
+      Q396,36  432,10
+      Q468,36  504,10
+      Q540,36  576,10
+      Q612,36  648,10
+      Q684,36  720,10
+      Q756,36  792,10
+      Q828,36  864,10
+      Q900,36  936,10
+      Q972,36  1008,10
+      Q1044,36 1080,10
+      Q1116,36 1152,10
+      Q1188,36 1224,10
+      Q1260,36 1296,10
+      Q1332,36 1368,10
+      Q1404,36 1440,10"
+      fill="none" stroke="#F4A4BE" stroke-width="2"/>
+  </svg>
+</nav>
+
+<!-- ── HERO ── -->
+
+<section class="hero">
+<canvas class="hero-pastry-canvas" id="sprinkleCanvas"></canvas>
+
+<div class="hero-content">
+<div class="hero-left">
+<div class="hero-pill">
+<div class="hero-pill-dot"></div>
+Now Taking Custom Orders
+</div>
+<h1 class="hero-heading">
+Every Bite is<br>
+<span class="script">Simply Sweet</span>
+</h1>
+<p class="hero-sub">
+Handcrafted custom cakes, cupcakes, and confections made with love for your most special moments. No occasion too big or too small.
+</p>
+<div class="hero-ctas">
+<button class="btn-mint" type="button">Order a Custom Cake</button>
+<button class="btn-outline-white">View Menu</button>
+</div>
+</div>
+
+<div class="hero-right">
+<div class="hero-logo-showcase">
+<div class="hero-logo-frame">
+<img src="logo.png" alt="J's Sweets logo" width="420" height="320" class="hero-logo-img" decoding="async">
+</div>
+</div>
+</div>
+
+</div>
+
+<div class="hero-stats">
+<div class="stat-item">
+<div class="stat-num">500+</div>
+<div class="stat-label">Cakes Made</div>
+</div>
+<div class="stat-item">
+<div class="stat-num">100%</div>
+<div class="stat-label">Custom Orders</div>
+</div>
+<div class="stat-item">
+<div class="stat-num">5.0</div>
+<div class="stat-label">Avg. Rating</div>
+</div>
+</div>
+</section>
+
+<!-- ── RIBBON ── -->
+
+<div class="ribbon">
+<div class="ribbon-track">
+<span>Custom Cakes</span><span class="sep" aria-hidden="true">·</span>
+<span>Cupcakes</span><span class="sep" aria-hidden="true">·</span>
+<span>Cookies</span><span class="sep" aria-hidden="true">·</span>
+<span>Birthday Cakes</span><span class="sep" aria-hidden="true">·</span>
+<span>Wedding Cakes</span><span class="sep" aria-hidden="true">·</span>
+<span>Dessert Tables</span><span class="sep" aria-hidden="true">·</span>
+<span>Made to Order</span><span class="sep" aria-hidden="true">·</span>
+<span>Custom Cakes</span><span class="sep" aria-hidden="true">·</span>
+<span>Cupcakes</span><span class="sep" aria-hidden="true">·</span>
+<span>Cookies</span><span class="sep" aria-hidden="true">·</span>
+<span>Birthday Cakes</span><span class="sep" aria-hidden="true">·</span>
+<span>Wedding Cakes</span><span class="sep" aria-hidden="true">·</span>
+<span>Dessert Tables</span><span class="sep" aria-hidden="true">·</span>
+<span>Made to Order</span><span class="sep" aria-hidden="true">·</span>
+</div>
+</div>
+
+<!-- ── MENU ── -->
+
+<section class="menu-section">
+<div class="section-header">
+<span class="section-eyebrow">Our Creations</span>
+<h2 class="section-title">Treats for Every <span>Occasion</span></h2>
+<p class="section-sub">Every item is made fresh to order using quality ingredients<br>because you deserve nothing less.</p>
+</div>
+
+<div class="cards-grid">
+<!-- Card 1 -->
+<div class="cake-card">
+<div class="cake-card-img">
+<span class="cake-card-badge">Best Seller</span>
+<img class="cake-card-photo" src="https://images.unsplash.com/photo-1535254973040-607b474cb512?w=640&amp;h=640&amp;fit=crop&amp;q=80" alt="Tiered celebration cake with buttercream" loading="lazy" width="640" height="640">
+</div>
+<div class="cake-card-body">
+<div class="cake-name">Signature Tiered Cake</div>
+<div class="cake-desc">3 layers of flavor, fully customizable colors & design</div>
+<div class="cake-footer">
+<div class="cake-price">From $120 <small>/ cake</small></div>
+<button class="add-btn" type="button" aria-label="Add to inquiry"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+</div>
+</div>
+</div>
+
+<!-- Card 2 -->
+<div class="cake-card">
+<div class="cake-card-img">
+<img class="cake-card-photo" src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?w=640&amp;h=640&amp;fit=crop&amp;q=80" alt="Frosted cupcakes on a tray" loading="lazy" width="640" height="640">
+</div>
+<div class="cake-card-body">
+<div class="cake-name">Custom Cupcakes</div>
+<div class="cake-desc">Minimum 12 — choose your flavors and frosting</div>
+<div class="cake-footer">
+<div class="cake-price">$4.50 <small>/ each</small></div>
+<button class="add-btn" type="button" aria-label="Add to inquiry"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+</div>
+</div>
+</div>
+
+<!-- Card 3 -->
+<div class="cake-card">
+<div class="cake-card-img">
+<span class="cake-card-badge" style="background:var(--mint-deep);">New</span>
+<img class="cake-card-photo" src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=640&amp;h=640&amp;fit=crop&amp;q=80" alt="Royal iced sugar cookies" loading="lazy" width="640" height="640">
+</div>
+<div class="cake-card-body">
+<div class="cake-name">Decorated Cookies</div>
+<div class="cake-desc">Royal iced, fully custom shapes for any event</div>
+<div class="cake-footer">
+<div class="cake-price">$3.00 <small>/ each</small></div>
+<button class="add-btn" type="button" aria-label="Add to inquiry"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+</div>
+</div>
+</div>
+
+<!-- Card 4 -->
+<div class="cake-card">
+<div class="cake-card-img">
+<img class="cake-card-photo" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=640&amp;h=640&amp;fit=crop&amp;q=80" alt="Chocolate layer sheet cake" loading="lazy" width="640" height="640">
+</div>
+<div class="cake-card-body">
+<div class="cake-name">Sheet Cakes</div>
+<div class="cake-desc">Perfect for large gatherings — feeds 20 to 50 guests</div>
+<div class="cake-footer">
+<div class="cake-price">From $80 <small>/ cake</small></div>
+<button class="add-btn" type="button" aria-label="Add to inquiry"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- ── SPECIALTY ── -->
+
+<section class="specialty-section">
+<div class="specialty-layout">
+<div class="specialty-visual">
+<figure class="specialty-photo-wrap">
+<img class="specialty-photo" src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=800&amp;h=1000&amp;fit=crop&amp;q=82" alt="Elegant tiered wedding cake with fresh florals" loading="lazy" width="560" height="700">
+</figure>
+</div>
+
+<div class="specialty-text">
+<span class="section-eyebrow">Why J's Sweets?</span>
+<h2 class="section-title">Made with Love,<br><span>Delivered with Joy</span></h2>
+
+<div class="specialty-list">
+<div class="specialty-item">
+<div class="specialty-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 19 19 12l2-9-9 2-9 9 2 2Z"/><path d="m18 5-8 8"/><path d="M13.5 10.5 19 5"/></svg></div>
+<div>
+<div class="specialty-item-title">Fully Custom Designs</div>
+<div class="specialty-item-desc">Your vision, your colors, your theme — we bring it to life exactly the way you imagined.</div>
+</div>
+</div>
+<div class="specialty-item">
+<div class="specialty-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C6.8 6.5 5 10 5 14.5S7 22 12 22"/><path d="M13 20a7 7 0 0 0 1.2-13.9C17.2 6.5 19 10 19 14.5S17 22 12 22"/><path d="M12 22v-8"/></svg></div>
+<div>
+<div class="specialty-item-title">Quality Ingredients</div>
+<div class="specialty-item-desc">Only the finest butters, flours, and flavors — made from scratch, never from a box.</div>
+</div>
+</div>
+<div class="specialty-item">
+<div class="specialty-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.5 9.4 7.5 4.2"/><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="M3.3 7 12 12l8.7-5"/><path d="M12 22V12"/></svg></div>
+<div>
+<div class="specialty-item-title">Island Delivery Available</div>
+<div class="specialty-item-desc">We deliver across Nassau — fresh and on time for your celebration.</div>
+</div>
+</div>
+<div class="specialty-item">
+<div class="specialty-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+<div>
+<div class="specialty-item-title">Personal Consultation</div>
+<div class="specialty-item-desc">Every order starts with a conversation so we can make it perfectly yours.</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- ── PRINTED MENU SECTION ── -->
+
+
+<section class="pmenu-section" id="menu">
+
+  <!-- Sprinkle layer -->
+  <svg class="pmenu-sprinkle-layer" viewBox="0 0 1400 2000" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect x="60"   y="180" width="30" height="8" rx="4" fill="#F472A8" transform="rotate(32  60 180)"/>
+    <rect x="280"  y="90"  width="22" height="6" rx="3" fill="#F472A8" transform="rotate(-18 280 90)"/>
+    <rect x="1280" y="160" width="28" height="7" rx="3.5" fill="#F472A8" transform="rotate(52 1280 160)"/>
+    <rect x="690"  y="50"  width="24" height="7" rx="3.5" fill="#F472A8" transform="rotate(14 690 50)"/>
+    <rect x="940"  y="200" width="32" height="8" rx="4" fill="#F472A8" transform="rotate(38 940 200)"/>
+    <rect x="170"  y="310" width="26" height="7" rx="3.5" fill="#7DD4B0" transform="rotate(-28 170 310)"/>
+    <rect x="520"  y="260" width="20" height="6" rx="3" fill="#7DD4B0" transform="rotate(48 520 260)"/>
+    <rect x="1190" y="290" width="24" height="7" rx="3.5" fill="#7DD4B0" transform="rotate(-14 1190 290)"/>
+    <rect x="860"  y="330" width="28" height="8" rx="4" fill="#7DD4B0" transform="rotate(63 860 330)"/>
+    <rect x="55"   y="520" width="22" height="6" rx="3" fill="#7DD4B0" transform="rotate(23 55 520)"/>
+    <rect x="630"  y="150" width="24" height="7" rx="3.5" fill="#A8D8F0" transform="rotate(-38 630 150)"/>
+    <rect x="340"  y="360" width="20" height="6" rx="3" fill="#A8D8F0" transform="rotate(28 340 360)"/>
+    <rect x="1060" y="420" width="26" height="7" rx="3.5" fill="#A8D8F0" transform="rotate(-23 1060 420)"/>
+    <rect x="190"  y="470" width="22" height="6" rx="3" fill="#F5C842" transform="rotate(43 190 470)"/>
+    <rect x="910"  y="110" width="26" height="7" rx="3.5" fill="#F5C842" transform="rotate(-33 910 110)"/>
+    <rect x="1240" y="390" width="20" height="6" rx="3" fill="#F5C842" transform="rotate(18 1240 390)"/>
+    <circle cx="128" cy="205" r="5" fill="#F472A8"/>
+    <circle cx="460" cy="135" r="4" fill="#7DD4B0"/>
+    <circle cx="810" cy="305" r="6" fill="#A8D8F0"/>
+    <circle cx="1145" cy="205" r="4" fill="#F5C842"/>
+    <circle cx="360"  cy="460" r="5" fill="#F472A8"/>
+    <circle cx="690"  cy="385" r="4" fill="#7DD4B0"/>
+    <circle cx="1055" cy="510" r="6" fill="#F472A8"/>
+    <circle cx="1310" cy="560" r="5" fill="#F5C842"/>
+    <circle cx="500"  cy="900" r="5" fill="#F472A8"/>
+    <circle cx="900"  cy="1100" r="4" fill="#7DD4B0"/>
+    <path d="M110,460 l4,12 12,0 -10,7 4,12 -10,-7 -10,7 4,-12 -10,-7 12,0Z" fill="#F472A8"/>
+    <path d="M1340,310 l3,9 9,0 -7,5 3,9 -7,-5 -7,5 3,-9 -7,-5 9,0Z" fill="#7DD4B0"/>
+    <path d="M610,510 l4,12 12,0 -10,7 4,12 -10,-7 -10,7 4,-12 -10,-7 12,0Z" fill="#A8D8F0"/>
+  </svg>
+
+  <!-- Corner decorations -->
+  <svg class="pmenu-corner" style="top:0;left:0;width:200px;" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <ellipse cx="60" cy="150" rx="45" ry="28" fill="#F472A8"/>
+    <ellipse cx="60" cy="132" rx="33" ry="22" fill="#FFD6E8"/>
+    <ellipse cx="60" cy="116" rx="23" ry="16" fill="#F472A8"/>
+    <rect x="56" y="100" width="8" height="18" rx="4" fill="#7DD4B0"/>
+    <circle cx="44" cy="130" r="4" fill="white" opacity="0.5"/>
+    <circle cx="76" cy="125" r="3" fill="white" opacity="0.5"/>
+  </svg>
+  <svg class="pmenu-corner" style="top:0;right:0;width:190px;transform:scaleX(-1);" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect x="10" y="80" width="80" height="50" rx="12" fill="#7DD4B0"/>
+    <rect x="18" y="62" width="64" height="28" rx="8" fill="#A8E6CE"/>
+    <rect x="26" y="44" width="48" height="22" rx="6" fill="#7DD4B0"/>
+    <path d="M36,44 Q50,26 64,44" stroke="#F472A8" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <circle cx="30" cy="90" r="4" fill="white" opacity="0.4"/>
+    <circle cx="70" cy="85" r="3" fill="white" opacity="0.4"/>
+  </svg>
+  <svg class="pmenu-corner" style="bottom:60px;left:0;width:170px;" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect x="20" y="70" width="120" height="70" rx="18" fill="#E8A0C0"/>
+    <rect x="32" y="50" width="96" height="34" rx="12" fill="#FFD6E8"/>
+    <path d="M48,50 Q90,22 132,50" stroke="#7DD4B0" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <circle cx="52" cy="92" r="6" fill="white" opacity="0.4"/>
+    <circle cx="90" cy="82" r="4" fill="#F5C842" opacity="0.5"/>
+  </svg>
+
+  <!-- Header -->
+  <div class="pmenu-header">
+    <span class="pmenu-header-eyebrow">Our</span>
+    <h2 class="pmenu-header-title">Menu</h2>
+    <div class="pmenu-header-rule">
+      <span></span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6 8 2 13 2 17a10 10 0 0 0 20 0C22 13 18 8 12 2Z"/></svg>
+      <span></span>
+    </div>
+    <p class="pmenu-header-note">Prices subject to change &nbsp;&middot;&nbsp; Handcrafted daily in Nassau, Bahamas</p>
+  </div>
+
+  <!-- Four-column body -->
+  <div class="pmenu-body">
+
+    <!-- COL 1: Loaves & Tarts -->
+    <div class="pmenu-col">
+      <div class="pmenu-cat-title">Loaves &amp; Slices</div>
+      <div class="pmenu-cat-rule"></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Mini Loaf Chocolate</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$6</span></div></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Red Velvet Mini Loaf</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$6</span></div></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Carrot Cake Mini Loaf</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$6</span></div></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Cheesecake Mini Loaf Pan</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$8</span></div></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Banana Bread Slices</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$2</span></div></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Banana Bread &frac12; Pan</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$25</span></div></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Banana Bread 10-inch Pan</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$40</span></div></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Pumpkin Roll Log</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$35</span></div></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Pumpkin Slices</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$6</span></div></div>
+      <div class="pmenu-sub-heading">Duff</div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Duff Log</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$45</span></div></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Duff Half Log</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$25</span></div></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Duff Slices (3 slices)</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$6.50</span></div></div>
+    </div>
+
+    <!-- COL 2: Tarts & Cakes -->
+    <div class="pmenu-col">
+      <div class="pmenu-cat-title">Tarts &amp; Pastries</div>
+      <div class="pmenu-cat-rule"></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Coconut Tart Slices</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$2</span></div></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Tart Slices</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$2</span></div></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Tartlets by the Dozen</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$30</span></div></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Tart Quarter Sheet Pan</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$25</span></div></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Tart 10-inches</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$40</span></div></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Tart 12-inches</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$50</span></div></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Tart Half Sheet</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$60</span></div></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Fritter (5 pieces)</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$3</span></div></div>
+      <div class="pmenu-sub-heading">Cheesecakes</div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Cheesecake 9-inch</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$40</span></div></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Cheesecake 10-inches</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$50</span></div></div>
+      <div class="pmenu-sub-heading">Cupcakes &amp; Desserts</div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Cupcakes by Dozen</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$30</span></div></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Dessert Cup by Dozen</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$35</span></div></div>
+    </div>
+
+    <!-- COL 3: Birthday Cakes & Buns -->
+    <div class="pmenu-col">
+      <div class="pmenu-cat-title">Birthday Cakes</div>
+      <div class="pmenu-cat-rule"></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">8-inches</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$60</span></div></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">10-inches</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$75</span></div></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">12-inches</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$120</span></div></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Half Sheet</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$150</span></div></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Full Sheet</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$250</span></div></div>
+      <div class="pmenu-sub-heading">Buns by the Dozen</div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Plain Hot Cross Buns</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$18</span></div></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Raisin Hot Cross Buns</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$19</span></div></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Guava Buns</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$25</span></div></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Coconut Buns</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$19</span></div></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Cinnamon Buns</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$20</span></div></div>
+    </div>
+
+    <!-- COL 4: Savory & Contact -->
+    <div class="pmenu-col">
+      <div class="pmenu-cat-title">Savory Bites</div>
+      <div class="pmenu-cat-rule"></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Wing Snack (S)</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$4.50</span></div></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Wings Snack (M)</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$5.50</span></div></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Wing Snack (L)</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$6.50</span></div></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Fish Snack</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$12</span></div></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Beef Burger</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$5.50</span></div></div>
+      <div class="pmenu-item"><div class="pmenu-item-row"><span class="pmenu-item-name">Beef Burger + Fries</span><span class="pmenu-item-dots"></span><span class="pmenu-item-price">$7.50</span></div></div>
+
+      <div class="pmenu-sub-heading">Get in Touch</div>
+      <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:0.75rem;color:#aaa;line-height:1.8;margin-bottom:1.4rem;">All items made fresh to order. Contact us to confirm availability.</p>
+      <div class="pmenu-item" style="margin-bottom:0.9rem;">
+        <div style="font-family:'Nunito',sans-serif;font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#4EBB90;margin-bottom:0.3rem;">Phone</div>
+        <div style="font-family:'Playfair Display',serif;font-size:0.88rem;color:#1a1a1a;font-weight:700;">636-7661</div>
+      </div>
+      <div class="pmenu-item" style="margin-bottom:0.9rem;">
+        <div style="font-family:'Nunito',sans-serif;font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#4EBB90;margin-bottom:0.3rem;">Email</div>
+        <div style="font-family:'Playfair Display',serif;font-size:0.75rem;color:#1a1a1a;">joannbeckford@gmail.com</div>
+      </div>
+      <div class="pmenu-item" style="margin-bottom:0.9rem;">
+        <div style="font-family:'Nunito',sans-serif;font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#4EBB90;margin-bottom:0.3rem;">Instagram</div>
+        <div style="font-family:'Playfair Display',serif;font-size:0.75rem;color:#1a1a1a;">@jsweets_242</div>
+      </div>
+      <!-- Cupcake illustration -->
+      <svg viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:80px;margin:1.5rem auto 0;display:block;opacity:0.5;" aria-hidden="true">
+        <path d="M30 80 Q28 120 60 125 Q92 120 90 80Z" fill="#FFD6E8"/>
+        <path d="M32 80 L35 100 Q60 108 85 100 L88 80Z" fill="#F472A8" opacity="0.35"/>
+        <path d="M25 80 Q30 50 60 48 Q90 50 95 80Z" fill="#7DD4B0"/>
+        <path d="M30 78 Q38 56 60 54 Q82 56 90 78" fill="#A8E6CE"/>
+        <ellipse cx="60" cy="52" rx="18" ry="12" fill="#7DD4B0"/>
+        <ellipse cx="60" cy="44" rx="12" ry="9" fill="#4EBB90"/>
+        <ellipse cx="60" cy="37" rx="7" ry="6" fill="#7DD4B0"/>
+        <circle cx="60" cy="30" r="6" fill="#F472A8"/>
+        <rect x="59" y="20" width="3" height="10" rx="1.5" fill="#4EBB90"/>
+        <rect x="42" y="60" width="10" height="3" rx="1.5" fill="#F5C842" transform="rotate(30 42 60)"/>
+        <rect x="68" y="58" width="10" height="3" rx="1.5" fill="#F472A8" transform="rotate(-20 68 58)"/>
+        <circle cx="78" cy="65" r="2.5" fill="#F5C842"/>
+        <circle cx="44" cy="72" r="2" fill="#F472A8"/>
+      </svg>
+    </div>
+
+  </div>
+
+  <div class="pmenu-footer-note">
+    All items handcrafted with love &nbsp;&middot;&nbsp; Nassau, Bahamas &nbsp;&middot;&nbsp; Prices subject to change without notice
+  </div>
+
+</section>
+
+<!-- ── CTA ── -->
+
+<section class="cta-banner">
+<h2>Ready to Order Your<br>Perfect Sweet?</h2>
+<p>Custom orders are open — reach out today to secure your date</p>
+<button class="btn-white" type="button">Start My Order</button>
+</section>
+
+<!-- ── FOOTER ── -->
+
+<footer>
+<div class="footer-grid">
+<div>
+<img src="logo.png" alt="J's Sweets" width="220" height="72" class="footer-logo" decoding="async">
+<p class="footer-about">Handcrafted custom cakes and sweet treats made with love in Nassau, Bahamas. Your celebration deserves something special.</p>
+<div class="footer-social">
+<a href="#" class="social-btn" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+<a href="#" class="social-btn" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3 0 3.3 0 4.5.1 2.4.1 3.8 1.5 3.9 3.9.1 1.2.1 1.5.1 4.5s0 3.3-.1 4.5c-.1 2.4-1.5 3.8-3.9 3.9-1.2.1-1.5.1-4.5.1s-3.3 0-4.5-.1c-2.4-.1-3.8-1.5-3.9-3.9-.1-1.2-.1-1.5-.1-4.5s0-3.3.1-4.5c.1-2.4 1.5-3.8 3.9-3.9 1.2-.1 1.5-.1 4.5-.1zm0 1.8c-2.9 0-3.3 0-4.4.1-1.9.1-2.8.9-2.9 2.9-.1 1.1-.1 1.5-.1 4.4s0 3.3.1 4.4c.1 1.9.9 2.8 2.9 2.9 1.1.1 1.5.1 4.4.1s3.3 0 4.4-.1c1.9-.1 2.8-.9 2.9-2.9.1-1.1.1-1.5.1-4.4s0-3.3-.1-4.4c-.1-1.9-.9-2.8-2.9-2.9-1.1-.1-1.5-.1-4.4-.1zm0 3.3a5.7 5.7 0 1 1 0 11.4 5.7 5.7 0 0 1 0-11.4zm0 1.9a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6zm6-3.7a1.3 1.3 0 1 1-2.6 0 1.3 1.3 0 0 1 2.6 0z"/></svg></a>
+<a href="#" class="social-btn" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg></a>
+</div>
+</div>
+<div>
+<div class="footer-col-title">Menu</div>
+<ul class="footer-links">
+<li><a href="#">Custom Cakes</a></li>
+<li><a href="#">Cupcakes</a></li>
+<li><a href="#">Cookies</a></li>
+<li><a href="#">Sheet Cakes</a></li>
+<li><a href="#">Dessert Tables</a></li>
+</ul>
+</div>
+<div>
+<div class="footer-col-title">Company</div>
+<ul class="footer-links">
+<li><a href="#">About J's Sweets</a></li>
+<li><a href="#">Gallery</a></li>
+<li><a href="#">Reviews</a></li>
+<li><a href="#">FAQ</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<div class="footer-col-title">Contact</div>
+<ul class="footer-links">
+<li><a href="#">Nassau, Bahamas</a></li>
+<li><a href="#">(242) 000-0000</a></li>
+<li><a href="mailto:hello@jssweets.com">hello@jssweets.com</a></li>
+<li><a href="#">WhatsApp</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<span>© 2025 J's Sweets. All rights reserved.</span>
+<span>Made with care in Nassau, Bahamas</span>
+</div>
+</footer>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
