@@ -45,6 +45,9 @@ nav { position:fixed; top:0; left:0; right:0; z-index:1000; display:grid; grid-t
 /* ── Navbar scallop wave ── */
 .nav-wave { position:absolute; bottom:-34px; left:0; width:100%; height:36px; pointer-events:none; display:block; overflow:visible; }
 .nav-brand { display:flex; align-items:center; flex-shrink:0; text-decoration:none; }
+.nav-center { display:flex; justify-content:center; }
+.nav-right { display:flex; align-items:center; justify-content:flex-end; gap:1rem; }
+
 .nav-logo-img { height:58px; width:auto; max-width:min(200px, 38vw); object-fit:contain; object-position:left center; display:block; filter:drop-shadow(0 2px 8px rgba(142,207,152,0.2)); }
 .nav-links { display:flex; gap:2.2rem; list-style:none; align-items:center; }
 .nav-links a { text-decoration:none; font-size:0.78rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--charcoal); transition:color 0.25s; position:relative; }
@@ -224,12 +227,19 @@ nav { position:fixed; top:0; left:0; right:0; z-index:1000; display:grid; grid-t
 .category-icon { font-size:1.8rem; line-height:1; }
 .category-header h2 { font-family:'Great Vibes',cursive; font-size:2.4rem; color:var(--mint-deep); margin:0; font-weight:400; letter-spacing:0; line-height:1.1; }
 .menu-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1.4rem; }
+.card::before {
+  content: '';
+  display: block;
+  height: 3px;
+  background: linear-gradient(90deg, #bdeac4, #F4A4BE);
+  border-radius: 16px 16px 0 0;
+}
 .card { background:var(--white); border-radius:16px; overflow:hidden; border:1.5px solid #f0ecf2; box-shadow:0 2px 10px rgba(0,0,0,0.04); display:flex; flex-direction:column; transition:transform 0.28s,box-shadow 0.28s,border-color 0.28s; }
 .card:hover { transform:translateY(-5px); box-shadow:0 12px 32px rgba(142,207,152,0.18); border-color:var(--mint); }
 .card-img { height:140px; background:linear-gradient(150deg, #edf8ef 0%, #fff0f6 50%, #fde8f0 100%); display:flex; align-items:center; justify-content:center; overflow:hidden; position:relative; }
 .card-img img { width:100%; height:100%; object-fit:cover; display:block; }
 .card-img svg { width: 80px; height: 80px; color: var(--mint-deep); opacity: 0.85; }
-.card-info { padding:0.75rem 0.9rem 0.9rem; flex-grow:1; display:flex; flex-direction:column; gap:0.5rem; }
+.card-info { padding:1rem 1.1rem 1.1rem; flex-grow:1; display:flex; flex-direction:column; gap:0.55rem; }
 .card-info h3 { font-family:'Playfair Display',serif; font-size:0.88rem; color:var(--black); font-weight:400; letter-spacing:0.01em; line-height:1.3; margin:0; }
 .variation-wrapper { position:relative; }
 .variation-select { width:100%; padding:0.42rem 2rem 0.42rem 0.75rem; border:1px solid #e8e2ec; border-radius:8px; font-family:'Nunito',sans-serif; font-size:0.76rem; font-weight:400; color:var(--charcoal); background-color:#fafafa; appearance:none; -webkit-appearance:none; cursor:pointer; transition:border-color 0.2s; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23aaa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:calc(100% - 10px) center; }
@@ -947,7 +957,6 @@ footer { background-color:var(--black); border-top:2px solid var(--mint-light); 
 
     <!-- Mini Loaves & Slices -->
     <div class="card" data-cat="loaves">
-      <div class="card-img"><img src="/images/mini-loaf.jpg" alt="Mini Loaf Pan"></div>
       <div class="card-info">
         <h3>Mini Loaf Pan</h3>
         <div class="variation-wrapper"><select class="variation-select" onchange="updatePrice(this)"><option value="$6.00">Chocolate - $6.00</option><option value="$6.00">Red Velvet - $6.00</option><option value="$6.00">Carrot Cake - $6.00</option></select></div>
@@ -955,14 +964,12 @@ footer { background-color:var(--black); border-top:2px solid var(--mint-light); 
       </div>
     </div>
     <div class="card" data-cat="loaves">
-      <div class="card-img"><img src="/images/cheesecake-mini-loaf.jpg" alt="Cheesecake Mini Loaf"></div>
       <div class="card-info">
         <h3>Cheesecake Mini Loaf</h3>
         <div class="card-footer"><span class="price">$8.00</span><button class="btn" onclick="cartAdd(this)">Add to Cart</button></div>
       </div>
     </div>
     <div class="card" data-cat="loaves">
-      <div class="card-img"><img src="/images/individual-slices.jpg" alt="Individual Slices"></div>
       <div class="card-info">
         <h3>Individual Slices</h3>
         <div class="variation-wrapper"><select class="variation-select" onchange="updatePrice(this)"><option value="$2.00">Banana Bread Slice - $2.00</option><option value="$2.00">Coconut Tart Slice - $2.00</option><option value="$2.00">Tart Slice - $2.00</option></select></div>
@@ -972,7 +979,6 @@ footer { background-color:var(--black); border-top:2px solid var(--mint-light); 
 
     <!-- Cheesecakes & Tarts -->
     <div class="card" data-cat="tarts">
-      <div class="card-img"><img src="/images/whole-cheesecake.jpg" alt="Whole Cheesecake"></div>
       <div class="card-info">
         <h3>Whole Cheesecake</h3>
         <div class="variation-wrapper"><select class="variation-select" onchange="updatePrice(this)"><option value="$40.00">9-inch - $40.00</option><option value="$50.00">10-inch - $50.00</option></select></div>
@@ -980,7 +986,6 @@ footer { background-color:var(--black); border-top:2px solid var(--mint-light); 
       </div>
     </div>
     <div class="card" data-cat="tarts">
-      <div class="card-img"><img src="/images/whole-tarts.jpg" alt="Whole Tarts"></div>
       <div class="card-info">
         <h3>Whole Tarts</h3>
         <div class="variation-wrapper"><select class="variation-select" onchange="updatePrice(this)"><option value="$25.00">Quarter Sheet Pan - $25.00</option><option value="$40.00">10-inch - $40.00</option><option value="$50.00">12-inch - $50.00</option><option value="$60.00">Half Sheet - $60.00</option></select></div>
@@ -988,7 +993,6 @@ footer { background-color:var(--black); border-top:2px solid var(--mint-light); 
       </div>
     </div>
     <div class="card" data-cat="tarts">
-      <div class="card-img"><img src="/images/tartlets.jpg" alt="Tartlets"></div>
       <div class="card-info">
         <h3>Tartlets (By the Dozen)</h3>
         <div class="card-footer"><span class="price">$30.00</span><button class="btn" onclick="cartAdd(this)">Add to Cart</button></div>
@@ -997,7 +1001,6 @@ footer { background-color:var(--black); border-top:2px solid var(--mint-light); 
 
     <!-- Logs & Specialty Pans -->
     <div class="card" data-cat="logs">
-      <div class="card-img"><img src="/images/guava-duff.jpg" alt="Guava Duff"></div>
       <div class="card-info">
         <h3>Guava Duff</h3>
         <div class="variation-wrapper"><select class="variation-select" onchange="updatePrice(this)"><option value="$45.00">Full Log - $45.00</option><option value="$25.00">Half Log - $25.00</option><option value="$6.50">3 Slices - $6.50</option></select></div>
@@ -1005,7 +1008,6 @@ footer { background-color:var(--black); border-top:2px solid var(--mint-light); 
       </div>
     </div>
     <div class="card" data-cat="logs">
-      <div class="card-img"><img src="/images/pumpkin-roll.jpg" alt="Pumpkin Roll"></div>
       <div class="card-info">
         <h3>Pumpkin Roll</h3>
         <div class="variation-wrapper"><select class="variation-select" onchange="updatePrice(this)"><option value="$35.00">Full Log - $35.00</option><option value="$6.00">Individual Slices - $6.00</option></select></div>
@@ -1013,7 +1015,6 @@ footer { background-color:var(--black); border-top:2px solid var(--mint-light); 
       </div>
     </div>
     <div class="card" data-cat="logs">
-      <div class="card-img"><img src="/images/banana-bread.jpg" alt="Banana Bread Pans"></div>
       <div class="card-info">
         <h3>Banana Bread Pans</h3>
         <div class="variation-wrapper"><select class="variation-select" onchange="updatePrice(this)"><option value="$25.00">1/2 Pan - $25.00</option><option value="$40.00">10-inch Pan - $40.00</option></select></div>
@@ -1023,7 +1024,6 @@ footer { background-color:var(--black); border-top:2px solid var(--mint-light); 
 
     <!-- Cakes & Cupcakes -->
     <div class="card" data-cat="cakes">
-      <div class="card-img"><img src="/images/birthday-cakes.jpg" alt="Birthday Cakes"></div>
       <div class="card-info">
         <h3>Birthday Cakes</h3>
         <div class="variation-wrapper"><select class="variation-select" onchange="updatePrice(this)"><option value="$60.00">8-inch - $60.00</option><option value="$75.00">10-inch - $75.00</option><option value="$120.00">12-inch - $120.00</option><option value="$150.00">Half Sheet - $150.00</option><option value="$250.00">Full Sheet - $250.00</option></select></div>
@@ -1031,7 +1031,6 @@ footer { background-color:var(--black); border-top:2px solid var(--mint-light); 
       </div>
     </div>
     <div class="card" data-cat="cakes">
-      <div class="card-img"><img src="/images/cupcakes-dozens.jpg" alt="Cupcakes & Dessert Cups"></div>
       <div class="card-info">
         <h3>Dozens</h3>
         <div class="variation-wrapper"><select class="variation-select" onchange="updatePrice(this)"><option value="$30.00">Cupcakes by Dozen - $30.00</option><option value="$35.00">Dessert Cups by Dozen - $35.00</option></select></div>
@@ -1041,7 +1040,6 @@ footer { background-color:var(--black); border-top:2px solid var(--mint-light); 
 
     <!-- Buns & Breads -->
     <div class="card" data-cat="buns">
-      <div class="card-img"><img src="/images/buns-dozens.jpg" alt="Buns"></div>
       <div class="card-info">
         <h3>Buns (By the Dozen)</h3>
         <div class="variation-wrapper"><select class="variation-select" onchange="updatePrice(this)"><option value="$25.00">Guava Buns - $25.00</option><option value="$19.00">Coconut Buns - $19.00</option><option value="$20.00">Cinnamon Buns - $20.00</option></select></div>
@@ -1049,7 +1047,6 @@ footer { background-color:var(--black); border-top:2px solid var(--mint-light); 
       </div>
     </div>
     <div class="card" data-cat="buns">
-      <div class="card-img"><img src="/images/hot-cross-buns.jpg" alt="Hot Cross Buns"></div>
       <div class="card-info">
         <h3>Hot Cross Buns</h3>
         <div class="variation-wrapper"><select class="variation-select" onchange="updatePrice(this)"><option value="$18.00">Plain - $18.00</option><option value="$19.00">Raisin - $19.00</option></select></div>
@@ -1057,7 +1054,6 @@ footer { background-color:var(--black); border-top:2px solid var(--mint-light); 
       </div>
     </div>
     <div class="card" data-cat="buns">
-      <div class="card-img"><img src="/images/fritters.jpg" alt="Fritters"></div>
       <div class="card-info">
         <h3>Fritters</h3>
         <div class="card-footer"><span class="price">$3.00</span><button class="btn" onclick="cartAdd(this)">Add to Cart</button></div>
@@ -1066,7 +1062,6 @@ footer { background-color:var(--black); border-top:2px solid var(--mint-light); 
 
     <!-- Savory Snacks -->
     <div class="card" data-cat="savory">
-      <div class="card-img"><img src="wing.jpeg" alt="Wing Snacks"></div>
       <div class="card-info">
         <h3>Wing Snacks</h3>
         <div class="variation-wrapper"><select class="variation-select" onchange="updatePrice(this)"><option value="$4.50">Small (S) - $4.50</option><option value="$5.50">Medium (M) - $5.50</option><option value="$6.50">Large (L) - $6.50</option></select></div>
@@ -1074,7 +1069,6 @@ footer { background-color:var(--black); border-top:2px solid var(--mint-light); 
       </div>
     </div>
     <div class="card" data-cat="savory">
-      <div class="card-img"><img src="/images/burgers-fries.jpg" alt="Burgers & Fries"></div>
       <div class="card-info">
         <h3>Burgers & Fries</h3>
         <div class="variation-wrapper"><select class="variation-select" onchange="updatePrice(this)"><option value="$5.50">Beef Burger - $5.50</option><option value="$7.50">Beef Burger + Fries - $7.50</option></select></div>
@@ -1082,7 +1076,6 @@ footer { background-color:var(--black); border-top:2px solid var(--mint-light); 
       </div>
     </div>
     <div class="card" data-cat="savory">
-      <div class="card-img"><img src="/images/fish-snack.jpg" alt="Fish Snack"></div>
       <div class="card-info">
         <h3>Fish Snack</h3>
         <div class="card-footer"><span class="price">$12.00</span><button class="btn" onclick="cartAdd(this)">Add to Cart</button></div>
